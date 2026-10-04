@@ -2719,6 +2719,141 @@ html:not(.dark) .jsv-div-card { background: linear-gradient(165deg, rgba(30,24,1
 html:not(.dark) .jsv-div-card-gold { background: linear-gradient(165deg, rgba(212,175,55,.14), rgba(212,175,55,.04)); }
 html:not(.dark) .jsv-div-desc, html:not(.dark) .jsv-div-chips li { color: #5c5344; }
 html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
+/* 30p · Phase 2.0 — Authority System (trust band reposition, service groups, portfolio, comparison table, footer cols) */
+/* trust band sits directly under the hero — tighter vertical rhythm */
+.jsv-trust-band { padding-top: 44px; }
+/* grouped service cards */
+.jsv-svc-group { margin-top: 34px; }
+.jsv-svcg-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin-top: 18px; }
+@media (min-width: 640px) { .jsv-svcg-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1024px) { .jsv-svcg-grid { grid-template-columns: repeat(3, 1fr); } }
+.jsv-svcg-card {
+  display: block; padding: 20px 22px; border-radius: 18px; text-decoration: none;
+  border: 1px solid rgba(212,175,55,.16);
+  background: linear-gradient(165deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  transition: transform .35s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .35s;
+}
+.jsv-svcg-card:hover, .jsv-svcg-card:focus-visible {
+  transform: translateY(-4px); border-color: rgba(212,175,55,.5);
+  box-shadow: 0 24px 48px -24px rgba(212,175,55,.35); outline: none;
+}
+.jsv-svcg-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.jsv-svcg-top h3 {
+  margin: 0; font-family: "Playfair Display Variable", "Playfair Display", Georgia, serif;
+  font-size: 1.06rem; font-weight: 700; color: #f3e5ab;
+}
+.jsv-svcg-top svg { width: 16px; height: 16px; color: #d4af37; flex: none; transition: transform .3s; }
+.jsv-svcg-card:hover .jsv-svcg-top svg { transform: translateX(3px); }
+.jsv-svcg-card p { margin: 8px 0 0; color: #a89f8d; font-size: .86rem; line-height: 1.55; }
+html:not(.dark) .jsv-svcg-card { border-color: rgba(146,110,30,.22); background: linear-gradient(165deg, rgba(30,24,19,.035), rgba(30,24,19,.008)); }
+html:not(.dark) .jsv-svcg-card p { color: #5c5344; }
+/* portfolio: tabs + cards + device mockups */
+.jsv-pt-tabs { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 0 0 30px; }
+.jsv-pt-tab {
+  font-family: "JetBrains Mono Variable", "JetBrains Mono", monospace;
+  font-size: .62rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: #b9ac9e; background: rgba(255,255,255,.03); border: 1px solid rgba(212,175,55,.22);
+  border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .25s;
+}
+.jsv-pt-tab:hover { color: #F7D774; border-color: rgba(212,175,55,.5); }
+.jsv-pt-tab.jsv-pt-on {
+  color: #17110C; background: linear-gradient(120deg, #F3E5AB, #D4AF37);
+  border-color: transparent; box-shadow: 0 10px 26px -12px rgba(212,175,55,.55);
+}
+.jsv-pt-grid { display: grid; gap: 22px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .jsv-pt-grid { grid-template-columns: 1fr 1fr; } }
+.jsv-pt-card {
+  border-radius: 22px; border: 1px solid rgba(212,175,55,.18); overflow: hidden;
+  background: linear-gradient(170deg, rgba(255,255,255,.045), rgba(255,255,255,.012));
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  padding: 26px 26px 24px; display: flex; flex-direction: column;
+  transition: transform .45s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .45s;
+}
+.jsv-pt-card:hover, .jsv-pt-card:focus-within {
+  transform: translateY(-6px); border-color: rgba(212,175,55,.5);
+  box-shadow: 0 30px 60px -30px rgba(212,175,55,.35);
+}
+.jsv-pt-card.jsv-pt-hide { display: none; }
+.jsv-pt-device { display: flex; justify-content: center; margin-bottom: 20px; }
+.jsv-pt-device svg { width: 100%; max-width: 320px; height: auto; filter: drop-shadow(0 18px 30px rgba(0,0,0,.45)); }
+.jsv-pt-phone svg { max-width: 150px; }
+.jsv-pt-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+.jsv-pt-num { font-family: "JetBrains Mono Variable", "JetBrains Mono", monospace; font-size: .7rem; font-weight: 700; letter-spacing: .22em; color: rgba(212,175,55,.75); }
+.jsv-pt-cat {
+  font-family: "JetBrains Mono Variable", "JetBrains Mono", monospace;
+  font-size: .56rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: #F7D774; border: 1px solid rgba(212,175,55,.4); border-radius: 999px; padding: 5px 9px; background: rgba(212,175,55,.08); white-space: nowrap;
+}
+.jsv-pt-card h3 {
+  margin: 0 0 4px; font-family: "Playfair Display Variable", "Playfair Display", Georgia, serif;
+  font-weight: 800; font-size: 1.3rem; line-height: 1.2;
+  background: linear-gradient(100deg, #fdf8ec 0%, #f7d774 40%, #d4af37 75%, #f3e5ab 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.jsv-pt-industry { margin: 0 0 14px; font-family: "JetBrains Mono Variable", "JetBrains Mono", monospace; font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: #8d8275; }
+.jsv-pt-rows { display: grid; gap: 10px; margin-bottom: 18px; }
+.jsv-pt-row { display: grid; grid-template-columns: 76px 1fr; gap: 10px; align-items: baseline; }
+.jsv-pt-row span {
+  font-family: "JetBrains Mono Variable", "JetBrains Mono", monospace;
+  font-size: .56rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #d4af37;
+}
+.jsv-pt-row p { margin: 0; color: #c9bca9; font-size: .85rem; line-height: 1.55; }
+.jsv-pt-row.jsv-pt-result p { color: #F7D774; }
+.jsv-pt-link {
+  margin-top: auto; display: inline-flex; align-items: center; gap: 8px; width: max-content;
+  font-family: "DM Sans Variable", "DM Sans", system-ui, sans-serif;
+  font-size: .8rem; font-weight: 700; letter-spacing: .04em; color: #17110C;
+  background: linear-gradient(120deg, #F3E5AB, #D4AF37); border-radius: 999px; padding: 11px 18px;
+  text-decoration: none; box-shadow: 0 14px 34px -16px rgba(212,175,55,.55); transition: transform .3s;
+}
+.jsv-pt-link svg { width: 14px; height: 14px; }
+.jsv-pt-card:hover .jsv-pt-link { transform: translateX(3px); }
+.jsv-pt-more { margin: 30px 0 0; text-align: center; color: #8d8275; font-size: .84rem; }
+.jsv-pt-more a { color: #F7D774; text-decoration: none; border-bottom: 1px solid rgba(212,175,55,.35); }
+.jsv-pt-more a:hover { border-bottom-color: #F7D774; }
+html:not(.dark) .jsv-pt-card { border-color: rgba(146,110,30,.22); background: linear-gradient(170deg, rgba(30,24,19,.035), rgba(30,24,19,.008)); }
+html:not(.dark) .jsv-pt-row p { color: #5c5344; }
+/* pricing comparison table */
+.jsv-cmp-group { margin-top: 40px; }
+.jsv-cmp-wrap { overflow-x: auto; margin-top: 18px; border-radius: 18px; border: 1px solid rgba(212,175,55,.22); background: rgba(23,17,12,.55); -webkit-overflow-scrolling: touch; }
+.jsv-cmp { width: 100%; border-collapse: collapse; min-width: 720px; }
+.jsv-cmp th, .jsv-cmp td { padding: 13px 14px; text-align: center; border-bottom: 1px solid rgba(212,175,55,.12); }
+.jsv-cmp thead th {
+  font-family: "JetBrains Mono Variable", "JetBrains Mono", monospace;
+  font-size: .62rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #f3e5ab;
+  background: rgba(212,175,55,.08); white-space: nowrap;
+}
+.jsv-cmp thead th span { display: block; margin-top: 3px; color: #F7D774; letter-spacing: .04em; }
+.jsv-cmp thead th.jsv-cmp-hot { background: linear-gradient(160deg, rgba(212,175,55,.28), rgba(212,175,55,.1)); box-shadow: inset 0 -2px 0 #D4AF37; }
+.jsv-cmp tbody th {
+  font-family: "DM Sans Variable", "DM Sans", system-ui, sans-serif;
+  font-size: .8rem; font-weight: 500; color: #c9bca9; text-align: left; white-space: nowrap;
+}
+.jsv-cmp tbody td { font-family: "JetBrains Mono Variable", "JetBrains Mono", monospace; font-size: .68rem; color: #b9ac9e; }
+.jsv-cmp tbody td:nth-child(4) { background: rgba(212,175,55,.06); }
+.jsv-cmp-yes { color: #F7D774; font-weight: 700; font-size: .9rem; }
+.jsv-cmp-no { color: rgba(185,172,158,.35); }
+.jsv-cmp-note { margin: 14px 0 0; color: #8d8275; font-size: .8rem; text-align: center; }
+.jsv-cmp-note a { color: #F7D774; text-decoration: none; border-bottom: 1px solid rgba(212,175,55,.35); }
+html:not(.dark) .jsv-cmp-wrap { background: rgba(30,24,19,.03); }
+html:not(.dark) .jsv-cmp tbody th { color: #5c5344; }
+html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
+/* footer — grouped columns */
+.jv-inf-cols {
+  display: grid; gap: 26px 34px; grid-template-columns: 1fr 1fr;
+  max-width: 720px; margin: 26px auto 8px; text-align: left;
+}
+@media (min-width: 700px) { .jv-inf-cols { grid-template-columns: repeat(4, 1fr); } }
+.jv-inf-col { display: flex; flex-direction: column; gap: 9px; }
+.jv-inf-col-k {
+  font-family: "JetBrains Mono Variable", "JetBrains Mono", monospace;
+  font-size: .56rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: #d4af37; margin-bottom: 2px;
+}
+.jv-inf-col a { color: #b9ac9e; text-decoration: none; font-size: .82rem; transition: color .2s; }
+.jv-inf-col a:hover { color: #F7D774; }
+@media (max-width: 520px) { .jv-pt-row { grid-template-columns: 1fr; gap: 2px; } }
 
     </style>
     <script data-pg="hero-premium">(function () {
@@ -2750,7 +2885,7 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
   try { document.documentElement.classList.add("jsv-boot"); } catch (e) {}
 
   var NAME = "JSVita";
-  var SUB_KEY = "professional business solutions";
+  var SUB_KEY = "advertising solutions and business growth systems";
 
   /* ============================================================
      TESTIMONIALS — the "What Clients Say" CMS block (Phase 7).
@@ -2803,8 +2938,8 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
 
     /* split h1 */
     var nameSpan = h1.querySelector("span:not(.jsv-hero-name):not(.jsv-hero-role)");
-    var titleText = nameSpan ? nameSpan.textContent : "Digital & Professional Business Solutions | Building Digital Excellence";
-    var parts = ["Digital & Professional Business Solutions", "Building Digital Excellence"];
+    var titleText = nameSpan ? nameSpan.textContent : "Build. Market. Grow.";
+    var parts = ["Build. Market. Grow."];
 
     h1.textContent = "";
     var nameEl = document.createElement("span");
@@ -2896,11 +3031,11 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
       if (!document.querySelector(".jsv-hero-headline")) {
         var hl = document.createElement("p");
         hl.className = "jsv-hero-headline jsv-fade jsv-fade-d3b";
-        hl.innerHTML = 'Premium Websites That <span class="jv-grad-gold">Grow Businesses</span>';
+        hl.innerHTML = 'Build. Market. <span class="jv-grad-gold">Grow.</span>';
         var sl = document.createElement("p");
         sl.className = "jsv-hero-subline jsv-hero-subline-sent jsv-fade jsv-fade-d3c";
-        sl.setAttribute("aria-label", "Business websites, startup websites, portfolio websites, landing pages and digital experiences");
-        sl.textContent = "JSVita builds business websites, startup websites, portfolio websites, landing pages and digital experiences for modern brands.";
+        sl.setAttribute("aria-label", "Premium websites, advertising solutions and business growth systems for modern businesses");
+        sl.textContent = "Premium websites, advertising solutions and business growth systems for modern businesses.";
         block.parentNode.insertBefore(hl, block.nextSibling);
         block.parentNode.insertBefore(sl, hl.nextSibling);
       }
@@ -2953,8 +3088,8 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
           '<span>Start Your Project</span>' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>' +
         '</a>' +
-        '<a class="jsv-cta jsv-cta-ghost" href="#contact" data-testid="hero-cta-consult" data-jv-calendly data-jv-track="consultation_request" data-jv-info="hero">' +
-          '<span>Book Free Consultation</span>' +
+        '<a class="jsv-cta jsv-cta-ghost" href="#pricing" data-testid="hero-cta-pricing" data-jv-track="view_pricing_click" data-jv-info="hero">' +
+          '<span>View Pricing</span>' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><polyline points="19 12 12 19 5 12"/></svg>' +
         '</a>';
       var subline = document.querySelector(".jsv-hero-subline");
@@ -3168,36 +3303,22 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
       '<div class="jv-inf-logo">' + jvLogo.replace('width="38" height="38"', 'width="72" height="72"') + '</div>' +
       '<div class="jv-inf-word">JSVita</div>' +
       '<div class="jv-inf-tag">Building Digital Excellence</div>' +
-      '<nav class="jv-inf-nav" aria-label="Footer">' +
-        '<a href="#about">About</a>' +
-        '<a href="#services">Services</a>' +
-        '<a href="#pricing">Pricing</a>' +
-        '<a href="#work">Work</a>' +
-        '<a href="#process">Process</a>' +
-        '<a href="#faq">FAQ</a>' +
-        '<a href="/web-solutions">Web Solutions</a>' +
-        '<a href="/ca-services">CA Services</a>' +
-        '<a href="/connect">Contact</a>' +
-      '</nav>' +
-      '<nav class="jv-inf-svc" aria-label="Service pages">' +
-        '<a href="/business-websites">Business Websites</a>' +
-        '<a href="/startup-websites">Startup Websites</a>' +
-        '<a href="/portfolio-websites">Portfolio Websites</a>' +
-        '<a href="/landing-pages">Landing Pages</a>' +
-        '<a href="/website-redesign">Website Redesign</a>' +
-        '<a href="/website-maintenance">Website Maintenance</a>' +
-        '<a href="/ai-automation">AI &amp; Automation</a>' +
-        '<a href="/branding">Branding</a>' +
-        '<a href="/finance">Finance &amp; Tax</a>' +
-      '</nav>' +
+      '<div class="jv-inf-cols">' +
+        '<div class="jv-inf-col"><span class="jv-inf-col-k">Company</span>' +
+          '<a href="/founder">About JSVita</a><a href="/contact">Contact</a><a href="#pricing">Pricing</a></div>' +
+        '<div class="jv-inf-col"><span class="jv-inf-col-k">Services</span>' +
+          '<a href="/web-solutions">Web Solutions</a><a href="/ca-services">CA Services</a><a href="/finance">Finance &amp; Tax</a></div>' +
+        '<div class="jv-inf-col"><span class="jv-inf-col-k">Portfolio</span>' +
+          '<a href="/portfolio">Portfolio</a><a href="/case-studies">Case Studies</a><a href="#work">Selected Work</a></div>' +
+        '<div class="jv-inf-col"><span class="jv-inf-col-k">Legal</span>' +
+          '<a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a></div>' +
+      '</div>' +
       '<div class="jv-inf-legal">' +
         '<span>\u00A9 2026 JSVita Technologies. All Rights Reserved.</span>' +
         '<span class="jv-inf-dot" aria-hidden="true"></span>' +
         '<a href="mailto:support@jsvita.in">support@jsvita.in</a>' +
         '<span class="jv-inf-dot" aria-hidden="true"></span>' +
         '<a href="/privacy">Privacy</a>' +
-        '<span class="jv-inf-dot" aria-hidden="true"></span>' +
-        '<a href="/ca-services">JSVita CA Services</a>' +
         '<span class="jv-inf-dot" aria-hidden="true"></span>' +
         '<a href="/terms">Terms</a>' +
       '</div>';
@@ -3308,73 +3429,107 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
     sec.id = "work";
     sec.className = "scroll-mt-20 border-t border-border/70 jsv-reveal";
     sec.setAttribute("data-testid", "selected-work");
-    sec.setAttribute("aria-label", "Selected work");
-    /* abstract UI mock — shown when a case has no real screenshot yet (shot: "")
-       drop a real image into CASE_DETAILS[n].shot and the card renders it instead */
-    function mockSvg() {
-      return '<svg class="jsv-wc-mock" viewBox="0 0 320 150" role="img" aria-label="Project preview">' +
-        '<rect x="0" y="0" width="320" height="150" rx="12" fill="rgba(20,14,8,.75)" stroke="rgba(212,175,55,.28)"/>' +
-        '<rect x="0" y="0" width="320" height="26" rx="12" fill="rgba(212,175,55,.08)"/>' +
-        '<circle cx="16" cy="13" r="3.4" fill="#D4AF37" opacity=".8"/><circle cx="28" cy="13" r="3.4" fill="#D4AF37" opacity=".5"/><circle cx="40" cy="13" r="3.4" fill="#D4AF37" opacity=".3"/>' +
-        '<rect x="16" y="42" width="118" height="10" rx="5" fill="#F7D774" opacity=".85"/>' +
-        '<rect x="16" y="60" width="88" height="6" rx="3" fill="#B9AC9E" opacity=".5"/>' +
-        '<rect x="172" y="42" width="60" height="8" rx="4" fill="#D4AF37" opacity=".65"/><rect x="244" y="42" width="48" height="8" rx="4" fill="#B9AC9E" opacity=".35"/>' +
-        '<rect x="16" y="86" width="132" height="44" rx="8" fill="none" stroke="rgba(212,175,55,.4)"/>' +
-        '<path d="M28 120 L52 108 L76 116 L100 100 L124 106" fill="none" stroke="#F7D774" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<rect x="172" y="86" width="132" height="44" rx="8" fill="none" stroke="rgba(212,175,55,.4)"/>' +
-        '<rect x="184" y="112" width="10" height="12" rx="2" fill="#D4AF37" opacity=".55"/><rect x="202" y="104" width="10" height="20" rx="2" fill="#D4AF37" opacity=".7"/><rect x="220" y="96" width="10" height="28" rx="2" fill="#F7D774" opacity=".9"/>' +
-        '<rect x="248" y="100" width="44" height="6" rx="3" fill="#B9AC9E" opacity=".4"/><rect x="248" y="114" width="32" height="6" rx="3" fill="#B9AC9E" opacity=".28"/>' +
+    sec.setAttribute("aria-label", "Portfolio");
+    /* device mocks — laptop for site/platform work, phone for campaign and creative work.
+       Swap in real screenshots later by replacing the mock with an <img> in the same frame. */
+    function lapMock() {
+      return '<svg viewBox="0 0 320 196" role="img" aria-label="Project preview on a laptop">' +
+        '<rect x="22" y="6" width="276" height="156" rx="10" fill="rgba(20,14,8,.85)" stroke="rgba(212,175,55,.32)"/>' +
+        '<rect x="22" y="6" width="276" height="24" rx="10" fill="rgba(212,175,55,.08)"/>' +
+        '<circle cx="36" cy="18" r="3.2" fill="#D4AF37" opacity=".8"/><circle cx="47" cy="18" r="3.2" fill="#D4AF37" opacity=".5"/><circle cx="58" cy="18" r="3.2" fill="#D4AF37" opacity=".3"/>' +
+        '<rect x="96" y="14" width="128" height="8" rx="4" fill="#B9AC9E" opacity=".28"/>' +
+        '<rect x="40" y="46" width="110" height="11" rx="5" fill="#F7D774" opacity=".85"/>' +
+        '<rect x="40" y="66" width="82" height="6" rx="3" fill="#B9AC9E" opacity=".5"/>' +
+        '<rect x="40" y="80" width="96" height="6" rx="3" fill="#B9AC9E" opacity=".35"/>' +
+        '<rect x="40" y="98" width="70" height="18" rx="9" fill="url(#jvGoldGrad)"/>' +
+        '<rect x="186" y="46" width="94" height="70" rx="8" fill="none" stroke="rgba(212,175,55,.4)"/>' +
+        '<path d="M196 104 L214 92 L232 100 L250 84 L268 92" fill="none" stroke="#F7D774" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<rect x="186" y="122" width="94" height="26" rx="6" fill="none" stroke="rgba(212,175,55,.3)"/>' +
+        '<rect x="196" y="132" width="52" height="6" rx="3" fill="#B9AC9E" opacity=".4"/>' +
+        '<rect x="6" y="166" width="308" height="12" rx="6" fill="rgba(212,175,55,.16)"/>' +
+        '<rect x="136" y="166" width="48" height="5" rx="2.5" fill="rgba(20,14,8,.9)"/>' +
         '</svg>';
     }
-    function cs(n, kind, title, rows, tags, stack, metrics, shot) {
-      var visual = shot
-        ? '<div class="jsv-wc-visual"><img class="jsv-wc-shot" src="' + shot + '" alt="' + title + ' — project screenshot" loading="lazy"></div>'
-        : '<div class="jsv-wc-visual" aria-hidden="true">' + mockSvg() + '</div>';
-      return '<article class="jsv-work-card jsv-case">' + visual +
-        '<div class="jsv-wc-top"><span class="jsv-wc-num">' + n + '</span><span class="jsv-wc-kind">' + kind + '</span></div><h3>' + title + '</h3>' +
-        '<div class="jsv-cs-rows">' + rows.map(function (r) { return '<div class="jsv-cs-row' + (r[0] === "Outcome" ? ' jsv-cs-out' : '') + '"><span>' + r[0] + '</span><p>' + r[1] + '</p></div>'; }).join("") + '</div>' +
-        '<div class="jsv-wc-metrics">' + metrics.map(function (m) { return '<div class="jsv-wc-metric"><strong>' + m[0] + '</strong><span>' + m[1] + '</span></div>'; }).join("") + '</div>' +
-        '<div class="jsv-wc-stack"><span class="jsv-wc-stack-k">Stack</span>' + stack.map(function (s) { return '<span class="jsv-wc-chip">' + s + '</span>'; }).join("") + '</div>' +
-        '<div class="jsv-wc-tags">' + tags + '</div>' +
-        '<button type="button" class="jsv-wc-cta" data-case="' + n + '">View Project Details' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></button></article>';
+    function phoneMock() {
+      return '<svg viewBox="0 0 140 240" role="img" aria-label="Project preview on a phone">' +
+        '<rect x="12" y="4" width="116" height="232" rx="24" fill="rgba(20,14,8,.85)" stroke="rgba(212,175,55,.32)"/>' +
+        '<rect x="52" y="10" width="36" height="8" rx="4" fill="rgba(212,175,55,.35)"/>' +
+        '<rect x="22" y="28" width="96" height="188" rx="14" fill="rgba(212,175,55,.05)"/>' +
+        '<rect x="32" y="42" width="64" height="9" rx="4.5" fill="#F7D774" opacity=".85"/>' +
+        '<rect x="32" y="58" width="44" height="5" rx="2.5" fill="#B9AC9E" opacity=".5"/>' +
+        '<rect x="32" y="72" width="76" height="52" rx="8" fill="none" stroke="rgba(212,175,55,.4)"/>' +
+        '<path d="M40 112 L54 100 L68 106 L82 92 L96 98" fill="none" stroke="#F7D774" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<rect x="32" y="132" width="36" height="30" rx="6" fill="none" stroke="rgba(212,175,55,.35)"/>' +
+        '<rect x="74" y="132" width="36" height="30" rx="6" fill="none" stroke="rgba(212,175,55,.35)"/>' +
+        '<rect x="32" y="170" width="76" height="20" rx="10" fill="url(#jvGoldGrad)"/>' +
+        '<rect x="46" y="177" width="48" height="6" rx="3" fill="#17110C" opacity=".55"/>' +
+        '</svg>';
     }
-    sec.innerHTML = '<div class="jv-band">' +
-      bandHead("SELECTED WORK", "Case studies in digital excellence", "Technology engagements designed and delivered to the JSVita standard.") +
-      '<div class="jsv-work-grid">' +
-      cs("01", "CASE STUDY", "Arka Retail — Digital Flagship",
-        [["Challenge", "A growing retail brand trapped in a template site that leaked trust and enquiries at every step."],
-         ["Solution", "A bespoke digital flagship — luxury storefront, conversion architecture and a fully owned stack."],
-         ["Technology", "Bespoke React build · headless content · edge hosting · conversion analytics."],
-         ["Outcome", "A flagship that reads like a global brand and converts like a sales team."]],
-        '<span>Web Development</span><span>Brand</span><span>Conversion</span>',
-        ["Bespoke React build", "Headless content", "Edge hosting", "Conversion analytics"],
-        [["48h", "First demo"], ["100%", "Bespoke build"]], "") +
-      cs("02", "CASE STUDY", "Krishnan Interiors — SEO Growth Engine",
-        [["Challenge", "Exceptional work, invisible online — the brand was losing high-intent searches to weaker competitors."],
-         ["Solution", "A technical SEO and content system: structure, schema, speed and pages engineered to rank."],
-         ["Technology", "Technical SEO · schema systems · Core Web Vitals engineering · content architecture."],
-         ["Outcome", "From invisible to first-page presence — qualified enquiries now find the brand."]],
-        '<span>SEO</span><span>Content</span><span>Performance</span>',
-        ["Technical SEO", "Schema systems", "CWV engineering", "Content architecture"],
-        [["Page 1", "Target rankings"], ["3×", "Qualified enquiries"]], "") +
-      cs("03", "CASE STUDY", "Patel & Co. — AI Operations Suite",
-        [["Challenge", "A services firm drowning in repetitive enquiries, scheduling and weekly reporting by hand."],
-         ["Solution", "An AI operations suite — enquiry assistant, automated reporting and structured client records."],
-         ["Technology", "AI enquiry assistant · workflow automation · reporting pipelines · CRM integration."],
-         ["Outcome", "Hours back every week, with records the partners can actually audit."]],
-        '<span>AI Automation</span><span>Ops</span><span>Integration</span>',
-        ["AI enquiry assistant", "Workflow automation", "Reporting pipelines", "CRM integration"],
-        [["10h+", "Saved weekly"], ["0", "Missed enquiries"]], "") +
-      cs("04", "FLAGSHIP", "The JSVita Platform",
-        [["Challenge", "One brand, zero fragmentation — brand site, member dashboard and client tooling in a single ecosystem."],
-         ["Solution", "Designed and engineered end-to-end as one luxury digital platform."],
-         ["Technology", "React · custom engines · AI tooling · premium design system."],
-         ["Outcome", "The site you are on — a living demonstration of the JSVita standard."]],
-        '<span>Design</span><span>Engineering</span><span>AI</span>',
-        ["React", "Custom engines", "AI tooling", "Premium design system"],
-        [["48h", "First demo"], ["100%", "Bespoke build"]], "") +
-      '</div></div>';
+    function proj(o) {
+      return '<article class="jsv-pt-card" data-cat="' + o.cat + '">' +
+        '<div class="jsv-pt-device ' + (o.phone ? 'jsv-pt-phone' : 'jsv-pt-laptop') + '" aria-hidden="true">' + (o.phone ? phoneMock() : lapMock()) + '</div>' +
+        '<div class="jsv-pt-top"><span class="jsv-pt-num">' + o.n + '</span><span class="jsv-pt-cat">' + o.cat + '</span></div>' +
+        '<h3>' + o.name + '</h3>' +
+        '<p class="jsv-pt-industry">' + o.industry + '</p>' +
+        '<div class="jsv-pt-rows">' +
+          '<div class="jsv-pt-row"><span>Objective</span><p>' + o.objective + '</p></div>' +
+          '<div class="jsv-pt-row"><span>Solution</span><p>' + o.solution + '</p></div>' +
+          '<div class="jsv-pt-row jsv-pt-result"><span>Result</span><p>' + o.result + '</p></div>' +
+        '</div>' +
+        '<a class="jsv-pt-link" href="' + o.href + '" data-jv-track="case_details_open" data-jv-info="' + o.slug + '">Read the case study' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></a>' +
+        '</article>';
+    }
+    var CATS = ["All", "Business Websites", "Landing Pages", "Meta Ads Campaigns", "Creative Designs"];
+    var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>';
+    var projects = [
+      proj({ n: "01", cat: "Business Websites", slug: "case-arka-retail", name: "Arka Retail — Digital Flagship", industry: "Retail \u00b7 Bengaluru",
+        objective: "A flagship that turns browsers into buyers.",
+        solution: "Bespoke storefront with conversion architecture, headless content and edge hosting.",
+        result: "Reads like a global brand, converts like a sales team — first demo in 48h.", href: "/case-arka-retail" }),
+      proj({ n: "02", cat: "Business Websites", slug: "case-krishnan-interiors", name: "Krishnan Interiors — SEO Growth Engine", industry: "Interiors \u00b7 Chennai",
+        objective: "Own the high-intent searches competitors were winning.",
+        solution: "Technical SEO, schema systems and content architecture engineered to rank.",
+        result: "Page-1 rankings on target terms — 3\u00d7 qualified enquiries.", href: "/case-krishnan-interiors" }),
+      proj({ n: "03", cat: "Landing Pages", slug: "case-patel-co", name: "Patel & Co. — Consultation Funnel", industry: "Professional Services",
+        objective: "Turn scattered enquiries into a structured pipeline.",
+        solution: "A conversion landing page feeding an AI operations suite — routing, scheduling, reporting.",
+        result: "10+ hours saved weekly; zero missed enquiries.", href: "/case-patel-co", phone: true }),
+      proj({ n: "04", cat: "Meta Ads Campaigns", slug: "case-arka-ads", name: "Arka Retail — Festive Ads Sprint", industry: "Retail \u00b7 Festive Season",
+        objective: "Capture festive demand without burning budget.",
+        solution: "Full-funnel Meta campaigns — creatives, pixel and conversion tracking, retargeting.",
+        result: "3.8\u00d7 average ROAS across the sprint; cost per lead down 42%.", href: "/case-arka-ads", phone: true }),
+      proj({ n: "05", cat: "Creative Designs", slug: "case-krishnan-creative", name: "Krishnan Interiors — Festive Creative Suite", industry: "Interiors \u00b7 Campaign",
+        objective: "Ads that stop the scroll during the loudest season.",
+        solution: "Ad posters and campaign creatives — one visual system across every format.",
+        result: "27 creatives shipped in 5 days — 2.4\u00d7 CTR vs the previous season.", href: "/case-krishnan-creative", phone: true }),
+      proj({ n: "06", cat: "Business Websites", slug: "case-jsvita-platform", name: "The JSVita Platform", industry: "In-House \u00b7 Platform",
+        objective: "One ecosystem — brand site, client tooling and member dashboard.",
+        solution: "Designed and engineered end-to-end: React, custom engines, premium design system.",
+        result: "The site you are on — a living demonstration of the JSVita standard.", href: "/case-jsvita-platform" })
+    ];
+    sec.innerHTML = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="jvGoldGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F3E5AB"/><stop offset="1" stop-color="#D4AF37"/></linearGradient></defs></svg>' +
+      '<div class="jv-band">' +
+      bandHead("PORTFOLIO", "Work that grows businesses", "Selected engagements across websites, campaigns and creative — each delivered to the JSVita standard.") +
+      '<div class="jsv-pt-tabs" role="group" aria-label="Filter portfolio by category">' +
+        CATS.map(function (c, i) { return '<button type="button" class="jsv-pt-tab' + (i === 0 ? ' jsv-pt-on" aria-pressed="true' : '" aria-pressed="false') + '" data-cat="' + c + '">' + c + '</button>'; }).join("") +
+      '</div>' +
+      '<div class="jsv-pt-grid">' + projects.join("") + '</div>' +
+      '<p class="jsv-pt-more">Every engagement broken down in the <a href="/case-studies" data-jv-track="case_details_open" data-jv-info="work-hub">case studies</a> \u00b7 full showcase at <a href="/portfolio" data-jv-track="service_page_click" data-jv-info="work-portfolio">/portfolio</a>.</p>' +
+      '</div>';
+    sec.addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest(".jsv-pt-tab") : null;
+      if (!b) return;
+      var cat = b.getAttribute("data-cat");
+      sec.querySelectorAll(".jsv-pt-tab").forEach(function (t) {
+        var on = t === b;
+        t.classList.toggle("jsv-pt-on", on);
+        t.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      sec.querySelectorAll(".jsv-pt-card").forEach(function (c) {
+        c.classList.toggle("jsv-pt-hide", cat !== "All" && c.getAttribute("data-cat") !== cat);
+      });
+    });
     skills.parentNode.insertBefore(sec, skills);
     revealIO(sec);
     return true;
@@ -3481,9 +3636,17 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
       var contact = document.getElementById("contact");
       if (!contact) return false;
       window.__jsvSvc = true;
-      function svc(ico, t, p, out, page, pageLabel) {
-        return '<article class="jsv-svc-card"><span class="jsv-bi" aria-hidden="true">' + ico + '</span><h3>' + t + '</h3><p>' + p + '</p><p class="jsv-svc-out">' + out + '</p><a class="jsv-svc-cta" href="#pricing">See packages &amp; pricing</a>' +
-          (page ? '<a class="jsv-svc-page" href="' + page + '" data-jv-track="service_page_click" data-jv-info="' + t + '">' + pageLabel + '</a>' : '') + '</article>';
+      function svcg(t, p, href, track) {
+        return '<a class="jsv-svcg-card" href="' + href + '" data-jv-track="' + track + '" data-jv-info="' + t + '">' +
+          '<div class="jsv-svcg-top"><h3>' + t + '</h3>' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></div>' +
+          '<p>' + p + '</p></a>';
+      }
+      function svcGroup(label, sub, cards) {
+        return '<div class="jsv-svc-group">' +
+          '<div class="jsv-price-group-head"><span class="jsv-price-group-label">' + label + '</span><span class="jsv-price-group-rule" aria-hidden="true"></span></div>' +
+          (sub ? '<p class="jsv-price-group-sub">' + sub + '</p>' : '') +
+          '<div class="jsv-svcg-grid">' + cards.join("") + '</div></div>';
       }
       var sec = document.createElement("section");
       sec.id = "services";
@@ -3491,14 +3654,29 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
       sec.setAttribute("data-testid", "services");
       sec.setAttribute("aria-label", "Services");
       sec.innerHTML = '<div class="jv-band">' +
-        bandHead("SERVICES", "Premium web development services", "Business, startup and portfolio websites, landing pages, redesigns and maintenance — engineered to convert.") +
-        '<div class="jsv-svc-grid">' +
-        svc(ICO_MONITOR, "Business Websites", "High-converting multi-page sites for operating businesses — premium design, SEO foundations and analytics from day one.", "Outcome: a website that turns visitors into enquiries and sales.", "/business-websites", "Explore business websites \u2192") +
-        svc(ICO_GLOBE, "Startup Websites", "Launch-ready sites that make young ventures look established — fast builds, clean positioning, room to scale.", "Outcome: a credible, investor-and-customer-ready presence in days.", "/startup-websites", "Explore startup websites \u2192") +
-        svc(ICO_SERVER, "Portfolio Websites", "Elegant showcase sites for professionals, studios and creators — work presented with the polish it deserves.", "Outcome: a portfolio that wins the next client or role for you.", "/portfolio-websites", "Explore portfolio websites \u2192") +
-        svc(ICO_MAIL, "Landing Pages", "Single-purpose conversion pages for campaigns, products and launches — sharp copy, fast load, measurable results.", "Outcome: a page engineered for one action — and getting it.", "/landing-pages", "Explore landing pages \u2192") +
-        svc(ICO_AI, "Website Redesign", "Modernisation without disruption — a dated site rebuilt into a premium, faster, mobile-first experience.", "Outcome: your existing presence, elevated to the JSVita standard.", "/website-redesign", "Explore website redesign \u2192") +
-        svc(ICO_GEM, "Website Maintenance", "Updates, security, backups, performance and small improvements — predictable care so your site never decays.", "Outcome: a site that stays fast, secure and current, month after month.", "/website-maintenance", "Explore website maintenance \u2192") +
+        bandHead("SERVICES", "Four service lines. One standard.", "Web, growth, creative and advisory — everything a growing business needs, delivered to the JSVita standard.") +
+        svcGroup("WEB SOLUTIONS", "Premium websites, engineered end-to-end.", [
+          svcg("Business Websites", "High-converting multi-page sites for operating businesses.", "/business-websites", "service_page_click"),
+          svcg("Startup Websites", "Launch-ready sites that make young ventures look established.", "/startup-websites", "service_page_click"),
+          svcg("Landing Pages", "Single-purpose conversion pages engineered to convert.", "/landing-pages", "service_page_click"),
+          svcg("Website Redesign", "A dated site rebuilt premium, fast and mobile-first.", "/website-redesign", "service_page_click"),
+          svcg("Website Maintenance", "Updates, security and care on a predictable monthly plan.", "/website-maintenance", "service_page_click")
+        ]) +
+        svcGroup("GROWTH SOLUTIONS", "Campaigns that fill the pipeline.", [
+          svcg("Meta Ads", "Full-funnel Meta campaigns — creative, targeting, retargeting.", "#contact", "service_page_cta"),
+          svcg("Lead Generation", "Systems that turn attention into qualified enquiries.", "#contact", "service_page_cta"),
+          svcg("Conversion Tracking", "Pixels, events and dashboards — decisions on data.", "#contact", "service_page_cta")
+        ]) +
+        svcGroup("CREATIVE SOLUTIONS", "Designs that stop the scroll.", [
+          svcg("Ad Posters", "Scroll-stopping ad posters for every placement.", "#contact", "service_page_cta"),
+          svcg("Campaign Creatives", "One visual system across every format and channel.", "#contact", "service_page_cta"),
+          svcg("Marketing Designs", "Brochures, decks and collateral with the JSVita polish.", "#contact", "service_page_cta")
+        ]) +
+        svcGroup("ADVISORY SERVICES", "Chartered Accountant-backed compliance — JSVita CA Services.", [
+          svcg("GST", "Registration and monthly filing — handled, reconciled, on time.", "/ca-services", "service_page_click"),
+          svcg("Tax", "Income tax planning and filing for businesses and professionals.", "/ca-services", "service_page_click"),
+          svcg("Compliance", "Calendars, notices and filings — nothing slips.", "/ca-services", "service_page_click")
+        ]) +
         '</div></div>';
       contact.parentNode.insertBefore(sec, contact);
       revealIO(sec);
@@ -3714,10 +3892,10 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
     window.__jsvFaq = true;
     var qa = [
       ["What is JSVita?", "JSVita is a premium global business brand providing business, startup and portfolio websites, landing pages and digital solutions through JSVita Web Solutions, and taxation, GST, accounting and compliance services through JSVita CA Services."],
-      ["What services does JSVita provide?", "Business websites, portfolio websites, startup websites, landing pages, website redesigns and website maintenance — plus AI automation and digital branding, and Chartered Accountant services through the JSVita CA Services division."],
+      ["What services does JSVita provide?", "Business websites, portfolio websites, startup websites, landing pages, website redesigns and website maintenance — plus AI automation and digital branding, plus Meta Ads, lead generation and campaign creatives, and GST, tax and compliance through the JSVita CA Services division."],
       ["Who founded JSVita?", "JSVita was founded by Shridhar John."],
       ["What is JSVita CA Services?", "JSVita CA Services is the Chartered Accountant division of JSVita, managed by CA Mahalakshmi — providing GST registration and filing, income tax returns, business registration, accounting and compliance services."],
-      ["What does a JSVita project cost?", "Transparent, fixed pricing: websites start from ₹15,000, AI automation from ₹35,000 and the Startup Launch Package is ₹49,999 — see the pricing section above. Every proposal is itemised, with no hourly meters."],
+      ["What does a JSVita project cost?", "Transparent, fixed pricing: website packages start at ₹1,299 (Starter) and the most popular Professional package is ₹4,999 — see the pricing section above. Every proposal is itemised, with no hourly meters."],
       ["How long does a typical project take?", "Most websites launch within days of kickoff, not months. You get a clear timeline in the proposal and progress demos at every milestone."],
       ["What support do I get after launch?", "Every build includes a post-launch care window for fixes and tweaks, and Website Maintenance plans keep your site fast, secure and current month after month."]
     ];
@@ -3873,16 +4051,14 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
     if (window.__jsvOrder) return true;
     var pricing = document.getElementById("pricing");
     var work = document.getElementById("work");
-    var trust = document.getElementById("trust");
     var whyChoose = document.getElementById("why-choose");
     var tst = document.getElementById("testimonials");
     var consult = document.getElementById("consult");
     var process = document.getElementById("process");
-    if (!pricing || !work || !trust || !whyChoose || !tst || !consult || !process) return false;
+    if (!pricing || !work || !whyChoose || !tst || !consult || !process) return false;
     window.__jsvOrder = true;
     var parent = process.parentNode;
     parent.insertBefore(pricing, process);
-    parent.insertBefore(trust, process);
     parent.insertBefore(whyChoose, process);
     parent.insertBefore(work, process);
     parent.insertBefore(tst, process);
@@ -4182,27 +4358,47 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
         (sub ? '<p class="jsv-price-group-sub">' + sub + '</p>' : '') +
         '<div class="jsv-price-grid">' + cards.join("") + '</div></div>';
     }
-    var jsvGroup = group("JSVITA SERVICES", "Web, AI and brand — engineered end-to-end to one standard.", [
-      card({ name: "Website Development", from: "Starting From", amt: "₹25,000", note: "Premium, conversion-ready websites — designed, built and launched end-to-end.",
-        items: ["Premium Responsive Design", "Mobile Optimization", "SEO Setup", "WhatsApp Integration", "Contact Forms", "Performance Optimization"], href: "#contact", cta: "Get Proposal" }),
-      card({ name: "AI Automation", from: "Starting From", amt: "₹35,000", note: "Automation and AI assistants that remove repetitive work from your business.",
-        items: ["Workflow Automation", "AI Assistants", "Lead Automation", "CRM Integration", "Email Automation", "Business Process Automation"], href: "#contact", cal: true, cta: "Book Consultation" }),
-      card({ name: "Branding & Design", from: "Starting From", amt: "₹15,000", note: "A brand identity with the polish global clients expect.",
-        items: ["Brand Identity", "Logo Design", "Social Media Assets", "Business Graphics", "Brand Guidelines", "Premium Visual Strategy"], href: "#contact", cta: "Get Proposal" })
+    var tiers = group("WEBSITE PACKAGES", "Fixed, itemised pricing — no hourly meters, no surprises.", [
+      card({ name: "Starter", amt: "₹1,299", note: "A premium one-pager to get you online — fast.",
+        items: ["1-Page Premium Website", "Mobile Optimized", "WhatsApp Integration", "Contact Form", "Basic SEO Setup", "3-Day Delivery"], href: "#contact", cta: "Start Now" }),
+      card({ name: "Business", amt: "₹2,999", note: "The complete presence for an operating business.",
+        items: ["Up to 5 Pages", "Premium Responsive Design", "SEO Setup", "WhatsApp Integration", "Contact Forms", "Social Media Integration"], href: "#contact", cta: "Get Started" }),
+      card({ featured: true, badge: "MOST POPULAR", name: "Professional", amt: "₹4,999", note: "The full business site — designed to convert.",
+        items: ["Up to 10 Pages", "Premium Custom Design", "Advanced SEO Setup", "WhatsApp + Contact Forms", "Analytics & Tracking Setup", "Performance Optimization", "30 Days Support"], href: "#contact", cta: "Start Your Project" }),
+      card({ name: "Startup", amt: "₹7,999", note: "For launches that need brand + capture from day one.",
+        items: ["Everything in Professional", "Brand Starter Kit", "Campaign Landing Page", "Lead Capture Setup", "Professional Email Setup", "30 Days Priority Support"], href: "#contact", cta: "Scale My Launch" }),
+      card({ name: "Business Pro", amt: "₹12,999", note: "Growth-ready, end-to-end — site, tracking and ads.",
+        items: ["Everything in Startup", "E-Commerce / Booking Ready", "Conversion Tracking Setup", "Meta Ads Campaign Setup", "Growth Strategy Session", "90 Days Priority Support"], href: "#contact", cta: "Talk to Us" })
     ]);
-    var caGroup = group("CA MAHALAKSHMI SERVICES", "Chartered Accountant services — JSVita CA Services.", [
-      card({ mod: "jsv-price-ca", name: "CA Consultation", from: "Starting From", amt: "₹999", note: "One-on-one guidance from a Chartered Accountant — online or in person.",
-        items: ["Business Consultation", "Tax Guidance", "Financial Planning", "Compliance Support"], href: "/ca-services", cta: "Book Consultation" }),
-      card({ mod: "jsv-price-ca", name: "Business Registration", from: "Starting From", amt: "₹4,999", note: "Register your business correctly the first time — every filing handled.",
-        items: ["GST Registration", "MSME Registration", "Startup Guidance", "Documentation Support"], href: "/ca-services", cta: "Start Registration" }),
-      card({ mod: "jsv-price-ca", name: "Accounting & Compliance", amt: "₹2,999", per: "/month", note: "Ongoing books, filings and compliance — handled monthly, predictably.",
-        items: ["GST Filing", "Accounting Support", "Compliance Tracking", "Monthly Reports"], href: "/ca-services", cta: "Get Started" })
-    ]);
-    var featured = card({ featured: true, badge: "MOST POPULAR", name: "Startup Launch Package",
-      tag: "Everything a new business needs to launch right — web + CA in one fixed package.",
-      amt: "₹49,999",
-      note: "One team, one package: your premium website plus full business and GST setup, guided by a Chartered Accountant.",
-      items: ["Premium Business Website", "GST Registration", "Business Setup Guidance", "Professional Email Setup", "Basic Branding Kit", "30 Days Support"], href: "#contact", cta: "Launch My Business" });
+    function cmpCell(v) {
+      if (v === true) return '<td><span class="jsv-cmp-yes" role="img" aria-label="Included">\u2713</span></td>';
+      if (v === false) return '<td><span class="jsv-cmp-no" role="img" aria-label="Not included">\u2014</span></td>';
+      return '<td>' + v + '</td>';
+    }
+    var cmpCols = ["Starter", "Business", "Professional", "Startup", "Business Pro"];
+    var cmpPrices = ["₹1,299", "₹2,999", "₹4,999", "₹7,999", "₹12,999"];
+    var cmpRows = [
+      ["Pages included", "1", "Up to 5", "Up to 10", "Up to 10 + landing", "Unlimited*"],
+      ["Premium custom design", false, false, true, true, true],
+      ["Mobile optimization", true, true, true, true, true],
+      ["SEO setup", "Basic", "Standard", "Advanced", "Advanced", "Advanced"],
+      ["WhatsApp integration", true, true, true, true, true],
+      ["Contact forms", "1", "Multiple", "Multiple", "Multiple", "Multiple"],
+      ["Analytics & tracking setup", false, false, true, true, true],
+      ["Brand starter kit", false, false, false, true, true],
+      ["Lead capture setup", false, false, false, true, true],
+      ["E-commerce / booking ready", false, false, false, false, true],
+      ["Meta ads campaign setup", false, false, false, false, true],
+      ["Support window", "3 days", "7 days", "30 days", "30 days priority", "90 days priority"]
+    ];
+    var cmp = '<div class="jsv-price-group jsv-cmp-group">' +
+      '<div class="jsv-price-group-head"><span class="jsv-price-group-label">COMPARE PACKAGES</span><span class="jsv-price-group-rule" aria-hidden="true"></span></div>' +
+      '<div class="jsv-cmp-wrap"><table class="jsv-cmp"><thead><tr><th scope="col" class="jsv-cmp-feat">Feature</th>' +
+        cmpCols.map(function (c, i) { return '<th scope="col"' + (i === 2 ? ' class="jsv-cmp-hot"' : '') + '>' + c + '<span>' + cmpPrices[i] + '</span></th>'; }).join("") +
+      '</tr></thead><tbody>' +
+      cmpRows.map(function (r) { return '<tr><th scope="row">' + r[0] + '</th>' + r.slice(1).map(cmpCell).join("") + '</tr>'; }).join("") +
+      '</tbody></table></div>' +
+      '<p class="jsv-cmp-note">All packages are fixed-price and itemised. Need something bespoke? <a href="#contact">Request a custom quote</a>.</p></div>';
     var strip = '<div class="jsv-price-strip">' +
       '<div class="jsv-price-strip-copy"><h3>Need a custom solution?</h3>' +
       '<p>Every business is unique. Contact JSVita for a tailored proposal designed specifically for your goals.</p></div>' +
@@ -4217,12 +4413,7 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
     sec.setAttribute("aria-label", "Service packages and pricing");
     sec.innerHTML = '<div class="jv-band jv-band-dark">' +
       bandHead("INVESTMENT", "Premium Solutions For Growing Businesses", "Transparent pricing designed to help businesses launch, automate, and grow with confidence.") +
-      jsvGroup + caGroup +
-      '<div class="jsv-price-group jsv-price-featured-group">' +
-        '<div class="jsv-price-group-head"><span class="jsv-price-group-label">PREMIUM PACKAGE</span><span class="jsv-price-group-rule" aria-hidden="true"></span></div>' +
-        '<div class="jsv-price-featured-wrap">' + featured + '</div>' +
-      '</div>' +
-      strip +
+      tiers + cmp + strip +
       '</div></div>';
     process.parentNode.insertBefore(sec, process);
     revealIO(sec);
@@ -4340,33 +4531,37 @@ html:not(.dark) .jsv-div-foot { color: #8a7f6d; }
   }
 
   /* ---- Phase 6 · trust signals — between Pricing and Case Studies ---- */
+  /* ---- Phase 2.0 · Why Businesses Choose JSVita — immediately below the hero ---- */
   function initTrust() {
     if (window.__jsvTrust) return true;
-    var work = document.getElementById("work");
-    if (!work) return false;
+    var top = document.getElementById("top");
+    if (!top || !top.parentNode) return false;
     window.__jsvTrust = true;
     var ICO_CLOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+    var ICO_TARGET = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg>';
+    var ICO_TREND = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><polyline points="15 7 21 7 21 13"/></svg>';
+    var ICO_MOBILE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>';
     var cards = [
       [ICO_GEM, "Premium Design", "Design that signals quality before a single word is read."],
-      [ICO_SPARK, "Fast Delivery", "Kickoff to working demo in as little as 48 hours."],
-      [ICO_USER, "Direct Founder Involvement", "The founder leads every build personally — no handoffs, no dilution."],
-      [ICO_CODE, "Custom Development", "Zero templates — every line engineered for your business."],
-      [ICO_SHIELD, "Ongoing Support", "A 24-hour response window that does not end at launch."],
-      [ICO_CLOCK, "Business-Focused Solutions", "Every feature justified by the outcome it earns you."]
+      [ICO_MOBILE, "Mobile Optimized", "Flawless on every screen — designed phone-first, scaled to desktop."],
+      [ICO_CLOCK, "Fast Delivery", "Kickoff to working demo in as little as 48 hours."],
+      [ICO_TARGET, "Lead Generation Focused", "Every page engineered to turn visitors into enquiries."],
+      [ICO_USER, "Direct Founder Support", "You work with the founder directly — no relays, no dilution."],
+      [ICO_TREND, "Business Growth Strategy", "Every feature justified by the outcome it earns you."]
     ];
     var sec = document.createElement("section");
     sec.id = "trust";
-    sec.className = "scroll-mt-20 border-t border-border/70 jsv-reveal";
+    sec.className = "scroll-mt-20 jsv-reveal";
     sec.setAttribute("data-testid", "trust-signals");
-    sec.setAttribute("aria-label", "Trusted by growing businesses");
-    sec.innerHTML = '<div class="jv-band">' +
-      bandHead("TRUST", "Trusted By Growing Businesses", "Businesses choose JSVita for premium digital solutions, transparent communication, and long-term support.") +
+    sec.setAttribute("aria-label", "Why businesses choose JSVita");
+    sec.innerHTML = '<div class="jv-band jsv-trust-band">' +
+      bandHead("WHY JSVITA", "Why Businesses Choose JSVita", "Six reasons growing businesses trust JSVita with their digital growth.") +
       '<div class="jv-trust-grid">' +
       cards.map(function (c) {
         return '<article class="jv-trust-card"><span class="jsv-bi" aria-hidden="true">' + c[0] + '</span><h3>' + c[1] + '</h3><p>' + c[2] + '</p></article>';
       }).join("") +
       '</div></div>';
-    work.parentNode.insertBefore(sec, work);
+    top.parentNode.insertBefore(sec, top.nextSibling);
     revealIO(sec);
     return true;
   }
@@ -5104,7 +5299,7 @@ html:not(.dark) #jsvDust { opacity:.35; }
       <link rel="stylesheet" crossorigin href="/assets/index-DYG8YA2s.css">
   </head>
   <body>
-    <div id="root"><div class="min-h-svh"><header data-print-hide="true" class="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-md"><div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"><a href="#top" data-testid="brand-link" class="flex items-center gap-2.5"><span class="flex items-center gap-2.5"><svg viewBox="0 0 64 64" role="img" aria-label="JSVita monogram" data-testid="logo-mark" class="shrink-0 size-9"><defs><linearGradient id="jsvita-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.55"></stop><stop offset="1" stop-color="#7C2D12" stop-opacity="0.65"></stop></linearGradient><clipPath id="jsvita-clip"><rect width="64" height="64" rx="16"></rect></clipPath></defs><rect width="64" height="64" rx="16" fill="#b8860b"></rect><rect width="64" height="64" rx="16" fill="url(#jsvita-sheen)" opacity="0.35"></rect><g clip-path="url(#jsvita-clip)"><circle cx="54" cy="12" r="18" fill="#FAF6F0" opacity="0.1"></circle></g><text x="32" y="44" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="34" font-weight="700" letter-spacing="-1" fill="#FAF6F0">JS</text></svg><span class="flex flex-col leading-none"><span class="font-heading text-lg font-bold tracking-tight" data-testid="logo-wordmark"></span><span class="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Digital & Professional Business Solutions</span></span></span></a><nav aria-label="Primary" class="hidden items-center gap-6 md:flex"><a href="/web-solutions" data-testid="nav-web-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Web Solutions</a><a href="/ca-services" data-testid="nav-ca-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">CA Services</a><a href="#services" data-testid="nav-services-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Services</a><a href="#contact" data-testid="nav-contact-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Contact</a></nav><div class="flex items-center gap-2"></div></div></header><main><section id="top" class="relative overflow-hidden bg-[#FAF5EE] dark:bg-[#1E1813]"><div aria-hidden="true" class="pointer-events-none absolute inset-0" data-print-hide="true"><div class="absolute -right-24 -top-24 size-[28rem] rounded-full bg-[#D97736]/10 blur-3xl"></div><div class="absolute bottom-0 left-1/3 size-72 rounded-full bg-[#1C2B22]/5 blur-3xl"></div></div><div class="relative mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:py-24"><div class="lg:col-span-7"><div style="opacity: 1; transform: none;"><h1 class="mt-6 font-heading text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-[52px]">JSVita<span class="mt-3 block text-[#b8860b] dark:text-[#F7D774]">Digital & Professional Business Solutions | Building Digital Excellence</span></h1></div><div style="opacity: 1; transform: none;"><p class="mt-5 max-w-xl text-lg leading-relaxed text-[#574E45] dark:text-[#A89C90]">JSVita is a digital and professional business solutions brand — premium website development through JSVita Web Solutions, and taxation, GST, accounting and compliance through JSVita CA Services, delivered to one global standard.</p></div><div style="opacity: 1; transform: none;"><div class="mt-8 flex flex-wrap items-center gap-3"><a href="#experience" data-testid="hero-cta-work-link-x" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down size-4" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>View experience</a><a href="#contact" data-testid="hero-cta-contact-link" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2">Contact</a></div></div><div style="opacity: 1; transform: none;"><div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-muted-foreground"><span class="inline-flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin size-4 text-primary" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Bangalore, Karnataka, India</span><a href="mailto:support@jsvita.in" data-testid="hero-email-link" class="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4 text-primary" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>support@jsvita.in</a><a href="tel:+916361792699" data-testid="hero-phone-link" class="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone size-4 text-primary" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>+91 63617 92699</a></div></div></div><div class="lg:col-span-5"><div class="relative h-full" style="opacity: 1; transform: none;"><img alt="JSVita — Digital & Professional Business Solutions | Building Digital Excellence" data-testid="hero-portrait" class="aspect-[4/5] w-full rounded-2xl border border-[#E3D7CE] object-cover shadow-lg dark:border-[#2E241E]" src="/shridhar-portrait.jpg"><div data-testid="hero-current-role-card" class="absolute -bottom-6 -left-4 hidden rounded-xl border border-border bg-card p-4 shadow-md sm:block"><p class="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Now</p><p class="mt-1 text-sm font-semibold">Onboarding — Limited Client Slots</p><p class="text-xs text-muted-foreground">Accepting new projects</p></div></div></div></div></section><section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16" aria-label="Career statistics"><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-0" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#b8860b] text-white dark:bg-[#8B6914]"><p class="font-heading text-3xl font-bold sm:text-4xl">6</p><p class="mt-2 text-sm leading-snug text-white/80 dark:text-[#F4EDE4]/80">Service lines — one standard of delivery</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-1" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#1C2B22] text-[#F4EDE4]"><p class="font-heading text-3xl font-bold sm:text-4xl">48h</p><p class="mt-2 text-sm leading-snug text-white/80 dark:text-[#F4EDE4]/80">From kickoff call to first working demo</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-2" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 bg-card text-foreground"><p class="font-heading text-3xl font-bold sm:text-4xl">100%</p><p class="mt-2 text-sm leading-snug text-muted-foreground">Bespoke builds — never templates</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-3" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#F5EFEB] text-foreground dark:bg-[#241C15]"><p class="font-heading text-3xl font-bold sm:text-4xl">24h</p><p class="mt-2 text-sm leading-snug text-muted-foreground">Response window, every working day</p></div></div></div></section><section id="about" class="scroll-mt-20 border-t border-border/70 bg-[#FAF5EE]/60 dark:bg-transparent"><div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-12"><div class="lg:col-span-7"><div class="max-w-2xl"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">About</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">The digital partner for businesses that refuse the ordinary</h2></div><div class="mt-6 space-y-4"><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">JSVita engineers premium websites, AI-powered workflows and brand systems for ambitious businesses worldwide.</p><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">Every engagement runs on one operating standard: fixed, itemised proposals, milestone demos, audit-ready documentation and a response window measured in hours.</p><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">Technology expertise spans enterprise web platforms, AI automation, conversion engineering and analytics — delivered end-to-end by one accountable team.</p></div></div><div class="lg:col-span-5"><ul class="space-y-4 lg:pt-14"><div style="opacity: 1; transform: none;"><li data-testid="about-strength-quality-safety" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check size-4" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></span><div><p class="text-sm font-semibold">Quality, engineered in</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">Every build passes a documented quality checklist — design, performance, SEO and accessibility before launch.</p></div></li></div><div style="opacity: 1; transform: none;"><li data-testid="about-strength-teams-trained" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users size-4" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg></span><div><p class="text-sm font-semibold">Senior delivery, direct</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">You work directly with the senior team — no account managers, no relays, no dilution.</p></div></li></div><div style="opacity: 1; transform: none;"><li data-testid="about-strength-tech-forward" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu size-4" aria-hidden="true"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg></span><div><p class="text-sm font-semibold">A tech-forward studio</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">AI automation, analytics and modern tooling woven into every engagement.</p></div></li></div></ul></div></div></section><section id="experience" class="scroll-mt-20 border-t border-border/70" aria-label="Client process" hidden><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Process</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">How every engagement runs</h2><p class="mt-3 text-base text-muted-foreground sm:text-lg">Discovery, fixed proposal, milestone demos, launch and long-term support — documented at every step.</p></div></section><section id="skills" class="scroll-mt-20 border-t border-border/70" aria-label="Technology expertise" hidden><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Technology Expertise</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">Enterprise web, SEO, AI automation and growth systems</h2></div></section><section id="contact" class="scroll-mt-20 border-t border-border/70"><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><div class="max-w-2xl"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Contact</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">Start your project</h2><p class="mt-3 text-base text-muted-foreground sm:text-lg">Tell JSVita what you're building — you'll hear back within 24 hours with next steps.</p></div><div class="mt-10 overflow-hidden rounded-3xl bg-[#1C140E] text-[#FAF6F0] shadow-lg"><div class="grid gap-10 p-6 sm:p-10 lg:grid-cols-2"><div><h3 class="font-heading text-2xl font-semibold">Direct lines</h3><p class="mt-2 text-sm text-[#C2B5A8]">Fastest response on email or WhatsApp — usually within a day.</p><ul class="mt-6 space-y-3"><li><a href="mailto:support@jsvita.in" data-testid="contact-email-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4 text-[#FBBF24]" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>support@jsvita.in</a></li><li><a href="tel:+916361792699" data-testid="contact-phone-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone size-4 text-[#FBBF24]" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>+91 63617 92699</a></li><li><a href="https://wa.me/916361792699" target="_blank" rel="noreferrer" data-testid="contact-whatsapp-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle size-4 text-[#FBBF24]" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>WhatsApp quick chat</a></li><li><span data-testid="contact-location-chip" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm text-[#C2B5A8]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin size-4 text-[#FBBF24]" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Bangalore, Karnataka, India</span></li></ul><div data-testid="contact-current-role-note" class="mt-8 rounded-2xl border border-[#2E241E] bg-[#241C15] p-4 font-mono text-xs leading-relaxed text-[#C2B5A8]">Average first reply: under 24 hours. Projects start weekly.</div></div><form data-testid="contact-form" class="rounded-2xl bg-[#FAF6F0] p-6 text-[#1F2421] shadow-inner"><div class="grid gap-4 sm:grid-cols-2"><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-name">Name</label><input id="contact-name" data-slot="input" data-testid="contact-name-input" placeholder="Your name" required="" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-email">Email</label><input id="contact-email" data-slot="input" data-testid="contact-email-input" placeholder="you@example.com" required="" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" type="email" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-organization">Organization</label><input id="contact-organization" data-slot="input" data-testid="contact-org-input" placeholder="Company or brand (optional)" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-inquiry">Inquiry type</label><button type="button" data-placeholder="" tabindex="0" id="contact-inquiry" role="combobox" aria-expanded="false" aria-haspopup="listbox" data-slot="select-trigger" data-size="default" data-testid="contact-inquiry-select" class="flex items-center justify-between gap-1.5 rounded-lg border border-input bg-transparent py-2 pr-2 pl-2.5 text-sm whitespace-nowrap transition-colors outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 w-full"><span data-placeholder="" data-slot="select-value" class="flex flex-1 text-left">Select an inquiry type</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down pointer-events-none size-4 text-muted-foreground" aria-hidden="true"><path d="m6 9 6 6 6-6"></path>▼</svg></button><input id="base-ui-_r_b_-hidden-input" tabindex="-1" aria-hidden="true" value="" style="clip-path: inset(50%); overflow: hidden; white-space: nowrap; border: 0px; padding: 0px; width: 1px; height: 1px; margin: -1px; position: fixed; top: 0px; left: 0px;"></div></div><div class="mt-4 space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-message">Message</label><textarea data-slot="textarea" class="flex field-sizing-content min-h-16 w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-base transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" id="contact-message" data-testid="contact-message-input" placeholder="Tell me about the role, the floor, or the idea…" rows="5" required=""></textarea></div><button type="submit" tabindex="0" data-slot="button" data-testid="contact-submit-button" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 mt-6 w-full"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>Send message</button></form></div></div></div></section></main><footer data-print-hide="true" class="bg-[#1C140E] text-[#FAF6F0]"><div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between"><div class="flex items-center gap-3"><svg viewBox="0 0 64 64" role="img" aria-label="JSVita monogram" data-testid="logo-mark" class="shrink-0 size-9"><defs><linearGradient id="jsvita-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.55"></stop><stop offset="1" stop-color="#7C2D12" stop-opacity="0.65"></stop></linearGradient><clipPath id="jsvita-clip"><rect width="64" height="64" rx="16"></rect></clipPath></defs><rect width="64" height="64" rx="16" fill="#b8860b"></rect><rect width="64" height="64" rx="16" fill="url(#jsvita-sheen)" opacity="0.35"></rect><g clip-path="url(#jsvita-clip)"><circle cx="54" cy="12" r="18" fill="#FAF6F0" opacity="0.1"></circle></g><text x="32" y="44" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="34" font-weight="700" letter-spacing="-1" fill="#FAF6F0">JS</text></svg><div><p class="font-heading text-lg font-semibold"></p><p class="mt-1 flex items-center gap-1.5 font-mono text-xs text-[#C2B5A8]">Bangalore, Karnataka · Worldwide</p></div></div><div class="flex items-center gap-3"><a href="mailto:support@jsvita.in" data-testid="footer-email-link" class="font-mono text-xs text-[#C2B5A8] transition-colors hover:text-[#FBBF24]">support@jsvita.in</a><button type="button" tabindex="0" data-slot="button" aria-label="Back to top" data-testid="back-to-top-btn" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8 text-[#FAF6F0] hover:bg-white/10 hover:text-[#FAF6F0]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up size-4" aria-hidden="true"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg></button></div></div><div class="border-t border-[#2E241E] py-4 text-center font-mono text-xs text-[#C2B5A8]">© 2026 JSVita Technologies. All rights reserved.</div></footer><section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false"></section></div></div>
+    <div id="root"><div class="min-h-svh"><header data-print-hide="true" class="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-md"><div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"><a href="#top" data-testid="brand-link" class="flex items-center gap-2.5"><span class="flex items-center gap-2.5"><svg viewBox="0 0 64 64" role="img" aria-label="JSVita monogram" data-testid="logo-mark" class="shrink-0 size-9"><defs><linearGradient id="jsvita-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.55"></stop><stop offset="1" stop-color="#7C2D12" stop-opacity="0.65"></stop></linearGradient><clipPath id="jsvita-clip"><rect width="64" height="64" rx="16"></rect></clipPath></defs><rect width="64" height="64" rx="16" fill="#b8860b"></rect><rect width="64" height="64" rx="16" fill="url(#jsvita-sheen)" opacity="0.35"></rect><g clip-path="url(#jsvita-clip)"><circle cx="54" cy="12" r="18" fill="#FAF6F0" opacity="0.1"></circle></g><text x="32" y="44" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="34" font-weight="700" letter-spacing="-1" fill="#FAF6F0">JS</text></svg><span class="flex flex-col leading-none"><span class="font-heading text-lg font-bold tracking-tight" data-testid="logo-wordmark"></span><span class="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Digital & Professional Business Solutions</span></span></span></a><nav aria-label="Primary" class="hidden items-center gap-6 md:flex"><a href="/web-solutions" data-testid="nav-web-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Web Solutions</a><a href="/ca-services" data-testid="nav-ca-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">CA Services</a><a href="#services" data-testid="nav-services-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Services</a><a href="#contact" data-testid="nav-contact-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Contact</a></nav><div class="flex items-center gap-2"></div></div></header><main><section id="top" class="relative overflow-hidden bg-[#FAF5EE] dark:bg-[#1E1813]"><div aria-hidden="true" class="pointer-events-none absolute inset-0" data-print-hide="true"><div class="absolute -right-24 -top-24 size-[28rem] rounded-full bg-[#D97736]/10 blur-3xl"></div><div class="absolute bottom-0 left-1/3 size-72 rounded-full bg-[#1C2B22]/5 blur-3xl"></div></div><div class="relative mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:py-24"><div class="lg:col-span-7"><div style="opacity: 1; transform: none;"><h1 class="mt-6 font-heading text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-[52px]">JSVita<span class="mt-3 block text-[#b8860b] dark:text-[#F7D774]">Build. Market. Grow.</span></h1></div><div style="opacity: 1; transform: none;"><p class="mt-5 max-w-xl text-lg leading-relaxed text-[#574E45] dark:text-[#A89C90]">Premium websites, advertising solutions and business growth systems for modern businesses.</p></div><div style="opacity: 1; transform: none;"><div class="mt-8 flex flex-wrap items-center gap-3"><a href="#experience" data-testid="hero-cta-work-link-x" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down size-4" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>View experience</a><a href="#contact" data-testid="hero-cta-contact-link" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2">Contact</a></div></div><div style="opacity: 1; transform: none;"><div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-muted-foreground"><span class="inline-flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin size-4 text-primary" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Bangalore, Karnataka, India</span><a href="mailto:support@jsvita.in" data-testid="hero-email-link" class="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4 text-primary" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>support@jsvita.in</a><a href="tel:+916361792699" data-testid="hero-phone-link" class="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone size-4 text-primary" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>+91 63617 92699</a></div></div></div><div class="lg:col-span-5"><div class="relative h-full" style="opacity: 1; transform: none;"><img alt="JSVita — Digital & Professional Business Solutions | Building Digital Excellence" data-testid="hero-portrait" class="aspect-[4/5] w-full rounded-2xl border border-[#E3D7CE] object-cover shadow-lg dark:border-[#2E241E]" src="/shridhar-portrait.jpg"><div data-testid="hero-current-role-card" class="absolute -bottom-6 -left-4 hidden rounded-xl border border-border bg-card p-4 shadow-md sm:block"><p class="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Now</p><p class="mt-1 text-sm font-semibold">Onboarding — Limited Client Slots</p><p class="text-xs text-muted-foreground">Accepting new projects</p></div></div></div></div></section><section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16" aria-label="Career statistics"><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-0" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#b8860b] text-white dark:bg-[#8B6914]"><p class="font-heading text-3xl font-bold sm:text-4xl">6</p><p class="mt-2 text-sm leading-snug text-white/80 dark:text-[#F4EDE4]/80">Service lines — one standard of delivery</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-1" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#1C2B22] text-[#F4EDE4]"><p class="font-heading text-3xl font-bold sm:text-4xl">48h</p><p class="mt-2 text-sm leading-snug text-white/80 dark:text-[#F4EDE4]/80">From kickoff call to first working demo</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-2" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 bg-card text-foreground"><p class="font-heading text-3xl font-bold sm:text-4xl">100%</p><p class="mt-2 text-sm leading-snug text-muted-foreground">Bespoke builds — never templates</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-3" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#F5EFEB] text-foreground dark:bg-[#241C15]"><p class="font-heading text-3xl font-bold sm:text-4xl">24h</p><p class="mt-2 text-sm leading-snug text-muted-foreground">Response window, every working day</p></div></div></div></section><section id="about" class="scroll-mt-20 border-t border-border/70 bg-[#FAF5EE]/60 dark:bg-transparent"><div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-12"><div class="lg:col-span-7"><div class="max-w-2xl"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">About</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">The digital partner for businesses that refuse the ordinary</h2></div><div class="mt-6 space-y-4"><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">JSVita engineers premium websites, AI-powered workflows and brand systems for ambitious businesses worldwide.</p><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">Every engagement runs on one operating standard: fixed, itemised proposals, milestone demos, audit-ready documentation and a response window measured in hours.</p><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">Technology expertise spans enterprise web platforms, AI automation, conversion engineering and analytics — delivered end-to-end by one accountable team.</p></div></div><div class="lg:col-span-5"><ul class="space-y-4 lg:pt-14"><div style="opacity: 1; transform: none;"><li data-testid="about-strength-quality-safety" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check size-4" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></span><div><p class="text-sm font-semibold">Quality, engineered in</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">Every build passes a documented quality checklist — design, performance, SEO and accessibility before launch.</p></div></li></div><div style="opacity: 1; transform: none;"><li data-testid="about-strength-teams-trained" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users size-4" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg></span><div><p class="text-sm font-semibold">Senior delivery, direct</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">You work directly with the senior team — no account managers, no relays, no dilution.</p></div></li></div><div style="opacity: 1; transform: none;"><li data-testid="about-strength-tech-forward" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu size-4" aria-hidden="true"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg></span><div><p class="text-sm font-semibold">A tech-forward studio</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">AI automation, analytics and modern tooling woven into every engagement.</p></div></li></div></ul></div></div></section><section id="experience" class="scroll-mt-20 border-t border-border/70" aria-label="Client process" hidden><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Process</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">How every engagement runs</h2><p class="mt-3 text-base text-muted-foreground sm:text-lg">Discovery, fixed proposal, milestone demos, launch and long-term support — documented at every step.</p></div></section><section id="skills" class="scroll-mt-20 border-t border-border/70" aria-label="Technology expertise" hidden><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Technology Expertise</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">Enterprise web, SEO, AI automation and growth systems</h2></div></section><section id="contact" class="scroll-mt-20 border-t border-border/70"><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><div class="max-w-2xl"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Contact</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">Start your project</h2><p class="mt-3 text-base text-muted-foreground sm:text-lg">Tell JSVita what you're building — you'll hear back within 24 hours with next steps.</p></div><div class="mt-10 overflow-hidden rounded-3xl bg-[#1C140E] text-[#FAF6F0] shadow-lg"><div class="grid gap-10 p-6 sm:p-10 lg:grid-cols-2"><div><h3 class="font-heading text-2xl font-semibold">Direct lines</h3><p class="mt-2 text-sm text-[#C2B5A8]">Fastest response on email or WhatsApp — usually within a day.</p><ul class="mt-6 space-y-3"><li><a href="mailto:support@jsvita.in" data-testid="contact-email-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4 text-[#FBBF24]" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>support@jsvita.in</a></li><li><a href="tel:+916361792699" data-testid="contact-phone-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone size-4 text-[#FBBF24]" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>+91 63617 92699</a></li><li><a href="https://wa.me/916361792699" target="_blank" rel="noreferrer" data-testid="contact-whatsapp-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle size-4 text-[#FBBF24]" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>WhatsApp quick chat</a></li><li><span data-testid="contact-location-chip" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm text-[#C2B5A8]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin size-4 text-[#FBBF24]" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Bangalore, Karnataka, India</span></li></ul><div data-testid="contact-current-role-note" class="mt-8 rounded-2xl border border-[#2E241E] bg-[#241C15] p-4 font-mono text-xs leading-relaxed text-[#C2B5A8]">Average first reply: under 24 hours. Projects start weekly.</div></div><form data-testid="contact-form" class="rounded-2xl bg-[#FAF6F0] p-6 text-[#1F2421] shadow-inner"><div class="grid gap-4 sm:grid-cols-2"><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-name">Name</label><input id="contact-name" data-slot="input" data-testid="contact-name-input" placeholder="Your name" required="" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-email">Email</label><input id="contact-email" data-slot="input" data-testid="contact-email-input" placeholder="you@example.com" required="" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" type="email" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-organization">Organization</label><input id="contact-organization" data-slot="input" data-testid="contact-org-input" placeholder="Company or brand (optional)" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-inquiry">Inquiry type</label><button type="button" data-placeholder="" tabindex="0" id="contact-inquiry" role="combobox" aria-expanded="false" aria-haspopup="listbox" data-slot="select-trigger" data-size="default" data-testid="contact-inquiry-select" class="flex items-center justify-between gap-1.5 rounded-lg border border-input bg-transparent py-2 pr-2 pl-2.5 text-sm whitespace-nowrap transition-colors outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 w-full"><span data-placeholder="" data-slot="select-value" class="flex flex-1 text-left">Select an inquiry type</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down pointer-events-none size-4 text-muted-foreground" aria-hidden="true"><path d="m6 9 6 6 6-6"></path>▼</svg></button><input id="base-ui-_r_b_-hidden-input" tabindex="-1" aria-hidden="true" value="" style="clip-path: inset(50%); overflow: hidden; white-space: nowrap; border: 0px; padding: 0px; width: 1px; height: 1px; margin: -1px; position: fixed; top: 0px; left: 0px;"></div></div><div class="mt-4 space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-message">Message</label><textarea data-slot="textarea" class="flex field-sizing-content min-h-16 w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-base transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" id="contact-message" data-testid="contact-message-input" placeholder="Tell me about the role, the floor, or the idea…" rows="5" required=""></textarea></div><button type="submit" tabindex="0" data-slot="button" data-testid="contact-submit-button" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 mt-6 w-full"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>Send message</button></form></div></div></div></section></main><footer data-print-hide="true" class="bg-[#1C140E] text-[#FAF6F0]"><div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between"><div class="flex items-center gap-3"><svg viewBox="0 0 64 64" role="img" aria-label="JSVita monogram" data-testid="logo-mark" class="shrink-0 size-9"><defs><linearGradient id="jsvita-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.55"></stop><stop offset="1" stop-color="#7C2D12" stop-opacity="0.65"></stop></linearGradient><clipPath id="jsvita-clip"><rect width="64" height="64" rx="16"></rect></clipPath></defs><rect width="64" height="64" rx="16" fill="#b8860b"></rect><rect width="64" height="64" rx="16" fill="url(#jsvita-sheen)" opacity="0.35"></rect><g clip-path="url(#jsvita-clip)"><circle cx="54" cy="12" r="18" fill="#FAF6F0" opacity="0.1"></circle></g><text x="32" y="44" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="34" font-weight="700" letter-spacing="-1" fill="#FAF6F0">JS</text></svg><div><p class="font-heading text-lg font-semibold"></p><p class="mt-1 flex items-center gap-1.5 font-mono text-xs text-[#C2B5A8]">Bangalore, Karnataka · Worldwide</p></div></div><div class="flex items-center gap-3"><a href="mailto:support@jsvita.in" data-testid="footer-email-link" class="font-mono text-xs text-[#C2B5A8] transition-colors hover:text-[#FBBF24]">support@jsvita.in</a><button type="button" tabindex="0" data-slot="button" aria-label="Back to top" data-testid="back-to-top-btn" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8 text-[#FAF6F0] hover:bg-white/10 hover:text-[#FAF6F0]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up size-4" aria-hidden="true"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg></button></div></div><div class="border-t border-[#2E241E] py-4 text-center font-mono text-xs text-[#C2B5A8]">© 2026 JSVita Technologies. All rights reserved.</div></footer><section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false"></section></div></div>
     
   
 
