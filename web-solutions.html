@@ -16,6 +16,7 @@
 <meta name="twitter:image" content="https://jsvita.in/jsvita-og.png">
 <link rel="canonical" href="https://jsvita.in/web-solutions">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -91,6 +92,17 @@ footer a:hover{color:#F7D774}
 .fform button:disabled{opacity:.6;cursor:default;transform:none}
 .jv-lead-error{margin-top:12px;color:#F7D774;font-size:13px}
 .cardlink{display:inline-flex;margin-top:12px;padding:9px 16px;border-radius:999px;border:1px solid rgba(212,175,55,.35);color:#F7D774;text-decoration:none;font:600 12px "DM Sans",sans-serif;transition:background .2s}.cardlink:hover{background:rgba(212,175,55,.1)}
+.fcols{display:grid;gap:26px;grid-template-columns:1fr;margin-top:6px;text-align:left}
+@media(min-width:760px){.fcols{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+.fbrand{font:800 20px "Playfair Display",Georgia,serif;background:linear-gradient(100deg,#fdf8ec,#f7d774 45%,#d4af37);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ftag{font:600 10.5px "JetBrains Mono",monospace;letter-spacing:.22em;text-transform:uppercase;color:#D4AF37;margin-top:4px}
+.fstate{color:#8D8275;font-size:13px;line-height:1.65;margin-top:10px;max-width:36ch}
+.fcol{display:flex;flex-direction:column;gap:8px}
+.fcol-k{font:700 10.5px "JetBrains Mono",monospace;letter-spacing:.22em;text-transform:uppercase;color:#D4AF37;margin-bottom:2px}
+.fcol a{color:#B9AC9E;text-decoration:none;font-size:13.5px;transition:color .2s}
+.fcol a:hover{color:#F7D774}
+.flegal{margin-top:26px;padding-top:18px;border-top:1px solid rgba(212,175,55,.12)}
+
 
 </style>
 </head>
@@ -204,19 +216,41 @@ footer a:hover{color:#F7D774}
   </section>
 </main>
 <footer>
-  <div class="wrap frow">
-    <span>&copy; 2026 JSVita. All Rights Reserved.</span><span class="dot"></span>
-    <a href="/">Home</a><span class="dot"></span>
-    <a href="/#services">Services</a><span class="dot"></span>
-    <a href="/#pricing">Pricing</a><span class="dot"></span>
-    <a href="/web-solutions">Web Solutions</a><span class="dot"></span>
-    <a href="/ca-services">CA Services</a><span class="dot"></span>
-    <a href="/portfolio">Portfolio</a><span class="dot"></span>
-    <a href="/case-studies">Case Studies</a><span class="dot"></span>
-    <a href="/founder">About</a><span class="dot"></span>
-    <a href="/#contact">Contact</a><span class="dot"></span>
-    <a href="/privacy">Privacy</a><span class="dot"></span>
-    <a href="/terms">Terms</a>
+  <div class="wrap">
+    <div class="fcols">
+      <div class="fcol fcol-brand">
+        <div class="fbrand">JSVita</div>
+        <div class="ftag">Building Digital Excellence</div>
+        <p class="fstate">Premium websites, Meta Ads campaigns, creative design and lead-generation systems — engineered end-to-end for modern businesses, with CA-led tax and compliance through JSVita CA Services.</p>
+      </div>
+      <div class="fcol">
+        <span class="fcol-k">Web Solutions</span>
+        <a href="/business-websites">Business Websites</a>
+        <a href="/startup-websites">Startup Websites</a>
+        <a href="/landing-pages">Landing Pages</a>
+        <a href="/website-redesign">Website Redesign</a>
+      </div>
+      <div class="fcol">
+        <span class="fcol-k">Growth</span>
+        <a href="/web-solutions">Meta Ads</a>
+        <a href="/web-solutions">Lead Generation</a>
+        <a href="/web-solutions">Creative Design</a>
+      </div>
+      <div class="fcol">
+        <span class="fcol-k">Company</span>
+        <a href="/founder">About</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/portfolio">Work</a>
+        <a href="/contact">Contact</a>
+        <a href="/ca-services">CA Services</a>
+      </div>
+    </div>
+    <div class="frow flegal">
+      <span>&copy; 2026 JSVita Technologies</span><span class="dot"></span>
+      <a href="mailto:support@jsvita.in">support@jsvita.in</a><span class="dot"></span>
+      <a href="/privacy">Privacy</a><span class="dot"></span>
+      <a href="/terms">Terms</a>
+    </div>
   </div>
 </footer>
 <script>

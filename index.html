@@ -3,14 +3,15 @@
   <!-- <html lang="en" class="dark"> — uncomment for dark-by-default (replace the tag above; `dark` is a Tailwind variant, never `@apply` it) -->
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/jsvita-logo.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
   <link rel="manifest" href="/manifest.json" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#1E1813" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="JSVita provides premium website development, digital solutions, taxation, GST, accounting and business advisory services across India."
+      content="JSVita builds professional websites, landing pages, advertising creatives and lead-generation systems for modern businesses."
     />
     <meta name="author" content="Shridhar John" />
     <link rel="canonical" href="https://jsvita.in/" />
@@ -19,7 +20,7 @@
     <!-- Open Graph / social preview -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JSVita" />
-    <meta property="og:title" content="JSVita | Web Solutions & CA Services" />
+    <meta property="og:title" content="JSVita | Websites, Meta Ads & Growth Solutions" />
         <meta
       property="og:description"
       content="JSVita provides premium website development and digital solutions through JSVita Web Solutions, and taxation, GST, accounting and business advisory through JSVita CA Services."
@@ -28,9 +29,9 @@
     <meta property="og:image" content="https://jsvita.in/jsvita-og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="JSVita | Web Solutions & CA Services" />
+    <meta property="og:image:alt" content="JSVita | Websites, Meta Ads & Growth Solutions" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="JSVita | Web Solutions & CA Services" />
+    <meta name="twitter:title" content="JSVita | Websites, Meta Ads & Growth Solutions" />
     <meta
       name="twitter:description"
       content="Premium websites through JSVita Web Solutions — taxation, GST, accounting and compliance through JSVita CA Services. 24-hour response, fixed itemised proposals."
@@ -39,7 +40,7 @@
       name="twitter:image"
       content="https://jsvita.in/jsvita-og.png"
     />
-    <title>JSVita | Web Solutions & CA Services</title>
+    <title>JSVita | Websites, Meta Ads & Growth Solutions</title>
     <style data-theme="obsidian-ember">
 /* ===== Obsidian Ember — premium dark theme ===== */
 html.dark {
@@ -62,7 +63,7 @@ html.dark ::-webkit-scrollbar-thumb:hover { background: #d4af37; }
 /* ============================================================
    JSVITA — Premium Hero (Obsidian & Gold)
    Black/gold typography · serif name · glassmorphism card
-   fade-in · premium badge · Contact/Resume buttons
+   fade-in · premium badge · hero CTAs
    ============================================================ */
 
 /* ---------- 1. Hero shell & luxury glass card ---------- */
@@ -836,7 +837,7 @@ header [data-testid="brand-link"]:hover .jv-logo {
   max-width: 60ch;
 }
 
-/* ---------- 6. CTAs: Contact Me / Download Resume ---------- */
+/* ---------- 6. Hero CTA styling ---------- */
 .jsv-btn-gold {
   display: inline-flex;
   align-items: center;
@@ -2855,6 +2856,81 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
 .jv-inf-col a:hover { color: #F7D774; }
 @media (max-width: 520px) { .jv-pt-row { grid-template-columns: 1fr; gap: 2px; } }
 
+/* 30q · Phase 2.1 — Trust, Proof & Brand Cleanup */
+/* single corporate headline (exactly one H1 on the page) */
+.jsv-hero-h1line {
+  margin: 18px 0 0;
+  max-width: 21ch;
+  text-wrap: balance;
+}
+.jsv-hero-h1line .jv-grad-gold {
+  background: linear-gradient(100deg, #fdf8ec 0%, #f7d774 38%, #d4af37 72%, #f3e5ab 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+@media (max-width: 640px) { .jsv-hero-h1line { margin-top: 14px; max-width: none; } }
+html:not(.dark) .jsv-hero-h1line .jv-grad-gold {
+  background: linear-gradient(100deg, #7C5A12, #B8860B 55%, #8a6a14);
+  -webkit-background-clip: text; background-clip: text;
+}
+
+/* pricing disclaimer (Phase 2.1 item 10) */
+.jsv-price-disclaimer {
+  margin: 14px 0 0; padding: 12px 16px;
+  border: 1px dashed rgba(212,175,55,.32); border-radius: 12px;
+  background: rgba(212,175,55,.05);
+  color: #b9ac9e; font-size: 12.5px; line-height: 1.6;
+}
+html:not(.dark) .jsv-price-disclaimer { color: #7a6a52; border-color: rgba(176,132,38,.35); background: rgba(176,132,38,.05); }
+
+/* contact form — budget select matches the quick-brief fields */
+.jv-qb-field select {
+  font: 400 14px/1.5 "DM Sans Variable","DM Sans",sans-serif; color: #1F2421;
+  background: #FFF; border: 1px solid #E3D7CE; border-radius: 10px;
+  padding: 11px 13px; outline: none; width: 100%;
+  transition: border-color .2s, box-shadow .2s; appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23D4AF37' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 13px center;
+}
+.jv-qb-field select:focus { border-color: #D4AF37; box-shadow: 0 0 0 3px rgba(212,175,55,.18); }
+.jv-qb-field select:invalid, .jv-qb-field select option[value=""] { color: #8D8275; }
+
+/* portfolio — desktop + mobile duo mockup */
+.jsv-pt-duo { position: relative; width: 100%; }
+.jsv-pt-duo-lap { width: 100%; }
+.jsv-pt-duo-lap svg { width: 100%; max-width: 320px; height: auto; }
+.jsv-pt-duo-phone {
+  position: absolute; right: 2%; bottom: -12px; width: 23%;
+  filter: drop-shadow(0 14px 22px rgba(0,0,0,.5));
+}
+.jsv-pt-duo-phone svg { width: 100%; height: auto; display: block; }
+@media (max-width: 640px) { .jsv-pt-duo-phone { right: 0; bottom: -8px; } }
+
+/* client stories — verified-gated cards + coming-soon state */
+.jv-tst-project {
+  display: inline-block; margin-top: 7px; padding: 4px 10px;
+  border: 1px solid rgba(212,175,55,.35); border-radius: 999px;
+  font: 600 10px "JetBrains Mono Variable","JetBrains Mono",monospace;
+  letter-spacing: .12em; text-transform: uppercase; color: #F7D774;
+  background: rgba(212,175,55,.07);
+}
+.jv-tst-soon-grid { grid-template-columns: 1fr; }
+.jv-tst-soon { text-align: center; padding: 44px 26px; }
+.jv-tst-soon blockquote { font: 700 clamp(18px,2.4vw,22px)/1.35 "Playfair Display",Georgia,serif; color: #FAF6F0; }
+.jv-tst-soon .jv-tst-name { color: #F7D774; }
+.jv-tst-soon .jsv-pt-link { justify-content: center; margin-top: 18px; }
+html:not(.dark) .jv-tst-soon blockquote { color: #241C15; }
+
+@media (prefers-reduced-motion: reduce) { .jsv-pt-duo-phone, .jv-tst-project { transition: none; } }
+
+/* 30q · Phase 2.1 — footer rebuild (spec item 11): 3 link columns + brand statement */
+.jv-inf-state {
+  margin: 14px auto 0; max-width: 46ch;
+  font-size: .85rem; line-height: 1.65; color: #8d8275;
+}
+.jv-inf-cols { grid-template-columns: 1fr 1fr; max-width: 860px; }
+@media (min-width: 700px) { .jv-inf-cols { grid-template-columns: 1.15fr 1fr 1fr; } }
+@media (max-width: 699px) { .jv-inf-state { margin-top: 10px; } }
+
     </style>
     <script data-pg="hero-premium">(function () {
   "use strict";
@@ -2885,33 +2961,36 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
   try { document.documentElement.classList.add("jsv-boot"); } catch (e) {}
 
   var NAME = "JSVita";
-  var SUB_KEY = "advertising solutions and business growth systems";
+  var SUB_KEY = "high-converting landing pages";
 
   /* ============================================================
-     TESTIMONIALS — the "What Clients Say" CMS block (Phase 7).
-     Edit this array to update the section; nothing else to touch.
-       name    — display name or initials shown on the card
-       role    — job title / descriptor
-       company — company or city line ("" hides it)
-       quote   — the feedback text
-       rating  — 1–5 (drives the gold star row)
-       photo   — path to a real client photo, e.g. "/clients/ar.jpg"
-                 ("" renders a gold initials avatar instead)
-       logo    — path to a company logo, e.g. "/clients/acme.svg"
-                 ("" hides the logo slot)
+     TESTIMONIALS — CMS block (Phase 2.1).
+     ONLY entries with verified: true are rendered. Placeholder or
+     invented reviews must NEVER appear as real client feedback.
+     To publish a real testimonial, fill every field, attach the
+     client's written approval, then set verified: true.
+       name        — Client Name
+       company     — Company
+       designation — Designation
+       project     — Project (service delivered)
+       review      — Review text
+       rating      — 1–5 (drives the gold star row)
+       photo       — Profile Image path, e.g. "/clients/ar.jpg" ("" → initials)
+       logo        — Company Logo path, e.g. "/clients/acme.svg" ("" hides)
+       verified    — MUST be true for the entry to render
      ============================================================ */
   var TESTIMONIALS = [
-    { name: "A. Sharma", role: "Founder", company: "Arka Retail", quote: "The proposal was itemised to the hour and the first demo arrived in two days. It felt like working with a firm ten times our size.", rating: 5, photo: "", logo: "" },
-    { name: "S. Krishnan", role: "Managing Director", company: "Krishnan Interiors", quote: "Automation now handles our weekly reporting — hours back every single week, with records we can actually audit.", rating: 5, photo: "", logo: "" },
-    { name: "M. Patel", role: "Director", company: "Patel & Co.", quote: "Direct, honest and fast. The site looks like a global brand, loads instantly, and enquiries started within the first week.", rating: 5, photo: "", logo: "" }
+    /* TEMPLATE — copy this object, fill it in, set verified: true:
+    { name: "Client Name", company: "Company", designation: "Designation", project: "Project Name", review: "The client's own words.", rating: 5, photo: "/clients/name.jpg", logo: "/clients/company.svg", verified: true },
+    */
   ];
 
-  /* ---- Step 1: badge + h1 transform (name + positioning line) ---- */
+  /* ---- Step 1: badge + h1 transform (single corporate headline, Phase 2.1) ---- */
   function step1() {
     var root = document.querySelector("section#top .lg\\:col-span-7");
     if (!root || root.__jsvStep1) return false;
     var h1 = root.querySelector("h1");
-    if (!h1 || h1.querySelector(".jsv-hero-name")) return false;
+    if (!h1 || h1.classList.contains("jsv-hero-h1line")) return false;
 
     root.__jsvStep1 = true;
 
@@ -2936,31 +3015,15 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     }
     h1.classList.add("jsv-fade", "jsv-fade-d1");
 
-    /* split h1 */
-    var nameSpan = h1.querySelector("span:not(.jsv-hero-name):not(.jsv-hero-role)");
-    var titleText = nameSpan ? nameSpan.textContent : "Build. Market. Grow.";
-    var parts = ["Build. Market. Grow."];
-
+    /* single H1 — exactly one headline on the page (Phase 2.1 positioning).
+       Static HTML carries the same copy, so crawlers and visitors read one story. */
     h1.textContent = "";
-    var nameEl = document.createElement("span");
-    nameEl.className = "jsv-hero-name";
-    nameEl.textContent = NAME;
-    h1.appendChild(nameEl);
-
-    var roleEl = document.createElement("span");
-    roleEl.className = "jsv-hero-role jsv-fade jsv-fade-d2";
-    for (var p = 0; p < parts.length; p++) {
-      if (p > 0) {
-        var sep = document.createElement("span");
-        sep.className = "jsv-sep";
-        sep.textContent = "|";
-        roleEl.appendChild(sep);
-      }
-      var item = document.createElement("span");
-      item.textContent = parts[p];
-      roleEl.appendChild(item);
-    }
-    h1.appendChild(roleEl);
+    h1.appendChild(document.createTextNode("Premium Websites & Growth Solutions "));
+    var goldEl = document.createElement("span");
+    goldEl.className = "jv-grad-gold";
+    goldEl.textContent = "For Modern Businesses";
+    h1.appendChild(goldEl);
+    h1.classList.add("jsv-hero-h1line");
     try { document.documentElement.classList.remove("jsv-boot"); } catch (e) {}
     return true;
   }
@@ -2989,7 +3052,7 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
   }
 
   /* ---- Step 3: hero brand block — logo + letter-by-letter JSVita + tagline + socials ----
-     (the old View/Download CV buttons are retired; the navbar and CV pages carry that journey) */
+     (Phase 2.1: the h1 itself is the headline; the brand block is the identity above it) */
   var SOCIAL =
     '<a href="https://wa.me/916361792699" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp — +91 63617 92699">' +
     '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 1 1 8.38 4.63m8.42-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.6 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.9 0-3.18-1.24-6.16-3.47-8.41"/></svg></a>' +
@@ -3011,33 +3074,29 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
       block.setAttribute("data-testid", "hero-brand-block");
       block.innerHTML =
         '<div class="jsv-brand-logo" aria-hidden="true">' + jvLogo.replace('width="38" height="38"', 'width="64" height="64"') + '</div>' +
-        '<div class="jsv-brand-word" role="heading" aria-level="2" aria-label="JSVita"></div>' +
-        '<p class="jsv-brand-tag">JSVita — Building Digital Excellence. A digital and professional business solutions brand — premium websites through JSVita Web Solutions, taxation, GST and compliance through JSVita CA Services.</p>';
+        '<div class="jsv-brand-word" aria-hidden="true"></div>' +
+        '<p class="jsv-brand-tag">Building Digital Excellence — premium websites, growth solutions and creative work for modern businesses.</p>';
       anchor.parentNode.insertBefore(block, anchor.nextSibling);
-      /* JSVita primary: lift the brand block to the top of the hero column; old static
-         founder name + career tagline retire (founder stays visible, secondary) */
+      /* JSVita primary: lift the brand block above the headline; the h1 stays visible
+         and remains the page's single H1 (Phase 2.1) */
       var heroH1 = root.querySelector("h1");
       if (heroH1) {
-        heroH1.classList.add("jsv-hero-hide");
         heroH1.parentNode.insertBefore(block, heroH1);
       }
       /* retire all other legacy hero content (old summary, retired CTAs, location row) */
-      var wrapper = root.firstElementChild;
+      var wrapper = heroH1 ? heroH1.parentNode : root.firstElementChild;
       Array.prototype.forEach.call(root.children, function (c) {
         if (c !== wrapper) c.classList.add("jsv-hero-hide");
       });
-      /* brand positioning: headline + subheadline replace the old summary paragraph */
+      /* brand positioning: the subheadline replaces the old summary paragraph */
       if (sub) sub.classList.add("jsv-hero-hide");
-      if (!document.querySelector(".jsv-hero-headline")) {
-        var hl = document.createElement("p");
-        hl.className = "jsv-hero-headline jsv-fade jsv-fade-d3b";
-        hl.innerHTML = 'Build. Market. <span class="jv-grad-gold">Grow.</span>';
+      if (!document.querySelector(".jsv-hero-subline")) {
         var sl = document.createElement("p");
         sl.className = "jsv-hero-subline jsv-hero-subline-sent jsv-fade jsv-fade-d3c";
-        sl.setAttribute("aria-label", "Premium websites, advertising solutions and business growth systems for modern businesses");
-        sl.textContent = "Premium websites, advertising solutions and business growth systems for modern businesses.";
-        block.parentNode.insertBefore(hl, block.nextSibling);
-        block.parentNode.insertBefore(sl, hl.nextSibling);
+        sl.setAttribute("aria-label", "JSVita builds professional websites, high-converting landing pages, advertising creatives and lead-generation systems designed to help businesses grow online");
+        sl.textContent = "JSVita builds professional websites, high-converting landing pages, advertising creatives and lead-generation systems designed to help businesses grow online.";
+        if (heroH1) heroH1.parentNode.insertBefore(sl, heroH1.nextSibling);
+        else block.parentNode.insertBefore(sl, block.nextSibling);
       }
       /* letter-by-letter reveal (1.5s total, starts immediately) */
       var word = block.querySelector(".jsv-brand-word");
@@ -3303,15 +3362,14 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
       '<div class="jv-inf-logo">' + jvLogo.replace('width="38" height="38"', 'width="72" height="72"') + '</div>' +
       '<div class="jv-inf-word">JSVita</div>' +
       '<div class="jv-inf-tag">Building Digital Excellence</div>' +
+      '<p class="jv-inf-state">Premium websites, Meta Ads campaigns, creative design and lead-generation systems — engineered end-to-end for modern businesses.</p>' +
       '<div class="jv-inf-cols">' +
+        '<div class="jv-inf-col"><span class="jv-inf-col-k">Web Solutions</span>' +
+          '<a href="/business-websites">Business Websites</a><a href="/startup-websites">Startup Websites</a><a href="/landing-pages">Landing Pages</a><a href="/website-redesign">Website Redesign</a></div>' +
+        '<div class="jv-inf-col"><span class="jv-inf-col-k">Growth</span>' +
+          '<a href="/web-solutions">Meta Ads</a><a href="/web-solutions">Lead Generation</a><a href="/web-solutions">Creative Design</a></div>' +
         '<div class="jv-inf-col"><span class="jv-inf-col-k">Company</span>' +
-          '<a href="/founder">About JSVita</a><a href="/contact">Contact</a><a href="#pricing">Pricing</a></div>' +
-        '<div class="jv-inf-col"><span class="jv-inf-col-k">Services</span>' +
-          '<a href="/web-solutions">Web Solutions</a><a href="/ca-services">CA Services</a><a href="/finance">Finance &amp; Tax</a></div>' +
-        '<div class="jv-inf-col"><span class="jv-inf-col-k">Portfolio</span>' +
-          '<a href="/portfolio">Portfolio</a><a href="/case-studies">Case Studies</a><a href="#work">Selected Work</a></div>' +
-        '<div class="jv-inf-col"><span class="jv-inf-col-k">Legal</span>' +
-          '<a href="/privacy">Privacy Policy</a><a href="/terms">Terms</a></div>' +
+          '<a href="/founder">About</a><a href="#pricing">Pricing</a><a href="/portfolio">Work</a><a href="/contact">Contact</a><a href="/ca-services">CA Services</a></div>' +
       '</div>' +
       '<div class="jv-inf-legal">' +
         '<span>\u00A9 2026 JSVita Technologies. All Rights Reserved.</span>' +
@@ -3430,8 +3488,8 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     sec.className = "scroll-mt-20 border-t border-border/70 jsv-reveal";
     sec.setAttribute("data-testid", "selected-work");
     sec.setAttribute("aria-label", "Portfolio");
-    /* device mocks — laptop for site/platform work, phone for campaign and creative work.
-       Swap in real screenshots later by replacing the mock with an <img> in the same frame. */
+    /* device mocks — desktop + mobile per project (Phase 2.1): laptop frame with an
+       overlaid phone. Swap in real screenshots later by replacing the mock with an <img>. */
     function lapMock() {
       return '<svg viewBox="0 0 320 196" role="img" aria-label="Project preview on a laptop">' +
         '<rect x="22" y="6" width="276" height="156" rx="10" fill="rgba(20,14,8,.85)" stroke="rgba(212,175,55,.32)"/>' +
@@ -3467,16 +3525,17 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     }
     function proj(o) {
       return '<article class="jsv-pt-card" data-cat="' + o.cat + '">' +
-        '<div class="jsv-pt-device ' + (o.phone ? 'jsv-pt-phone' : 'jsv-pt-laptop') + '" aria-hidden="true">' + (o.phone ? phoneMock() : lapMock()) + '</div>' +
+        '<div class="jsv-pt-device jsv-pt-duo" aria-hidden="true"><div class="jsv-pt-duo-lap">' + lapMock() + '</div><span class="jsv-pt-duo-phone">' + phoneMock() + '</span></div>' +
         '<div class="jsv-pt-top"><span class="jsv-pt-num">' + o.n + '</span><span class="jsv-pt-cat">' + o.cat + '</span></div>' +
         '<h3>' + o.name + '</h3>' +
         '<p class="jsv-pt-industry">' + o.industry + '</p>' +
         '<div class="jsv-pt-rows">' +
-          '<div class="jsv-pt-row"><span>Objective</span><p>' + o.objective + '</p></div>' +
+          '<div class="jsv-pt-row"><span>Challenge</span><p>' + o.objective + '</p></div>' +
           '<div class="jsv-pt-row"><span>Solution</span><p>' + o.solution + '</p></div>' +
-          '<div class="jsv-pt-row jsv-pt-result"><span>Result</span><p>' + o.result + '</p></div>' +
+          '<div class="jsv-pt-row"><span>Technology</span><p>' + o.tech + '</p></div>' +
+          '<div class="jsv-pt-row jsv-pt-result"><span>Outcome</span><p>' + o.result + '</p></div>' +
         '</div>' +
-        '<a class="jsv-pt-link" href="' + o.href + '" data-jv-track="case_details_open" data-jv-info="' + o.slug + '">Read the case study' +
+        '<a class="jsv-pt-link" href="' + o.href + '" data-jv-track="case_details_open" data-jv-info="' + o.slug + '">View Full Case Study' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></a>' +
         '</article>';
     }
@@ -3486,26 +3545,32 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
       proj({ n: "01", cat: "Business Websites", slug: "case-arka-retail", name: "Arka Retail — Digital Flagship", industry: "Retail \u00b7 Bengaluru",
         objective: "A flagship that turns browsers into buyers.",
         solution: "Bespoke storefront with conversion architecture, headless content and edge hosting.",
+        tech: "Bespoke React storefront · Headless content · Edge hosting",
         result: "Reads like a global brand, converts like a sales team — first demo in 48h.", href: "/case-arka-retail" }),
       proj({ n: "02", cat: "Business Websites", slug: "case-krishnan-interiors", name: "Krishnan Interiors — SEO Growth Engine", industry: "Interiors \u00b7 Chennai",
         objective: "Own the high-intent searches competitors were winning.",
         solution: "Technical SEO, schema systems and content architecture engineered to rank.",
+        tech: "Technical SEO · Schema systems · Core Web Vitals engineering",
         result: "Page-1 rankings on target terms — 3\u00d7 qualified enquiries.", href: "/case-krishnan-interiors" }),
       proj({ n: "03", cat: "Landing Pages", slug: "case-patel-co", name: "Patel & Co. — Consultation Funnel", industry: "Professional Services",
         objective: "Turn scattered enquiries into a structured pipeline.",
         solution: "A conversion landing page feeding an AI operations suite — routing, scheduling, reporting.",
+        tech: "Conversion landing page · AI enquiry assistant · Workflow automation",
         result: "10+ hours saved weekly; zero missed enquiries.", href: "/case-patel-co", phone: true }),
       proj({ n: "04", cat: "Meta Ads Campaigns", slug: "case-arka-ads", name: "Arka Retail — Festive Ads Sprint", industry: "Retail \u00b7 Festive Season",
         objective: "Capture festive demand without burning budget.",
         solution: "Full-funnel Meta campaigns — creatives, pixel and conversion tracking, retargeting.",
+        tech: "Meta campaign architecture · Pixel & conversion tracking · Retargeting",
         result: "3.8\u00d7 average ROAS across the sprint; cost per lead down 42%.", href: "/case-arka-ads", phone: true }),
       proj({ n: "05", cat: "Creative Designs", slug: "case-krishnan-creative", name: "Krishnan Interiors — Festive Creative Suite", industry: "Interiors \u00b7 Campaign",
         objective: "Ads that stop the scroll during the loudest season.",
         solution: "Ad posters and campaign creatives — one visual system across every format.",
+        tech: "Ad poster system · Story & reel formats · Branded template kit",
         result: "27 creatives shipped in 5 days — 2.4\u00d7 CTR vs the previous season.", href: "/case-krishnan-creative", phone: true }),
       proj({ n: "06", cat: "Business Websites", slug: "case-jsvita-platform", name: "The JSVita Platform", industry: "In-House \u00b7 Platform",
         objective: "One ecosystem — brand site, client tooling and member dashboard.",
         solution: "Designed and engineered end-to-end: React, custom engines, premium design system.",
+        tech: "React · Custom engines · Premium design system · AI tooling",
         result: "The site you are on — a living demonstration of the JSVita standard.", href: "/case-jsvita-platform" })
     ];
     sec.innerHTML = '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="jvGoldGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F3E5AB"/><stop offset="1" stop-color="#D4AF37"/></linearGradient></defs></svg>' +
@@ -3535,102 +3600,7 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     return true;
   }
 
-  /* ---- Phase 7 · extended case-study details — powers the premium detail modal.
-     Add `shot: "/screenshots/case-01.png"` to any entry once a real screenshot
-     exists and both the card and this modal will show it instead of the mock. ---- */
-  var CASE_DETAILS = {
-    "01": {
-      title: "Arka Retail — Digital Flagship", kind: "CASE STUDY — WEB DEVELOPMENT",
-      metrics: [["48h", "First demo"], ["100%", "Bespoke build"]],
-      stack: ["Bespoke React build", "Headless content", "Edge hosting", "Conversion analytics"],
-      shot: "",
-      detail: [
-        "A growing retail brand was trapped in a template site that leaked trust at every step — slow pages, generic design and a journey that buried the product. The brief: a digital flagship worthy of the merchandise.",
-        "JSVita engineered the answer end-to-end: a bespoke storefront with luxury design, conversion-first architecture and an owned stack the client controls completely. First demo in 48 hours; a flagship that reads like a global brand and converts like a sales team."
-      ],
-      outcome: "A flagship that reads like a global brand and converts like a sales team."
-    },
-    "02": {
-      title: "Krishnan Interiors — SEO Growth Engine", kind: "CASE STUDY — SEO OPTIMIZATION",
-      metrics: [["Page 1", "Target rankings"], ["3×", "Qualified enquiries"]],
-      stack: ["Technical SEO", "Schema systems", "CWV engineering", "Content architecture"],
-      shot: "",
-      detail: [
-        "Exceptional work, invisible online. High-intent searches were landing with weaker competitors because the brand's site had no technical or content foundation to rank.",
-        "The SEO growth engine rebuilt that foundation: clean architecture, rich schema, Core Web Vitals engineering and service pages designed to answer the searches buyers actually make. From invisible to first-page presence — with qualified enquiries tripling."
-      ],
-      outcome: "From invisible to first-page presence — qualified enquiries now find the brand."
-    },
-    "03": {
-      title: "Patel & Co. — AI Operations Suite", kind: "CASE STUDY — AI AUTOMATION",
-      metrics: [["10h+", "Saved weekly"], ["0", "Missed enquiries"]],
-      stack: ["AI enquiry assistant", "Workflow automation", "Reporting pipelines", "CRM integration"],
-      shot: "",
-      detail: [
-        "A busy services firm was running its operations by hand — enquiries answered one by one, schedules assembled in spreadsheets, weekly reports built from scratch.",
-        "The AI operations suite changed the equation: an enquiry assistant that answers and qualifies instantly, automated reporting pipelines and structured client records. Hours return every week, and nothing slips."
-      ],
-      outcome: "Hours back every week, with records the partners can actually audit."
-    },
-    "04": {
-      title: "The JSVita Platform", kind: "FLAGSHIP — PRODUCT",
-      metrics: [["48h", "First demo"], ["100%", "Bespoke build"]],
-      stack: ["React", "Custom engines", "AI tooling", "Premium design system"],
-      shot: "",
-      detail: [
-        "One brand, zero fragmentation — brand site, member dashboard and client tooling engineered as a single luxury ecosystem rather than a patchwork of templates.",
-        "Designed and built end-to-end by the founder: a living demonstration of the JSVita standard, from the 48-hour first demo to a design system that scales with every new capability."
-      ],
-      outcome: "The site you are on — a living demonstration of the JSVita standard."
-    }
-  };
 
-  /* ---- Phase 7 · premium case-details modal ---- */
-  function initCaseModal() {
-    if (window.__jsvCaseModal) return true;
-    if (!document.body) return false;
-    window.__jsvCaseModal = true;
-    var ov = document.createElement("div");
-    ov.className = "jv-case-ov";
-    ov.setAttribute("role", "dialog");
-    ov.setAttribute("aria-modal", "true");
-    ov.setAttribute("aria-label", "Project details");
-    ov.innerHTML = '<div class="jv-case-panel"><button type="button" class="jv-case-x" aria-label="Close project details">\u2715</button><div class="jv-case-body"></div></div>';
-    document.body.appendChild(ov);
-    function close() { ov.classList.remove("jv-open"); document.body.classList.remove("jv-case-lock"); }
-    ov.addEventListener("click", function (e) { if (e.target === ov) close(); });
-    ov.querySelector(".jv-case-x").addEventListener("click", close);
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
-    document.addEventListener("click", function (e) {
-      var t = e.target;
-      if (!t || !t.closest) return;
-      /* booking / starting from inside the modal closes it first (the target action continues) */
-      if (ov.classList.contains("jv-open") && t.closest("[data-jv-calendly], [data-case-contact]")) close();
-      var btn = t.closest("[data-case]");
-      if (!btn) return;
-      var d = CASE_DETAILS[btn.getAttribute("data-case")];
-      if (!d) return;
-      var body = ov.querySelector(".jv-case-body");
-      body.innerHTML =
-        '<p class="jv-case-kind">' + d.kind + '</p><h3 class="jv-case-title">' + d.title + '</h3>' +
-        (d.shot ? '<img class="jv-case-shot" src="' + d.shot + '" alt="' + d.title + ' — screenshot" loading="lazy">' : '') +
-        d.detail.map(function (p) { return '<p class="jv-case-p">' + p + '</p>'; }).join("") +
-        '<div class="jsv-wc-metrics">' + d.metrics.map(function (m) { return '<div class="jsv-wc-metric"><strong>' + m[0] + '</strong><span>' + m[1] + '</span></div>'; }).join("") + '</div>' +
-        '<div class="jsv-wc-stack"><span class="jsv-wc-stack-k">Stack</span>' + d.stack.map(function (s) { return '<span class="jsv-wc-chip">' + s + '</span>'; }).join("") + '</div>' +
-        '<div class="jv-case-out"><span>Outcome</span><p>' + d.outcome + '</p></div>' +
-        '<div class="jv-case-actions">' +
-          '<a class="jv-case-cta" href="#contact" data-case-contact>Start a similar project</a>' +
-          '<a class="jv-case-ghost" href="#contact" data-jv-calendly>Book Free Consultation</a>' +
-        '</div>';
-      ov.classList.add("jv-open");
-      document.body.classList.add("jv-case-lock");
-      jvTrack("case_details_open", { project: d.title });
-      jvTrack("case_study_view", { project: d.title, view: "modal" });
-    }, true);
-    return true;
-  }
-
-  /* Services — six disciplines, one standard */
   function initServices() {
     if (!window.__jsvSvc) {
       var contact = document.getElementById("contact");
@@ -3665,12 +3635,12 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
         svcGroup("GROWTH SOLUTIONS", "Campaigns that fill the pipeline.", [
           svcg("Meta Ads", "Full-funnel Meta campaigns — creative, targeting, retargeting.", "#contact", "service_page_cta"),
           svcg("Lead Generation", "Systems that turn attention into qualified enquiries.", "#contact", "service_page_cta"),
-          svcg("Conversion Tracking", "Pixels, events and dashboards — decisions on data.", "#contact", "service_page_cta")
+          svcg("Conversion Tracking", "Pixels, events and dashboards — decisions on data.", "#contact", "service_page_cta"),
+          svcg("Landing Page Optimization", "Testing and CRO that turn clicks into enquiries.", "#contact", "service_page_cta")
         ]) +
         svcGroup("CREATIVE SOLUTIONS", "Designs that stop the scroll.", [
-          svcg("Ad Posters", "Scroll-stopping ad posters for every placement.", "#contact", "service_page_cta"),
-          svcg("Campaign Creatives", "One visual system across every format and channel.", "#contact", "service_page_cta"),
-          svcg("Marketing Designs", "Brochures, decks and collateral with the JSVita polish.", "#contact", "service_page_cta")
+          svcg("Ad Poster Design", "Scroll-stopping ad posters for every placement.", "#contact", "service_page_cta"),
+          svcg("Campaign Creatives", "One visual system across every format and channel.", "#contact", "service_page_cta")
         ]) +
         svcGroup("ADVISORY SERVICES", "Chartered Accountant-backed compliance — JSVita CA Services.", [
           svcg("GST", "Registration and monthly filing — handled, reconciled, on time.", "/ca-services", "service_page_click"),
@@ -3809,36 +3779,6 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
       });
     }, { threshold: 0.3 });
     io.observe(sec);
-    return true;
-  }
-
-  /* ---- Professional Network — trusted specialists (CA Mahalakshmi) ---- */
-  function initNetwork() {
-    if (window.__jsvNet) return true;
-    var contact = document.getElementById("contact");
-    if (!contact) return false;
-    window.__jsvNet = true;
-    var sec = document.createElement("section");
-    sec.id = "network";
-    sec.className = "scroll-mt-20 border-t border-border/70 jsv-reveal";
-    sec.setAttribute("data-testid", "professional-network");
-    sec.setAttribute("aria-label", "Professional network");
-    sec.innerHTML = '<div class="jv-band">' +
-      bandHead("PROFESSIONAL NETWORK", "Specialists on call. A brand you can trust.", "JSVita builds the digital layer — and brings verified professionals for everything around it.") +
-      '<div class="jsv-net-card">' +
-        '<div class="jsv-net-avatar" aria-hidden="true">M</div>' +
-        '<div class="jsv-net-body">' +
-          '<p class="jsv-net-role">CHARTERED ACCOUNTANT · TRUSTED ADVISOR</p>' +
-          '<h3>CA Mahalakshmi</h3>' +
-          '<p>Guides JSVita clients through business registration, taxation and compliance — so new ventures start clean and stay clean from day one.</p>' +
-          '<div class="jsv-wc-tags"><span>Taxation</span><span>Compliance</span><span>Business Registration</span></div>' +
-          '<a class="jsv-lead-link" href="/finance" data-jv-track="finance_division_click" data-jv-info="network">Visit the JSVita CA Services resource centre \u2192</a>' +
-        '</div>' +
-      '</div>' +
-      '<p class="jsv-net-note">Introductions are made freely to active JSVita clients through our partner network.</p>' +
-      '</div>';
-    contact.parentNode.insertBefore(sec, contact);
-    revealIO(sec);
     return true;
   }
 
@@ -4004,15 +3944,7 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     Array.prototype.forEach.call(nav.querySelectorAll('a[href="#experience"], a[href="#skills"], a[href="#interests"], a[href="#about"]'), function (a) {
       a.classList.add("jsv-hero-hide");
     });
-    /* navbar CV actions (Switch pill, View CV icon, download icon) move to footer */
-    Array.prototype.forEach.call(document.querySelectorAll("header .jsv-nav-switch, header .jsv-nav-cv"), function (el) {
-      el.classList.add("jsv-hero-hide");
-      if (!el.dataset.jsvFooterHome) {
-        el.dataset.jsvFooterHome = "1";
-        el.setAttribute("data-jsv-footer-cv", "1");
-      }
-    });
-    /* baked gold View CV button (React header action) → footer */
+    /* baked gold View CV button (React header action) stays retired — no CV affordances (Phase 2.1) */
     var goldView = document.querySelector('[data-testid="cv-view-btn"]');
     if (goldView) goldView.classList.add("jsv-hero-hide");
     /* Work With Us pill — replaces the retired gold View CV slot */
@@ -4026,21 +3958,6 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
       actions.insertBefore(pill, actions.querySelector('[data-testid="theme-toggle-btn"]'));
     }
     try { window.dispatchEvent(new CustomEvent("jsv:nav-changed")); } catch (e) {}
-    return true;
-  }
-
-  /* ---- Phase 1 · 3b: CV row in footer (nothing deleted — relocated) ---- */
-  function initFooterCv() {
-    var legal = document.querySelector(".jv-inf-legal");
-    if (!legal || document.querySelector(".jv-inf-cv")) return false;
-    var row = document.createElement("div");
-    row.className = "jv-inf-cv";
-    /* corporate footer row — company links only */
-    row.innerHTML =
-      '<a href="/founder">About JSVita</a>' +
-      '<span class="jv-inf-dot" aria-hidden="true"></span>' +
-      '<a href="/web-development">Services</a>';
-    legal.appendChild(row);
     return true;
   }
 
@@ -4066,9 +3983,9 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     return true;
   }
 
-  /* ---- Phase 1 · 4: recast the career-stats band into JSVita business metrics ---- */
+  /* ---- Phase 2.1 · recast the static stats band into JSVita business metrics ---- */
   function initRecast() {
-    var region = document.querySelector("section[aria-label='Career statistics']");
+    var region = document.querySelector("section[aria-label='JSVita statistics']");
     if (!region || region.dataset.jsvRecast) return;
     region.dataset.jsvRecast = "1";
     region.setAttribute("aria-label", "JSVita statistics");
@@ -4162,8 +4079,17 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
           '<div class="jv-qb-field"><label for="contact-name">Name</label><input id="contact-name" name="Name" data-testid="contact-name-input" placeholder="Your name" required></div>' +
           '<div class="jv-qb-field"><label for="contact-email">Email or WhatsApp</label><input id="contact-email" name="Email" data-testid="contact-email-input" placeholder="you@company.com" required></div>' +
         '</div>' +
-        '<div class="jv-qb-field"><label for="contact-message">What are you building?</label><textarea id="contact-message" name="Project Requirement" data-testid="contact-message-input" rows="3" placeholder="A business website, an automation, GST registration\u2026" required></textarea></div>' +
-        '<button type="submit" data-testid="contact-submit-button" class="jv-qb-submit">Send message<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></button>';
+        '<div class="jv-qb-field"><label for="contact-budget">Project budget</label>' +
+          '<select id="contact-budget" name="Budget" data-testid="contact-budget-select" required>' +
+            '<option value="" disabled selected>Select a budget range</option>' +
+            '<option value="\u20b91,299 \u2013 \u20b92,999">\u20b91,299 \u2013 \u20b92,999</option>' +
+            '<option value="\u20b92,999 \u2013 \u20b94,999">\u20b92,999 \u2013 \u20b94,999</option>' +
+            '<option value="\u20b94,999 \u2013 \u20b97,999">\u20b94,999 \u2013 \u20b97,999</option>' +
+            '<option value="\u20b97,999 \u2013 \u20b912,999">\u20b97,999 \u2013 \u20b912,999</option>' +
+            '<option value="\u20b912,999+">\u20b912,999+</option>' +
+          '</select></div>' +
+        '<div class="jv-qb-field"><label for="contact-message">What are you building?</label><textarea id="contact-message" name="Project Requirement" data-testid="contact-message-input" rows="3" placeholder="A business website, a landing page, a Meta Ads campaign\u2026" required></textarea></div>' +
+        '<button type="submit" data-testid="contact-submit-button" class="jv-qb-submit">Request Proposal<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></button>';
     }
     return true;
   }
@@ -4297,12 +4223,13 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     return true;
   }
 
-  /* ---- Corporate authority — Leadership Team (CEO + CFO) ---- */
+  /* ---- Phase 2.1 · Leadership — one compact section, two leaders, no duplicates ---- */
   function initLeadership() {
     if (window.__jsvLead) return true;
-    var network = document.getElementById("network");
+    var faq = document.getElementById("faq");
     var contact = document.getElementById("contact");
-    if (!network || !contact) return false;
+    var anchor = faq || contact;
+    if (!anchor) return false;
     window.__jsvLead = true;
     var sec = document.createElement("section");
     sec.id = "leadership";
@@ -4316,21 +4243,18 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
           '<div class="jsv-lead-avatar" aria-hidden="true">SJ</div>' +
           '<p class="jsv-lead-role">FOUNDER &amp; CEO</p>' +
           '<h3>Shridhar John</h3>' +
-          '<p class="jsv-lead-bio">Leads JSVita\u2019s technology vision and delivery standard — every build leaves the studio under his sign-off.</p>' +
-          '<div class="jsv-wc-tags"><span>Technology Vision</span><span>Delivery Standard</span><span>Client Partnership</span></div>' +
-          '<a class="jsv-lead-link" href="/founder">About the company \u2192</a>' +
+          '<p class="jsv-lead-bio">Leads JSVita\u2019s technology, client delivery and growth strategy.</p>' +
+          '<a class="jsv-lead-link" href="/founder" data-jv-track="founder_link_click" data-jv-info="leadership">About JSVita \u2192</a>' +
         '</article>' +
         '<article class="jsv-lead-card">' +
           '<div class="jsv-lead-avatar" aria-hidden="true">M</div>' +
-          '<p class="jsv-lead-role">CHIEF FINANCIAL OFFICER</p>' +
+          '<p class="jsv-lead-role">FINANCIAL &amp; COMPLIANCE ADVISOR</p>' +
           '<h3>CA Mahalakshmi</h3>' +
-          '<p class="jsv-lead-bio">Chartered Accountant leading JSVita\u2019s financial practice — keeping client engagements structured, compliant and audit-ready.</p>' +
-          '<div class="jsv-wc-tags"><span>Chartered Accountant</span><span>Taxation &amp; Compliance</span><span>GST Advisory</span><span>Audit &amp; Assurance</span><span>Financial Planning</span><span>Financial Reporting</span><span>Business Advisory</span></div>' +
-          '<a class="jsv-lead-link" href="mailto:ca.mahalakshmi@jsvita.in">ca.mahalakshmi@jsvita.in</a>' +
-          '<a class="jsv-lead-link" href="/finance" data-jv-track="finance_division_click" data-jv-info="leadership">JSVita CA Services \u2192</a>' +
+          '<p class="jsv-lead-bio">Leads professional taxation, compliance and financial advisory services.</p>' +
+          '<a class="jsv-lead-link" href="/ca-services" data-jv-track="division_click" data-jv-info="leadership">JSVita CA Services \u2192</a>' +
         '</article>' +
       '</div></div>';
-    network.parentNode.insertBefore(sec, network);
+    anchor.parentNode.insertBefore(sec, anchor);
     revealIO(sec);
     return true;
   }
@@ -4413,7 +4337,9 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     sec.setAttribute("aria-label", "Service packages and pricing");
     sec.innerHTML = '<div class="jv-band jv-band-dark">' +
       bandHead("INVESTMENT", "Premium Solutions For Growing Businesses", "Transparent pricing designed to help businesses launch, automate, and grow with confidence.") +
-      tiers + cmp + strip +
+      tiers +
+      '<p class="jsv-price-disclaimer">Domain registration, hosting, premium plugins, business email and third-party services are billed separately unless explicitly included in the project proposal.</p>' +
+      cmp + strip +
       '</div></div>';
     process.parentNode.insertBefore(sec, process);
     revealIO(sec);
@@ -4543,9 +4469,9 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     var ICO_MOBILE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>';
     var cards = [
       [ICO_GEM, "Premium Design", "Design that signals quality before a single word is read."],
-      [ICO_MOBILE, "Mobile Optimized", "Flawless on every screen — designed phone-first, scaled to desktop."],
+      [ICO_MOBILE, "Mobile-First Development", "Flawless on every screen — designed phone-first, scaled to desktop."],
       [ICO_CLOCK, "Fast Delivery", "Kickoff to working demo in as little as 48 hours."],
-      [ICO_TARGET, "Lead Generation Focused", "Every page engineered to turn visitors into enquiries."],
+      [ICO_TARGET, "Lead Generation Focus", "Every page engineered to turn visitors into enquiries."],
       [ICO_USER, "Direct Founder Support", "You work with the founder directly — no relays, no dilution."],
       [ICO_TREND, "Business Growth Strategy", "Every feature justified by the outcome it earns you."]
     ];
@@ -4610,9 +4536,9 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     return true;
   }
 
-  /* ---- Phase 6/7 · testimonials — rendered from the TESTIMONIALS CMS block above.
-     SAMPLE copy: replace quotes with real client feedback; drop photos/logos into
-     the `photo` / `logo` fields when available (initials avatars render meanwhile). ---- */
+  /* ---- Phase 2.1 · client stories — CMS-driven, VERIFIED-ONLY.
+     Placeholder testimonials are never shown as real reviews. With zero
+     verified entries the section becomes "Client Stories Coming Soon". ---- */
   function initTestimonials() {
     if (window.__jsvTst) return true;
     var process = document.getElementById("process");
@@ -4627,27 +4553,40 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     function initials(name) {
       return (name || "?").split(/[\s.]+/).filter(Boolean).map(function (p) { return p.charAt(0).toUpperCase(); }).slice(0, 2).join("");
     }
+    var verified = TESTIMONIALS.filter(function (t) { return t && t.verified === true && t.review && t.name; });
     var sec = document.createElement("section");
     sec.id = "testimonials";
     sec.className = "scroll-mt-20 border-t border-border/70 jsv-reveal";
     sec.setAttribute("data-testid", "testimonials");
-    sec.setAttribute("aria-label", "What clients say");
+    sec.setAttribute("aria-label", "Client stories");
     sec.innerHTML = '<div class="jv-band">' +
-      bandHead("TESTIMONIALS", "What Clients Say", "Early engagements, measured by the only standard that matters — the client\u2019s.") +
-      '<div class="jv-tst-grid">' +
-      TESTIMONIALS.map(function (q) {
-        var avatar = q.photo
-          ? '<img class="jv-tst-avatar" src="' + q.photo + '" alt="' + q.name + '" loading="lazy">'
-          : '<span class="jv-tst-avatar jv-tst-initials" aria-hidden="true">' + initials(q.name) + '</span>';
-        var roleLine = [q.role, q.company].filter(Boolean).join(" \u00b7 ");
-        var logo = q.logo ? '<img class="jv-tst-logo" src="' + q.logo + '" alt="' + (q.company || q.name) + '" loading="lazy">' : "";
-        return '<figure class="jv-tst-card"><span class="jv-quote-mark" aria-hidden="true">\u201C</span>' + stars(q.rating) +
-          '<blockquote>' + q.quote + '</blockquote>' +
-          '<figcaption><span class="jv-tst-id">' + avatar +
-            '<span class="jv-tst-meta"><span class="jv-tst-name">' + q.name + '</span><span class="jv-tst-role">' + roleLine + '</span></span>' +
-          '</span>' + logo + '</figcaption></figure>';
-      }).join("") +
-      '</div></div>';
+      bandHead("CLIENT STORIES", verified.length ? "What Clients Say" : "Client Stories Coming Soon",
+        verified.length ? "Verified client feedback — published with written approval."
+                        : "We publish client stories only after written approval from the client. Until then, judge us by the work — every engagement is documented in the portfolio.") +
+      (verified.length
+        ? '<div class="jv-tst-grid">' + verified.map(function (q) {
+            var avatar = q.photo
+              ? '<img class="jv-tst-avatar" src="' + q.photo + '" alt="' + q.name + '" loading="lazy">'
+              : '<span class="jv-tst-avatar jv-tst-initials" aria-hidden="true">' + initials(q.name) + '</span>';
+            var roleLine = [q.designation, q.company].filter(Boolean).join(" \u00b7 ");
+            var logo = q.logo ? '<img class="jv-tst-logo" src="' + q.logo + '" alt="' + (q.company || q.name) + '" loading="lazy">' : "";
+            var proj = q.project ? '<span class="jv-tst-project">' + q.project + '</span>' : "";
+            return '<figure class="jv-tst-card"><span class="jv-quote-mark" aria-hidden="true">\u201C</span>' + stars(q.rating) +
+              '<blockquote>' + q.review + '</blockquote>' +
+              '<figcaption><span class="jv-tst-id">' + avatar +
+                '<span class="jv-tst-meta"><span class="jv-tst-name">' + q.name + '</span><span class="jv-tst-role">' + roleLine + '</span>' + proj + '</span>' +
+              '</span>' + logo + '</figcaption></figure>';
+          }).join("") + '</div>'
+        : '<div class="jv-tst-grid jv-tst-soon-grid">' +
+            '<figure class="jv-tst-card jv-tst-soon"><span class="jv-quote-mark" aria-hidden="true">\u201C</span>' +
+              '<blockquote>Real client stories, verified before publication.</blockquote>' +
+              '<figcaption><span class="jv-tst-meta"><span class="jv-tst-name">No placeholder reviews</span>' +
+              '<span class="jv-tst-role">JSVita does not publish invented testimonials — see the portfolio and case studies for documented engagements.</span></span></figcaption>' +
+              '<a class="jsv-pt-link" href="/case-studies" data-jv-track="case_details_open" data-jv-info="testimonials-soon">Read the case studies' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></a>' +
+            '</figure>' +
+          '</div>') +
+      '</div>';
     process.parentNode.insertBefore(sec, process);
     revealIO(sec);
     return true;
@@ -4711,7 +4650,7 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     try {
       var addr = { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressRegion": "Karnataka", "addressCountry": "IN" };
       var founder = { "@type": "Person", "name": "Shridhar John", "jobTitle": "Founder & CEO", "url": "https://jsvita.in/founder" };
-      var cfo = { "@type": "Person", "name": "CA Mahalakshmi", "jobTitle": "Chief Financial Officer", "email": "ca.mahalakshmi@jsvita.in", "knowsAbout": ["Taxation", "Compliance", "GST Advisory", "Audit & Assurance", "Financial Planning", "Financial Reporting", "Business Advisory"] };
+      var cfo = { "@type": "Person", "name": "CA Mahalakshmi", "jobTitle": "Financial & Compliance Advisor", "email": "ca.mahalakshmi@jsvita.in", "knowsAbout": ["Taxation", "Compliance", "GST Advisory", "Audit & Assurance", "Financial Planning", "Financial Reporting", "Business Advisory"] };
       var org = { "@context": "https://schema.org", "@type": "Organization", "name": "JSVita", "alternateName": "JSVita Technologies", "slogan": "Building Digital Excellence", "url": "https://jsvita.in/", "logo": "https://jsvita.in/jsvita-logo.svg", "description": "Digital and professional business solutions brand — premium website development through JSVita Web Solutions and taxation, GST, accounting and compliance services through JSVita CA Services.", "subOrganization": [{ "@type": "Organization", "name": "JSVita Web Solutions", "url": "https://jsvita.in/web-solutions" }, { "@type": "Organization", "name": "JSVita CA Services", "url": "https://jsvita.in/ca-services", "employee": cfo }], "founder": founder, "employee": [cfo], "email": "support@jsvita.in", "telephone": "+916361792699", "address": addr, "areaServed": ["India", "Worldwide"], "contactPoint": { "@type": "ContactPoint", "contactType": "sales", "telephone": "+916361792699", "email": "support@jsvita.in", "availableLanguage": ["en", "kn", "hi"] } };
       var svc = { "@context": "https://schema.org", "@type": "ProfessionalService", "name": "JSVita — Web Solutions & CA Services", "url": "https://jsvita.in/", "image": "https://jsvita.in/jsvita-logo.svg", "priceRange": "₹₹", "telephone": "+916361792699", "email": "support@jsvita.in", "address": addr, "areaServed": ["Bangalore", "India", "Worldwide"], "founder": founder, "knowsAbout": ["Business Websites", "Startup Websites", "Portfolio Websites", "Landing Pages", "Website Redesign", "Website Maintenance", "AI Automation", "Digital Branding", "GST Registration", "Income Tax Returns", "Business Registration", "Accounting & Bookkeeping", "Compliance Services"], "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "09:00", "closes": "19:00" } };
       var website = { "@context": "https://schema.org", "@type": "WebSite", "name": "JSVita", "url": "https://jsvita.in/", "publisher": { "@type": "Organization", "name": "JSVita", "url": "https://jsvita.in/" }, "inLanguage": "en" };
@@ -4729,10 +4668,9 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     var s1 = step1(), s2 = step2(), s3 = step3(), s4 = step4(), s5 = step5();
     var s6 = step6();
     initStory(); initWork(); initServices();
-    initNavSpy(); initStagger(); initStats(); initDust(); initCurrently(); initNavScroll(); initCvAttention();
+    initNavSpy(); initStagger(); initStats(); initDust(); initCurrently(); initNavScroll();
     initTracking();
-    initCaseModal();
-    initHeroBiz(); initBrandNav(); initFooterCv(); initRecast(); initReframe(); initContactExp(); initContactRebrand();
+    initHeroBiz(); initBrandNav(); initRecast(); initReframe(); initContactExp(); initContactRebrand();
     initContactTrust();
     initPricing(); initWhatsapp(); initBizSchema();
     paintBrandLogo();
@@ -4748,60 +4686,18 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     })(20);
     /* brand bands depend on React sections — retry until mounted, then keep the nav link alive */
     (function bandLoop(tries) {
-      var a = initStory(), w = initWork(), v = initServices(), y = initWhy(), p = initProcess(), t = initPremiumStats(), n = initNetwork(), f = initFaq();
+      var a = initStory(), w = initWork(), v = initServices(), y = initWhy(), p = initProcess(), t = initPremiumStats(), f = initFaq();
       var mq = initMarquee(), tr = initTrust(), wc = initWhyChoose(), ts = initTestimonials(), co = initConsult();
       var vm = initVision(), ld = initLeadership(), ad = initDivisions();
-      initHeroBiz(); initBrandNav(); initFooterCv(); initContactExp(); initContactRebrand(); initReframe(); initContactTrust(); initPricing(); initWhatsapp(); initBizSchema(); initTracking(); initCaseModal(); initLeadWiring();
+      initHeroBiz(); initBrandNav(); initContactExp(); initContactRebrand(); initReframe(); initContactTrust(); initPricing(); initWhatsapp(); initBizSchema(); initTracking(); initLeadWiring();
       var o = initConversionOrder();
-      if (a && w && v && y && p && t && n && f && mq && tr && wc && ts && co && o && vm && ld && ad && tries < 28) return;
+      if (a && w && v && y && p && t && f && mq && tr && wc && ts && co && o && vm && ld && ad && tries < 28) return;
       if (tries > 0) setTimeout(function () { bandLoop(tries - 1); }, 350);
     })(30);
     return s1 && s2 && s3 && s4 && s5 && s6;
   }
 
-  /* ---- Step 7: CV attention system — hello float, idle shimmer, Preparing CV… ---- */
-  function initCvAttention() {
-    if (window.__jsvCvAtt) return;
-    window.__jsvCvAtt = true;
-    /* resolve targets lazily — React may mount them after this init runs */
-    function targets() {
-      return [
-        document.querySelector(".jsv-nav-view"),
-        document.querySelector('[data-testid="cv-view-btn"]')
-      ];
-    }
-    function pulse(cls, life) {
-      targets().forEach(function (el) {
-        if (!el) return;
-        el.classList.remove(cls);
-        void el.offsetWidth; /* restart animation if mid-flight */
-        el.classList.add(cls);
-        setTimeout(function () { el.classList.remove(cls); }, life);
-      });
-    }
-    /* one-time hello, 1.5s after load: icon floats up 3px + gold pulse, shimmer crosses the button */
-    setTimeout(function () { pulse("jsv-cv-hello", 1600); }, 1500);
-    /* idle attention every 10s — brief, elegant, skipped while the tab is hidden */
-    setInterval(function () {
-      if (!document.hidden) { pulse("jsv-cv-att", 1400); ensureSvcLink(); }
-    }, 10000);
-    /* delegated click (capture): icon scale .95 + gold pulse + "Preparing CV…" — download still starts natively */
-    document.addEventListener("click", function (e) {
-      var dl = e.target.closest && e.target.closest('[data-testid="cv-download-btn"], .jsv-nav-cv:not(.jsv-nav-view)');
-      if (!dl) return;
-      dl.classList.remove("jsv-cv-loading");
-      void dl.offsetWidth;
-      dl.classList.add("jsv-cv-loading");
-      setTimeout(function () { dl.classList.remove("jsv-cv-loading"); }, 1400);
-      if (dl.matches('[data-testid="cv-download-btn"]') && dl.dataset.orig === undefined) {
-        dl.dataset.orig = dl.innerHTML;
-        dl.innerHTML = dl.innerHTML.replace("Download CV", "Preparing CV…");
-        setTimeout(function () { dl.innerHTML = dl.dataset.orig; delete dl.dataset.orig; }, 1700);
-      }
-    }, true);
-  }
 
-  /* ---- 3D JSVita overlay markup (used by sign-out) ---- */
   (function inject3d() {
     if (document.querySelector(".jsv-3d-overlay")) return;
     var ov = document.createElement("div");
@@ -4926,7 +4822,7 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
   /* ---- Step 5d: animated statistics (count up once) ---- */
   function initStats() {
     if (window.__jsvStats) return;
-    var region = document.querySelector("[aria-label='Career statistics']");
+    var region = document.querySelector("[aria-label='JSVita statistics']");
     if (!region) return;
     window.__jsvStats = true;
     var nums = region.querySelectorAll("p");
@@ -4994,33 +4890,11 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     window.__jsvDust = true;
   }
 
-  /* ---- Step 6: header actions — corporate build adds the mail icon, no CV affordances ---- */
+  /* ---- Step 6: header actions — corporate build: mail icon + account state, no CV affordances (Phase 2.1) ---- */
   function step6() {
-    if (document.querySelector(".jsv-nav-cv, .jsv-nav-mail")) return true;
+    if (document.querySelector(".jsv-nav-mail")) return true;
     var toggle = document.querySelector('[data-testid="theme-toggle-btn"]');
     if (!toggle || !toggle.parentNode) return false;
-    /* Switch pill: jumps to the CV viewer (mirrors the cv.html "Switch to Web") */
-    if (!document.querySelector(".jsv-nav-switch")) {
-      var sp = document.createElement("a");
-      sp.className = "jsv-nav-switch";
-      sp.href = "/cv.html";
-      sp.setAttribute("aria-label", "Switch to CV view");
-      sp.setAttribute("title", "Switch to CV view");
-      sp.setAttribute("data-testid", "nav-switch-pill");
-      sp.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h13"/><polyline points="13 3 17 7 13 11"/><path d="M20 17H7"/><polyline points="11 13 7 17 11 21"/></svg><span>CV View</span>';
-      toggle.parentNode.insertBefore(sp, toggle);
-    }
-    /* view CV (interactive viewer page) icon goes before the download icon */
-    if (!document.querySelector(".jsv-nav-view")) {
-      var vw = document.createElement("a");
-      vw.className = "jsv-nav-cv jsv-nav-view";
-      vw.href = "/cv.html";
-      vw.setAttribute("aria-label", "View CV");
-      vw.setAttribute("title", "View CV — interactive resume");
-      vw.setAttribute("data-testid", "nav-cv-view-icon");
-      vw.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><circle cx="9.2" cy="9.5" r="1.4"></circle><path d="M8.5 13.5h7"></path><path d="M8.5 17h5"></path></svg><span>View CV</span>';
-      toggle.parentNode.insertBefore(vw, toggle.nextSibling);
-    }
     /* theme toggle: dark default + localStorage persistence (original handler retired with the bundle) */
     if (!toggle.dataset.jsvTheme) {
       toggle.dataset.jsvTheme = "1";
@@ -5039,7 +4913,7 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
     a.setAttribute("data-testid", "nav-mail-icon");
     a.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>';
     toggle.parentNode.insertBefore(a, toggle.nextSibling);
-    /* sign-out icon goes right after the CV icon (CV download, then sign out) */
+    /* account state: sign-out icon appears only when a member session is active */
     if (!document.querySelector(".jsv-nav-signout")) {
       var so = document.createElement("button");
       so.type = "button";
@@ -5049,27 +4923,6 @@ html:not(.dark) .jsv-cmp tbody td { color: #6d6353; }
       so.setAttribute("data-testid", "nav-signout-icon");
     so.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>';
     so.addEventListener("click", doSignOut);
-    /* switch pill: tap ripple + fade-out when View Transitions unavailable */
-    var sp = document.querySelector(".jsv-nav-switch");
-    if (sp) {
-      sp.addEventListener("pointerdown", function (e) {
-        var r = sp.getBoundingClientRect();
-        var s = Math.max(r.width, r.height);
-        var rip = document.createElement("span");
-        rip.className = "sw-rip";
-        rip.style.width = rip.style.height = s + "px";
-        rip.style.left = (e.clientX - r.left - s / 2) + "px";
-        rip.style.top = (e.clientY - r.top - s / 2) + "px";
-        sp.appendChild(rip);
-        setTimeout(function () { rip.remove(); }, 600);
-      });
-      sp.addEventListener("click", function (e) {
-        if (document.startViewTransition) return;
-        e.preventDefault();
-        sp.classList.add("page-out");
-        setTimeout(function () { location.href = "/cv.html"; }, 190);
-      });
-    }
     so.addEventListener("pointerdown", function (e) {
       var r = so.getBoundingClientRect();
       var size = Math.max(r.width, r.height);
@@ -5299,7 +5152,7 @@ html:not(.dark) #jsvDust { opacity:.35; }
       <link rel="stylesheet" crossorigin href="/assets/index-DYG8YA2s.css">
   </head>
   <body>
-    <div id="root"><div class="min-h-svh"><header data-print-hide="true" class="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-md"><div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"><a href="#top" data-testid="brand-link" class="flex items-center gap-2.5"><span class="flex items-center gap-2.5"><svg viewBox="0 0 64 64" role="img" aria-label="JSVita monogram" data-testid="logo-mark" class="shrink-0 size-9"><defs><linearGradient id="jsvita-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.55"></stop><stop offset="1" stop-color="#7C2D12" stop-opacity="0.65"></stop></linearGradient><clipPath id="jsvita-clip"><rect width="64" height="64" rx="16"></rect></clipPath></defs><rect width="64" height="64" rx="16" fill="#b8860b"></rect><rect width="64" height="64" rx="16" fill="url(#jsvita-sheen)" opacity="0.35"></rect><g clip-path="url(#jsvita-clip)"><circle cx="54" cy="12" r="18" fill="#FAF6F0" opacity="0.1"></circle></g><text x="32" y="44" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="34" font-weight="700" letter-spacing="-1" fill="#FAF6F0">JS</text></svg><span class="flex flex-col leading-none"><span class="font-heading text-lg font-bold tracking-tight" data-testid="logo-wordmark"></span><span class="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Digital & Professional Business Solutions</span></span></span></a><nav aria-label="Primary" class="hidden items-center gap-6 md:flex"><a href="/web-solutions" data-testid="nav-web-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Web Solutions</a><a href="/ca-services" data-testid="nav-ca-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">CA Services</a><a href="#services" data-testid="nav-services-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Services</a><a href="#contact" data-testid="nav-contact-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Contact</a></nav><div class="flex items-center gap-2"></div></div></header><main><section id="top" class="relative overflow-hidden bg-[#FAF5EE] dark:bg-[#1E1813]"><div aria-hidden="true" class="pointer-events-none absolute inset-0" data-print-hide="true"><div class="absolute -right-24 -top-24 size-[28rem] rounded-full bg-[#D97736]/10 blur-3xl"></div><div class="absolute bottom-0 left-1/3 size-72 rounded-full bg-[#1C2B22]/5 blur-3xl"></div></div><div class="relative mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:py-24"><div class="lg:col-span-7"><div style="opacity: 1; transform: none;"><h1 class="mt-6 font-heading text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-[52px]">JSVita<span class="mt-3 block text-[#b8860b] dark:text-[#F7D774]">Build. Market. Grow.</span></h1></div><div style="opacity: 1; transform: none;"><p class="mt-5 max-w-xl text-lg leading-relaxed text-[#574E45] dark:text-[#A89C90]">Premium websites, advertising solutions and business growth systems for modern businesses.</p></div><div style="opacity: 1; transform: none;"><div class="mt-8 flex flex-wrap items-center gap-3"><a href="#experience" data-testid="hero-cta-work-link-x" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down size-4" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>View experience</a><a href="#contact" data-testid="hero-cta-contact-link" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2">Contact</a></div></div><div style="opacity: 1; transform: none;"><div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-muted-foreground"><span class="inline-flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin size-4 text-primary" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Bangalore, Karnataka, India</span><a href="mailto:support@jsvita.in" data-testid="hero-email-link" class="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4 text-primary" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>support@jsvita.in</a><a href="tel:+916361792699" data-testid="hero-phone-link" class="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone size-4 text-primary" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>+91 63617 92699</a></div></div></div><div class="lg:col-span-5"><div class="relative h-full" style="opacity: 1; transform: none;"><img alt="JSVita — Digital & Professional Business Solutions | Building Digital Excellence" data-testid="hero-portrait" class="aspect-[4/5] w-full rounded-2xl border border-[#E3D7CE] object-cover shadow-lg dark:border-[#2E241E]" src="/shridhar-portrait.jpg"><div data-testid="hero-current-role-card" class="absolute -bottom-6 -left-4 hidden rounded-xl border border-border bg-card p-4 shadow-md sm:block"><p class="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Now</p><p class="mt-1 text-sm font-semibold">Onboarding — Limited Client Slots</p><p class="text-xs text-muted-foreground">Accepting new projects</p></div></div></div></div></section><section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16" aria-label="Career statistics"><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-0" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#b8860b] text-white dark:bg-[#8B6914]"><p class="font-heading text-3xl font-bold sm:text-4xl">6</p><p class="mt-2 text-sm leading-snug text-white/80 dark:text-[#F4EDE4]/80">Service lines — one standard of delivery</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-1" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#1C2B22] text-[#F4EDE4]"><p class="font-heading text-3xl font-bold sm:text-4xl">48h</p><p class="mt-2 text-sm leading-snug text-white/80 dark:text-[#F4EDE4]/80">From kickoff call to first working demo</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-2" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 bg-card text-foreground"><p class="font-heading text-3xl font-bold sm:text-4xl">100%</p><p class="mt-2 text-sm leading-snug text-muted-foreground">Bespoke builds — never templates</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-3" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#F5EFEB] text-foreground dark:bg-[#241C15]"><p class="font-heading text-3xl font-bold sm:text-4xl">24h</p><p class="mt-2 text-sm leading-snug text-muted-foreground">Response window, every working day</p></div></div></div></section><section id="about" class="scroll-mt-20 border-t border-border/70 bg-[#FAF5EE]/60 dark:bg-transparent"><div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-12"><div class="lg:col-span-7"><div class="max-w-2xl"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">About</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">The digital partner for businesses that refuse the ordinary</h2></div><div class="mt-6 space-y-4"><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">JSVita engineers premium websites, AI-powered workflows and brand systems for ambitious businesses worldwide.</p><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">Every engagement runs on one operating standard: fixed, itemised proposals, milestone demos, audit-ready documentation and a response window measured in hours.</p><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">Technology expertise spans enterprise web platforms, AI automation, conversion engineering and analytics — delivered end-to-end by one accountable team.</p></div></div><div class="lg:col-span-5"><ul class="space-y-4 lg:pt-14"><div style="opacity: 1; transform: none;"><li data-testid="about-strength-quality-safety" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check size-4" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></span><div><p class="text-sm font-semibold">Quality, engineered in</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">Every build passes a documented quality checklist — design, performance, SEO and accessibility before launch.</p></div></li></div><div style="opacity: 1; transform: none;"><li data-testid="about-strength-teams-trained" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users size-4" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg></span><div><p class="text-sm font-semibold">Senior delivery, direct</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">You work directly with the senior team — no account managers, no relays, no dilution.</p></div></li></div><div style="opacity: 1; transform: none;"><li data-testid="about-strength-tech-forward" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu size-4" aria-hidden="true"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg></span><div><p class="text-sm font-semibold">A tech-forward studio</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">AI automation, analytics and modern tooling woven into every engagement.</p></div></li></div></ul></div></div></section><section id="experience" class="scroll-mt-20 border-t border-border/70" aria-label="Client process" hidden><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Process</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">How every engagement runs</h2><p class="mt-3 text-base text-muted-foreground sm:text-lg">Discovery, fixed proposal, milestone demos, launch and long-term support — documented at every step.</p></div></section><section id="skills" class="scroll-mt-20 border-t border-border/70" aria-label="Technology expertise" hidden><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Technology Expertise</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">Enterprise web, SEO, AI automation and growth systems</h2></div></section><section id="contact" class="scroll-mt-20 border-t border-border/70"><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><div class="max-w-2xl"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Contact</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">Start your project</h2><p class="mt-3 text-base text-muted-foreground sm:text-lg">Tell JSVita what you're building — you'll hear back within 24 hours with next steps.</p></div><div class="mt-10 overflow-hidden rounded-3xl bg-[#1C140E] text-[#FAF6F0] shadow-lg"><div class="grid gap-10 p-6 sm:p-10 lg:grid-cols-2"><div><h3 class="font-heading text-2xl font-semibold">Direct lines</h3><p class="mt-2 text-sm text-[#C2B5A8]">Fastest response on email or WhatsApp — usually within a day.</p><ul class="mt-6 space-y-3"><li><a href="mailto:support@jsvita.in" data-testid="contact-email-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4 text-[#FBBF24]" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>support@jsvita.in</a></li><li><a href="tel:+916361792699" data-testid="contact-phone-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone size-4 text-[#FBBF24]" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>+91 63617 92699</a></li><li><a href="https://wa.me/916361792699" target="_blank" rel="noreferrer" data-testid="contact-whatsapp-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle size-4 text-[#FBBF24]" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>WhatsApp quick chat</a></li><li><span data-testid="contact-location-chip" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm text-[#C2B5A8]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin size-4 text-[#FBBF24]" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Bangalore, Karnataka, India</span></li></ul><div data-testid="contact-current-role-note" class="mt-8 rounded-2xl border border-[#2E241E] bg-[#241C15] p-4 font-mono text-xs leading-relaxed text-[#C2B5A8]">Average first reply: under 24 hours. Projects start weekly.</div></div><form data-testid="contact-form" class="rounded-2xl bg-[#FAF6F0] p-6 text-[#1F2421] shadow-inner"><div class="grid gap-4 sm:grid-cols-2"><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-name">Name</label><input id="contact-name" data-slot="input" data-testid="contact-name-input" placeholder="Your name" required="" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-email">Email</label><input id="contact-email" data-slot="input" data-testid="contact-email-input" placeholder="you@example.com" required="" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" type="email" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-organization">Organization</label><input id="contact-organization" data-slot="input" data-testid="contact-org-input" placeholder="Company or brand (optional)" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-inquiry">Inquiry type</label><button type="button" data-placeholder="" tabindex="0" id="contact-inquiry" role="combobox" aria-expanded="false" aria-haspopup="listbox" data-slot="select-trigger" data-size="default" data-testid="contact-inquiry-select" class="flex items-center justify-between gap-1.5 rounded-lg border border-input bg-transparent py-2 pr-2 pl-2.5 text-sm whitespace-nowrap transition-colors outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 w-full"><span data-placeholder="" data-slot="select-value" class="flex flex-1 text-left">Select an inquiry type</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down pointer-events-none size-4 text-muted-foreground" aria-hidden="true"><path d="m6 9 6 6 6-6"></path>▼</svg></button><input id="base-ui-_r_b_-hidden-input" tabindex="-1" aria-hidden="true" value="" style="clip-path: inset(50%); overflow: hidden; white-space: nowrap; border: 0px; padding: 0px; width: 1px; height: 1px; margin: -1px; position: fixed; top: 0px; left: 0px;"></div></div><div class="mt-4 space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-message">Message</label><textarea data-slot="textarea" class="flex field-sizing-content min-h-16 w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-base transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" id="contact-message" data-testid="contact-message-input" placeholder="Tell me about the role, the floor, or the idea…" rows="5" required=""></textarea></div><button type="submit" tabindex="0" data-slot="button" data-testid="contact-submit-button" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 mt-6 w-full"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>Send message</button></form></div></div></div></section></main><footer data-print-hide="true" class="bg-[#1C140E] text-[#FAF6F0]"><div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between"><div class="flex items-center gap-3"><svg viewBox="0 0 64 64" role="img" aria-label="JSVita monogram" data-testid="logo-mark" class="shrink-0 size-9"><defs><linearGradient id="jsvita-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.55"></stop><stop offset="1" stop-color="#7C2D12" stop-opacity="0.65"></stop></linearGradient><clipPath id="jsvita-clip"><rect width="64" height="64" rx="16"></rect></clipPath></defs><rect width="64" height="64" rx="16" fill="#b8860b"></rect><rect width="64" height="64" rx="16" fill="url(#jsvita-sheen)" opacity="0.35"></rect><g clip-path="url(#jsvita-clip)"><circle cx="54" cy="12" r="18" fill="#FAF6F0" opacity="0.1"></circle></g><text x="32" y="44" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="34" font-weight="700" letter-spacing="-1" fill="#FAF6F0">JS</text></svg><div><p class="font-heading text-lg font-semibold"></p><p class="mt-1 flex items-center gap-1.5 font-mono text-xs text-[#C2B5A8]">Bangalore, Karnataka · Worldwide</p></div></div><div class="flex items-center gap-3"><a href="mailto:support@jsvita.in" data-testid="footer-email-link" class="font-mono text-xs text-[#C2B5A8] transition-colors hover:text-[#FBBF24]">support@jsvita.in</a><button type="button" tabindex="0" data-slot="button" aria-label="Back to top" data-testid="back-to-top-btn" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8 text-[#FAF6F0] hover:bg-white/10 hover:text-[#FAF6F0]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up size-4" aria-hidden="true"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg></button></div></div><div class="border-t border-[#2E241E] py-4 text-center font-mono text-xs text-[#C2B5A8]">© 2026 JSVita Technologies. All rights reserved.</div></footer><section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false"></section></div></div>
+    <div id="root"><div class="min-h-svh"><header data-print-hide="true" class="sticky top-0 z-50 border-b border-border/80 bg-background/85 backdrop-blur-md"><div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6"><a href="#top" data-testid="brand-link" class="flex items-center gap-2.5"><span class="flex items-center gap-2.5"><svg viewBox="0 0 64 64" role="img" aria-label="JSVita monogram" data-testid="logo-mark" class="shrink-0 size-9"><defs><linearGradient id="jsvita-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.55"></stop><stop offset="1" stop-color="#7C2D12" stop-opacity="0.65"></stop></linearGradient><clipPath id="jsvita-clip"><rect width="64" height="64" rx="16"></rect></clipPath></defs><rect width="64" height="64" rx="16" fill="#b8860b"></rect><rect width="64" height="64" rx="16" fill="url(#jsvita-sheen)" opacity="0.35"></rect><g clip-path="url(#jsvita-clip)"><circle cx="54" cy="12" r="18" fill="#FAF6F0" opacity="0.1"></circle></g><text x="32" y="44" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="34" font-weight="700" letter-spacing="-1" fill="#FAF6F0">JS</text></svg><span class="flex flex-col leading-none"><span class="font-heading text-lg font-bold tracking-tight" data-testid="logo-wordmark"></span><span class="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Digital & Professional Business Solutions</span></span></span></a><nav aria-label="Primary" class="hidden items-center gap-6 md:flex"><a href="/web-solutions" data-testid="nav-web-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Web Solutions</a><a href="/ca-services" data-testid="nav-ca-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">CA Services</a><a href="#services" data-testid="nav-services-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Services</a><a href="#contact" data-testid="nav-contact-link" class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Contact</a></nav><div class="flex items-center gap-2"></div></div></header><main><section id="top" class="relative overflow-hidden bg-[#FAF5EE] dark:bg-[#1E1813]"><div aria-hidden="true" class="pointer-events-none absolute inset-0" data-print-hide="true"><div class="absolute -right-24 -top-24 size-[28rem] rounded-full bg-[#D97736]/10 blur-3xl"></div><div class="absolute bottom-0 left-1/3 size-72 rounded-full bg-[#1C2B22]/5 blur-3xl"></div></div><div class="relative mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:py-24"><div class="lg:col-span-7"><div style="opacity: 1; transform: none;"><h1 class="mt-6 font-heading text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-5xl lg:text-[52px]">Premium Websites &amp; Growth Solutions <span class="mt-3 block text-[#b8860b] dark:text-[#F7D774]">For Modern Businesses</span></h1></div><div style="opacity: 1; transform: none;"><p class="mt-5 max-w-xl text-lg leading-relaxed text-[#574E45] dark:text-[#A89C90]">JSVita builds professional websites, high-converting landing pages, advertising creatives and lead-generation systems designed to help businesses grow online.</p></div><div style="opacity: 1; transform: none;"><div class="mt-8 flex flex-wrap items-center gap-3"><a href="#pricing" data-testid="hero-cta-pricing-legacy" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down size-4" aria-hidden="true"><path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path></svg>View Pricing</a><a href="#contact" data-testid="hero-cta-contact-link" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2">Contact</a></div></div><div style="opacity: 1; transform: none;"><div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm text-muted-foreground"><span class="inline-flex items-center gap-1.5"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin size-4 text-primary" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Bangalore, Karnataka, India</span><a href="mailto:support@jsvita.in" data-testid="hero-email-link" class="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4 text-primary" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>support@jsvita.in</a><a href="tel:+916361792699" data-testid="hero-phone-link" class="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone size-4 text-primary" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>+91 63617 92699</a></div></div></div><div class="lg:col-span-5"><div class="relative h-full" style="opacity: 1; transform: none;"><img alt="JSVita — Premium Websites & Growth Solutions | Building Digital Excellence" data-testid="hero-portrait" class="aspect-[4/5] w-full rounded-2xl border border-[#E3D7CE] object-cover shadow-lg dark:border-[#2E241E]" src="/shridhar-portrait.jpg"><div data-testid="hero-current-role-card" class="absolute -bottom-6 -left-4 hidden rounded-xl border border-border bg-card p-4 shadow-md sm:block"><p class="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">Now</p><p class="mt-1 text-sm font-semibold">Onboarding — Limited Client Slots</p><p class="text-xs text-muted-foreground">Accepting new projects</p></div></div></div></div></section><section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16" aria-label="JSVita statistics"><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-0" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#b8860b] text-white dark:bg-[#8B6914]"><p class="font-heading text-3xl font-bold sm:text-4xl">6</p><p class="mt-2 text-sm leading-snug text-white/80 dark:text-[#F4EDE4]/80">Service lines — one standard of delivery</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-1" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#1C2B22] text-[#F4EDE4]"><p class="font-heading text-3xl font-bold sm:text-4xl">48h</p><p class="mt-2 text-sm leading-snug text-white/80 dark:text-[#F4EDE4]/80">From kickoff call to first working demo</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-2" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 bg-card text-foreground"><p class="font-heading text-3xl font-bold sm:text-4xl">100%</p><p class="mt-2 text-sm leading-snug text-muted-foreground">Bespoke builds — never templates</p></div></div><div class="h-full" style="opacity: 1; transform: none;"><div data-testid="stat-card-3" class="h-full rounded-2xl border p-6 transition-transform duration-200 hover:-translate-y-1 border-transparent bg-[#F5EFEB] text-foreground dark:bg-[#241C15]"><p class="font-heading text-3xl font-bold sm:text-4xl">24h</p><p class="mt-2 text-sm leading-snug text-muted-foreground">Response window, every working day</p></div></div></div></section><section id="about" class="scroll-mt-20 border-t border-border/70 bg-[#FAF5EE]/60 dark:bg-transparent"><div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-12"><div class="lg:col-span-7"><div class="max-w-2xl"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">About</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">The digital partner for businesses that refuse the ordinary</h2></div><div class="mt-6 space-y-4"><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">JSVita engineers premium websites, AI-powered workflows and brand systems for ambitious businesses worldwide.</p><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">Every engagement runs on one operating standard: fixed, itemised proposals, milestone demos, audit-ready documentation and a response window measured in hours.</p><p class="text-base leading-relaxed text-[#3D352E] dark:text-[#D1C7BD]">Technology expertise spans enterprise web platforms, AI automation, conversion engineering and analytics — delivered end-to-end by one accountable team.</p></div></div><div class="lg:col-span-5"><ul class="space-y-4 lg:pt-14"><div style="opacity: 1; transform: none;"><li data-testid="about-strength-quality-safety" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check size-4" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></span><div><p class="text-sm font-semibold">Quality, engineered in</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">Every build passes a documented quality checklist — design, performance, SEO and accessibility before launch.</p></div></li></div><div style="opacity: 1; transform: none;"><li data-testid="about-strength-teams-trained" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users size-4" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg></span><div><p class="text-sm font-semibold">Senior delivery, direct</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">You work directly with the senior team — no account managers, no relays, no dilution.</p></div></li></div><div style="opacity: 1; transform: none;"><li data-testid="about-strength-tech-forward" class="flex items-start gap-3 rounded-xl border border-border/70 bg-card p-5 transition-transform duration-200 hover:-translate-y-1"><span class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#F4EDE6] text-[#7C2D12] dark:bg-[#2E241E] dark:text-[#F7D774]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cpu size-4" aria-hidden="true"><path d="M12 20v2"></path><path d="M12 2v2"></path><path d="M17 20v2"></path><path d="M17 2v2"></path><path d="M2 12h2"></path><path d="M2 17h2"></path><path d="M2 7h2"></path><path d="M20 12h2"></path><path d="M20 17h2"></path><path d="M20 7h2"></path><path d="M7 20v2"></path><path d="M7 2v2"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg></span><div><p class="text-sm font-semibold">A tech-forward studio</p><p class="mt-0.5 text-sm leading-relaxed text-muted-foreground">AI automation, analytics and modern tooling woven into every engagement.</p></div></li></div></ul></div></div></section><section id="experience" class="scroll-mt-20 border-t border-border/70" aria-label="Client process" hidden><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Process</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">How every engagement runs</h2><p class="mt-3 text-base text-muted-foreground sm:text-lg">Discovery, fixed proposal, milestone demos, launch and long-term support — documented at every step.</p></div></section><section id="skills" class="scroll-mt-20 border-t border-border/70" aria-label="Technology expertise" hidden><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Technology Expertise</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">Enterprise web, SEO, AI automation and growth systems</h2></div></section><section id="contact" class="scroll-mt-20 border-t border-border/70"><div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20"><div class="max-w-2xl"><p class="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary">Contact</p><h2 class="mt-3 font-heading text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl">Start your project</h2><p class="mt-3 text-base text-muted-foreground sm:text-lg">Tell JSVita what you're building — you'll hear back within 24 hours with next steps.</p></div><div class="mt-10 overflow-hidden rounded-3xl bg-[#1C140E] text-[#FAF6F0] shadow-lg"><div class="grid gap-10 p-6 sm:p-10 lg:grid-cols-2"><div><h3 class="font-heading text-2xl font-semibold">Direct lines</h3><p class="mt-2 text-sm text-[#C2B5A8]">Fastest response on email or WhatsApp — usually within a day.</p><ul class="mt-6 space-y-3"><li><a href="mailto:support@jsvita.in" data-testid="contact-email-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4 text-[#FBBF24]" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>support@jsvita.in</a></li><li><a href="tel:+916361792699" data-testid="contact-phone-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone size-4 text-[#FBBF24]" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>+91 63617 92699</a></li><li><a href="https://wa.me/916361792699" target="_blank" rel="noreferrer" data-testid="contact-whatsapp-link" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm transition-colors hover:bg-[#241C15]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle size-4 text-[#FBBF24]" aria-hidden="true"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"></path></svg>WhatsApp quick chat</a></li><li><span data-testid="contact-location-chip" class="flex items-center gap-3 rounded-xl border border-[#2E241E] px-4 py-3 text-sm text-[#C2B5A8]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin size-4 text-[#FBBF24]" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>Bangalore, Karnataka, India</span></li></ul><div data-testid="contact-current-role-note" class="mt-8 rounded-2xl border border-[#2E241E] bg-[#241C15] p-4 font-mono text-xs leading-relaxed text-[#C2B5A8]">Average first reply: under 24 hours. Projects start weekly.</div></div><form data-testid="contact-form" class="rounded-2xl bg-[#FAF6F0] p-6 text-[#1F2421] shadow-inner"><div class="grid gap-4 sm:grid-cols-2"><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-name">Name</label><input id="contact-name" data-slot="input" data-testid="contact-name-input" placeholder="Your name" required="" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-email">Email</label><input id="contact-email" data-slot="input" data-testid="contact-email-input" placeholder="you@example.com" required="" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" type="email" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-organization">Organization</label><input id="contact-organization" data-slot="input" data-testid="contact-org-input" placeholder="Company or brand (optional)" class="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" value=""></div><div class="space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-inquiry">Inquiry type</label><button type="button" data-placeholder="" tabindex="0" id="contact-inquiry" role="combobox" aria-expanded="false" aria-haspopup="listbox" data-slot="select-trigger" data-size="default" data-testid="contact-inquiry-select" class="flex items-center justify-between gap-1.5 rounded-lg border border-input bg-transparent py-2 pr-2 pl-2.5 text-sm whitespace-nowrap transition-colors outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 w-full"><span data-placeholder="" data-slot="select-value" class="flex flex-1 text-left">Select an inquiry type</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down pointer-events-none size-4 text-muted-foreground" aria-hidden="true"><path d="m6 9 6 6 6-6"></path>▼</svg></button><input id="base-ui-_r_b_-hidden-input" tabindex="-1" aria-hidden="true" value="" style="clip-path: inset(50%); overflow: hidden; white-space: nowrap; border: 0px; padding: 0px; width: 1px; height: 1px; margin: -1px; position: fixed; top: 0px; left: 0px;"></div></div><div class="mt-4 space-y-2"><label data-slot="label" class="flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50 text-[#1F2421]" for="contact-message">Message</label><textarea data-slot="textarea" class="flex field-sizing-content min-h-16 w-full rounded-lg border border-input bg-transparent px-2.5 py-2 text-base transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40" id="contact-message" data-testid="contact-message-input" placeholder="Tell us about your project — goals, pages, timeline…" rows="5" required=""></textarea></div><button type="submit" tabindex="0" data-slot="button" data-testid="contact-submit-button" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 bg-primary text-primary-foreground hover:bg-primary/80 h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 mt-6 w-full"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-4" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg>Send message</button></form></div></div></div></section></main><footer data-print-hide="true" class="bg-[#1C140E] text-[#FAF6F0]"><div class="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between"><div class="flex items-center gap-3"><svg viewBox="0 0 64 64" role="img" aria-label="JSVita monogram" data-testid="logo-mark" class="shrink-0 size-9"><defs><linearGradient id="jsvita-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B" stop-opacity="0.55"></stop><stop offset="1" stop-color="#7C2D12" stop-opacity="0.65"></stop></linearGradient><clipPath id="jsvita-clip"><rect width="64" height="64" rx="16"></rect></clipPath></defs><rect width="64" height="64" rx="16" fill="#b8860b"></rect><rect width="64" height="64" rx="16" fill="url(#jsvita-sheen)" opacity="0.35"></rect><g clip-path="url(#jsvita-clip)"><circle cx="54" cy="12" r="18" fill="#FAF6F0" opacity="0.1"></circle></g><text x="32" y="44" text-anchor="middle" font-family="var(--font-heading), Georgia, serif" font-size="34" font-weight="700" letter-spacing="-1" fill="#FAF6F0">JS</text></svg><div><p class="font-heading text-lg font-semibold"></p><p class="mt-1 flex items-center gap-1.5 font-mono text-xs text-[#C2B5A8]">Bangalore, Karnataka · Worldwide</p></div></div><div class="flex items-center gap-3"><a href="mailto:support@jsvita.in" data-testid="footer-email-link" class="font-mono text-xs text-[#C2B5A8] transition-colors hover:text-[#FBBF24]">support@jsvita.in</a><button type="button" tabindex="0" data-slot="button" aria-label="Back to top" data-testid="back-to-top-btn" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*='size-'])]:size-4 aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8 text-[#FAF6F0] hover:bg-white/10 hover:text-[#FAF6F0]"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up size-4" aria-hidden="true"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg></button></div></div><div class="border-t border-[#2E241E] py-4 text-center font-mono text-xs text-[#C2B5A8]">© 2026 JSVita Technologies. All rights reserved.</div></footer><section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false"></section></div></div>
     
   
 
