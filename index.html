@@ -2959,6 +2959,15 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
 .jsv-pt-status p{color:#F7D774}
 @media(max-width:640px){.jsv-cta-band{padding:20px 18px}.jsv-cta-actions{width:100%}.jsv-cta-actions a{flex:1 1 100%;justify-content:center;text-align:center}}
 
+/* 30w · Authority 2.0 — sticky mobile CTA bar (Start Your Project, phones only) */
+.jsv-sticky-cta{display:none}
+@media(max-width:767px){
+  .jsv-sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:80;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(23,17,12,0),rgba(23,17,12,.94) 45%);pointer-events:none}
+  .jsv-sticky-cta a{pointer-events:auto;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:999px;background:linear-gradient(120deg,#F3E5AB,#D4AF37);color:#17110C;font:700 14px "DM Sans Variable","DM Sans",sans-serif;text-decoration:none;box-shadow:0 14px 34px -14px rgba(212,175,55,.55)}
+  .jsv-sticky-cta a svg{width:16px;height:16px}
+  .jv-wa-fab{bottom:74px}
+}
+
     </style>
     <script data-pg="hero-premium">(function () {
   "use strict";
@@ -3562,13 +3571,14 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
         '<p class="jsv-pt-industry">' + o.industry + '</p>' + kind +
         '<div class="jsv-pt-rows">' +
           '<div class="jsv-pt-row"><span>Industry</span><p>' + o.industry + '</p></div>' +
+          '<div class="jsv-pt-row"><span>Service</span><p>' + o.cat + '</p></div>' +
           '<div class="jsv-pt-row"><span>Challenge</span><p>' + o.objective + '</p></div>' +
           '<div class="jsv-pt-row"><span>Solution</span><p>' + o.solution + '</p></div>' +
           '<div class="jsv-pt-row"><span>Technology</span><p>' + o.tech + '</p></div>' +
           '<div class="jsv-pt-row jsv-pt-status"><span>Project Status</span><p>' + o.status + '</p></div>' +
           '<div class="jsv-pt-row jsv-pt-result"><span>Outcome</span><p>' + o.result + '</p></div>' +
         '</div>' +
-        '<a class="jsv-pt-link" href="' + o.href + '" data-jv-track="case_details_open" data-jv-info="' + o.slug + '">View Full Case Study' +
+        '<a class="jsv-pt-link" href="' + o.href + '" data-jv-track="case_details_open" data-jv-info="' + o.slug + '">View Project' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></a>' +
         '</article>';
     }
@@ -3872,11 +3882,13 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
       ["What does a JSVita project cost?", "Transparent, fixed pricing: website packages start at ₹1,299 (Starter) and the most popular Professional package is ₹4,999 — see the pricing section above. Every proposal is itemised, with no hourly meters."],
       ["How long does a website take?", "Most websites launch within days of kickoff, not months — you see a first working demo within 48 hours. Landing pages ship fastest of all; complex builds get a clear timeline in the proposal."],
       ["Do you provide hosting?", "Yes — JSVita sets up fast, secure hosting with SSL on your own domain, configured as part of the build. Managed hosting options are included in maintenance plans."],
-      ["Do you redesign existing websites?", "Yes — redesigns are a core JSVita service. Your dated site is rebuilt premium, fast and mobile-first, with redirects and SEO work so your rankings follow."],
-      ["Do you run Meta Ads?", "Yes — full-funnel Meta campaigns: audience targeting, creative design, lead forms, landing pages, conversion tracking and ongoing optimisation."],
+      ["Can you redesign existing websites?", "Yes — redesigns are a core JSVita service. Your dated site is rebuilt premium, fast and mobile-first, with redirects and SEO work so your rankings follow."],
+      ["Do you manage Meta Ads?", "Yes — full-funnel Meta campaigns: audience targeting, creative design, lead forms, landing pages, conversion tracking and ongoing optimisation."],
       ["Do you provide maintenance?", "Yes — monthly care plans cover updates, security, backups, performance monitoring and small improvements, with a 24-hour response window."],
       ["What is the payment process?", "Simple and fixed: an itemised proposal first, then a part payment to begin and the balance at launch. No hourly meters, no surprise invoices — CA services are invoiced separately."],
       ["Can I request custom functionality?", "Yes — booking systems, dashboards, portals, automations and integrations are all buildable. Describe the outcome you need and the proposal will scope it, itemised."],
+      ["How does lead generation work?", "JSVita builds the full pipeline: dedicated landing pages, Meta lead forms, conversion tracking and follow-up automation — so attention becomes qualified enquiries you can work, not just traffic."],
+      ["Do you provide CA services?", "Yes — JSVita CA Services is a dedicated division led by CA Mahalakshmi: GST registration and filing, income tax returns, business registration, accounting and compliance."],
       ["What support do I get after launch?", "Every build includes a post-launch care window for fixes and tweaks, and Website Maintenance plans keep your site fast, secure and current month after month."]
     ];
     var items = qa.map(function (q, i) {
@@ -4546,6 +4558,44 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
       '<div class="jsv-cta-actions">' + p + g + '</div></div>';
   }
 
+  /* ---- Authority 2.0 · sticky mobile CTA — "Start Your Project" always visible on phones ---- */
+  function initStickyCta() {
+    if (window.__jsvStickyCta) return true;
+    if (!document.body) return false;
+    window.__jsvStickyCta = true;
+    var bar = document.createElement("div");
+    bar.className = "jsv-sticky-cta";
+    bar.setAttribute("role", "region");
+    bar.setAttribute("aria-label", "Start your project");
+    bar.innerHTML = '<a href="#contact" data-jv-track="cta_band_click" data-jv-info="sticky-mobile">Start Your Project' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg></a>';
+    document.body.appendChild(bar);
+    return true;
+  }
+
+  /* ---- Authority 2.0 · admin-ready future surfaces — hidden placeholders + footer CA SERVICES label.
+     React mounts the footer asynchronously and re-renders can reset runtime edits, so this is
+     presence-checked on every pass (bandLoop retries until the footer exists and hooks stick). ---- */
+  function initFutureHooks() {
+    if (!document.body) return false;
+    var f = document.querySelector("footer");
+    if (!f) return false;
+    if (!f.querySelector("[data-jv-future]")) {
+      var d = document.createElement("div");
+      d.hidden = true;
+      d.setAttribute("aria-hidden", "true");
+      d.setAttribute("data-jv-future", "");
+      d.innerHTML = '<span data-future="client-portal">Client Portal</span>' +
+        '<span data-future="admin-dashboard">Admin Dashboard</span>' +
+        '<span data-future="project-tracking">Project Tracking</span>';
+      f.appendChild(d);
+    }
+    Array.prototype.forEach.call(f.querySelectorAll("a"), function (a) {
+      if (a.textContent.trim() === "CA Services") a.textContent = "CA SERVICES";
+    });
+    return true;
+  }
+
   /* ---- Phase 6 · trust signals — between Pricing and Case Studies ---- */
   /* ---- Phase 2.0 · Why Businesses Choose JSVita — immediately below the hero ---- */
   function initTrust() {
@@ -4559,8 +4609,8 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
     var ICO_MOBILE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>';
     /* ---- Phase 1.1 · trust strip — the exact six delivery promises, directly below the hero ---- */
     var TRUST6 = [
-      "\u2713 Mobile Optimized", "\u2713 SEO Ready", "\u2713 Fast Loading",
-      "\u2713 Secure Hosting", "\u2713 Conversion Focused", "\u2713 Ongoing Support"
+      "\u2713 Business Websites", "\u2713 Meta Ads", "\u2713 Lead Generation",
+      "\u2713 JSVita CA Services", "\u2713 Ongoing Support"
     ];
     var sec = document.createElement("section");
     sec.id = "trust";
@@ -4587,13 +4637,14 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
     var ICO_MOBILE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>';
     var ICO_PRICE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1"/></svg>';
     var ICO_SHIELD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3.5v5.2c0 5-3.4 9.3-8 11.3-4.6-2-8-6.3-8-11.3V5.5z"/><polyline points="8.8 12 11 14.2 15.4 9.8"/></svg>';
+    var ICO_GEM = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20"/><path d="M12 21L8 9l4-6 4 6z"/></svg>';
     var cards = [
-      [ICO_CLOCK, "Professional Development Process", "A documented process on every engagement \u2014 proposal, 48-hour first demo, milestone reviews and a launch checklist. Nothing improvised."],
-      [ICO_PRICE, "Transparent Pricing", "Fixed, itemised proposals before work begins. No hourly meters, no surprise invoices \u2014 the number you approve is the number you pay."],
-      [ICO_SHIELD, "Long-Term Support", "A 24-hour response window that continues long after launch \u2014 through maintenance plans or on-demand care."],
-      [ICO_MOBILE, "Mobile-First Design", "Every layout is engineered for the phone first, then scaled up \u2014 because that is where your customers are."],
-      [ICO_TREND, "SEO Best Practices", "Clean structure, schema, metadata and Core Web Vitals are built into every page from day one \u2014 not bolted on later."],
-      [ICO_TARGET, "Business-Focused Solutions", "Every design and engineering decision serves one goal: turning your visitors into enquiries and revenue."]
+      [ICO_GEM, "Premium Design", "Bespoke, luxury-grade design on every engagement \u2014 no templates, no recycled layouts, no compromise."],
+      [ICO_MOBILE, "Mobile First", "Every layout is engineered for the phone first, then scaled up \u2014 because that is where your customers are."],
+      [ICO_CLOCK, "Fast Loading", "Sub-second load targets and green Core Web Vitals are treated as features, not hopes."],
+      [ICO_TREND, "SEO Optimized", "Clean structure, schema, metadata and search-ready pages on every build \u2014 found from day one."],
+      [ICO_TARGET, "Lead Focused", "Every page is engineered around one job: turning your visitors into enquiries and revenue."],
+      [ICO_SHIELD, "Long-Term Support", "A 24-hour response window that continues long after launch \u2014 maintenance plans or on-demand care."]
     ];
     var sec = document.createElement("section");
     sec.id = "trust-cards";
@@ -4601,7 +4652,7 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
     sec.setAttribute("data-testid", "trust-cards");
     sec.setAttribute("aria-label", "Why businesses trust JSVita");
     sec.innerHTML = '<div class="jv-band">' +
-      bandHead("TRUST", "Why Businesses Trust JSVita", "Six standards every JSVita engagement is held to \u2014 process over promises, in writing.") +
+      bandHead("TRUST", "Why Businesses Choose JSVita", "Six standards every JSVita engagement is held to \u2014 the reason businesses hand us their growth.") +
       '<div class="jv-trust-grid">' +
       cards.map(function (c) {
         return '<article class="jv-trust-card"><span class="jsv-bi" aria-hidden="true">' + c[0] + '</span><h3>' + c[1] + '</h3><p>' + c[2] + '</p></article>';
@@ -4713,6 +4764,9 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
       return (name || "?").split(/[\s.]+/).filter(Boolean).map(function (p) { return p.charAt(0).toUpperCase(); }).slice(0, 2).join("");
     }
     var verified = TESTIMONIALS.filter(function (t) { return t && t.verified === true && t.review && t.name; });
+    /* Authority 2.0 \u2014 with zero verified stories the section is hidden completely:
+       never "Coming Soon", never placeholders, never invented reviews. */
+    if (!verified.length) { window.__jsvTst = true; return true; }
     var sec = document.createElement("section");
     sec.id = "testimonials";
     sec.className = "scroll-mt-20 border-t border-border/70 jsv-reveal";
@@ -4829,6 +4883,7 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
     initStory(); initWork(); initServices();
     initNavSpy(); initStagger(); initStats(); initDust(); initCurrently(); initNavScroll();
     initListFix();
+    initStickyCta(); initFutureHooks();
     initTracking();
     initHeroBiz(); initBrandNav(); initRecast(); initReframe(); initContactExp(); initContactRebrand();
     initContactTrust();
@@ -4849,7 +4904,7 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
       var a = initStory(), w = initWork(), v = initServices(), y = initWhy(), p = initProcess(), t = initPremiumStats(), f = initFaq(), ma = initMetaAds();
       var mq = initMarquee(), tr = initTrust(), tc = initTrustCards(), wc = initWhyChoose(), ts = initTestimonials(), co = initConsult();
       var vm = initVision(), ld = initLeadership(), ad = initDivisions();
-      initListFix();
+      initListFix(); initStickyCta(); initFutureHooks();
       initHeroBiz(); initBrandNav(); initContactExp(); initContactRebrand(); initReframe(); initContactTrust(); initPricing(); initWhatsapp(); initBizSchema(); initTracking(); initLeadWiring();
       var o = initConversionOrder();
       if (a && w && v && y && p && t && f && ma && mq && tr && tc && wc && ts && co && o && vm && ld && ad && tries < 28) return;
