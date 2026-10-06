@@ -3963,6 +3963,9 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
   function initBrandNav() {
     var nav = document.querySelector("header nav");
     if (!nav) return false;
+    /* a11y: the brand logo link must have an accessible name (Lighthouse link-name) */
+    var brand = document.querySelector('a[data-testid="brand-link"]');
+    if (brand && !brand.getAttribute("aria-label")) brand.setAttribute("aria-label", "JSVita \u2014 home");
     var plan = [
       ["#services", "Services", "nav-services-link"],
       ["#work", "Work", "nav-work-link"],
@@ -4825,6 +4828,7 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
     var s6 = step6();
     initStory(); initWork(); initServices();
     initNavSpy(); initStagger(); initStats(); initDust(); initCurrently(); initNavScroll();
+    initListFix();
     initTracking();
     initHeroBiz(); initBrandNav(); initRecast(); initReframe(); initContactExp(); initContactRebrand();
     initContactTrust();
@@ -4845,6 +4849,7 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
       var a = initStory(), w = initWork(), v = initServices(), y = initWhy(), p = initProcess(), t = initPremiumStats(), f = initFaq(), ma = initMetaAds();
       var mq = initMarquee(), tr = initTrust(), tc = initTrustCards(), wc = initWhyChoose(), ts = initTestimonials(), co = initConsult();
       var vm = initVision(), ld = initLeadership(), ad = initDivisions();
+      initListFix();
       initHeroBiz(); initBrandNav(); initContactExp(); initContactRebrand(); initReframe(); initContactTrust(); initPricing(); initWhatsapp(); initBizSchema(); initTracking(); initLeadWiring();
       var o = initConversionOrder();
       if (a && w && v && y && p && t && f && ma && mq && tr && tc && wc && ts && co && o && vm && ld && ad && tries < 28) return;
@@ -4956,6 +4961,25 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
       });
     }, { rootMargin: "-35% 0px -55% 0px" });
     observeAll();
+  }
+
+  /* ---- Phase 1.2 · a11y — unwrap non-LI wrappers inside lists (React map wrappers break ul>li semantics) ---- */
+  function initListFix() {
+    if (window.__jsvListFix) return;
+    var lists = document.querySelectorAll("main ul, main ol");
+    if (!lists.length) return;
+    window.__jsvListFix = true;
+    Array.prototype.forEach.call(lists, function (list) {
+      var kids = Array.prototype.slice.call(list.children);
+      var changed = false;
+      kids.forEach(function (kid) {
+        if (kid.tagName === "LI") return;
+        Array.prototype.slice.call(kid.childNodes).forEach(function (n) { list.insertBefore(n, kid); });
+        list.removeChild(kid);
+        changed = true;
+      });
+      if (changed) list.setAttribute("data-jv-list-fixed", "1");
+    });
   }
 
   /* ---- Step 5c: staggered children for About/Experience/Skills lists ---- */
