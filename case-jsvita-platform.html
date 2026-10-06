@@ -137,6 +137,20 @@ footer a:hover{color:#F7D774}
 @media(min-width:700px){.act{grid-template-columns:repeat(3,1fr)}}
 .act .card{text-align:center}
 .act .card .big{font:800 17px "Playfair Display",Georgia,serif;color:#F7D774;margin-top:8px}
+.demo-badge{display:inline-block;margin:0 0 12px;padding:5px 13px;border-radius:999px;border:1px solid rgba(212,175,55,.5);background:rgba(212,175,55,.1);color:#F7D774;font:700 10px/1 "JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase}
+.pcard-demo{border-style:dashed}
+.pc-status{color:#B9AC9E;font-size:13.5px}
+.pc-status strong{color:#F7D774}
+.cs-tech,.cs-lessons{display:grid;gap:10px;margin-top:22px;padding:0;list-style:none}
+@media(min-width:700px){.cs-tech{grid-template-columns:repeat(2,1fr)}}
+.cs-tech li,.cs-lessons li{list-style:none;position:relative;padding:12px 16px 12px 42px;border:1px solid rgba(212,175,55,.22);border-radius:12px;background:rgba(212,175,55,.06);color:#D8CCBE;font-size:14.5px}
+.cs-tech li::before{content:"\2713";position:absolute;left:14px;top:12px;color:#F7D774;font-weight:700}
+.cs-lessons li::before{content:"\2192";position:absolute;left:14px;top:12px;color:#F7D774;font-weight:700}
+.cs-gallery{display:flex;gap:28px;justify-content:center;align-items:flex-start;flex-wrap:wrap;margin-top:24px}
+.cs-gallery .pt-mock{margin-bottom:0}
+.cs-g-desktop{flex:1 1 340px;max-width:560px}
+.cs-g-desktop svg{max-width:100%;width:100%}
+.cs-g-mobile{flex:0 0 auto;max-width:150px}
 
 </style>
 </head>
@@ -163,6 +177,7 @@ footer a:hover{color:#F7D774}
     <p class="eyebrow">Case Study &middot; Business Websites</p>
     <h1>The JSVita Platform</h1>
     <p class="lede">In-House · Platform &mdash; One brand, zero fragmentation — built as the proof of our own standard.</p>
+    <p class="demo-note">Internal project — designed and built in-house by JSVita to show the standard, not client work. Project Status: Live · Internal Build.</p>
     <div class="ctas">
       <a class="cta" href="/#contact" data-jv-track="service_page_cta" data-jv-info="case-jsvita-platform">Start a similar project</a>
       <a class="ghost" href="#" data-jv-calendly data-jv-track="consultation_request" data-jv-info="case-jsvita-platform">Book Free Consultation</a>
@@ -178,19 +193,36 @@ footer a:hover{color:#F7D774}
   </section>
 
   <section class="band">
+    <p class="kicker">Overview</p>
+    <h2>The engagement at a glance</h2>
+    <p class="sub">The JSVita Platform is the studio's own ecosystem — brand site, client tooling and member dashboard as one product. Built in-house as the living demonstration of the JSVita standard, and the reference every client engagement is measured against.</p>
+  </section>
+
+  <section class="band">
     <p class="kicker">Challenge</p>
     <h2>Where they started</h2>
     <p class="sub">Brand site, client tooling and a member dashboard — three products that usually become three codebases, three visual languages and three sets of bugs. The brief for our own home: one ecosystem, no fragmentation.</p>
   </section>
 
   <section class="band">
-    <p class="kicker">Strategy</p>
-    <h2>The JSVita approach</h2>
-    <p class="sub">Design once, engineer everywhere: a single premium design system feeding every surface, custom React engines for the interactive parts, and AI tooling where it removes real work.</p>
+    <p class="kicker">Research</p>
+    <h2>What the research showed</h2>
+    <p class="sub">The research target was ourselves: every recurring client interaction — enquiries, proposals, onboarding, support — was mapped to find where a platform could remove real work. An audit of our own tooling showed three codebases' worth of fragmentation that one design system could eliminate.</p>
   </section>
 
   <section class="band">
-    <p class="kicker">Execution</p>
+    <p class="kicker">Design Process</p>
+    <h2>From brief to visual system</h2>
+    <div class="exec">
+      <div class="card"><h3>Design system</h3><p>Tokens, components and motion defined once — one language across every surface.</p></div>
+      <div class="card"><h3>Brand experience</h3><p>The luxury identity carried from the first scroll to the member dashboard.</p></div>
+      <div class="card"><h3>Interaction design</h3><p>Navigation, scroll reveals and case modals hand-built for precision.</p></div>
+      <div class="card"><h3>Performance design</h3><p>Sub-second loads and 95+ Lighthouse targets treated as features, not hopes.</p></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <p class="kicker">Development Process</p>
     <h2>What we built</h2>
     <div class="exec">
       <div class="card"><h3>Premium design system</h3><p>Tokens, components and motion — one language across every page.</p></div>
@@ -201,14 +233,21 @@ footer a:hover{color:#F7D774}
   </section>
 
   <section class="band">
-    <p class="kicker">Result</p>
-    <h2>What it earned</h2>
-    <p class="sub">The site you are on — a living demonstration of the JSVita standard, and the reference our client builds are measured against.</p>
+    <p class="kicker">Technology Stack</p>
+    <h2>The stack behind it</h2>
+    <ul class="cs-tech">
+        <li>React with custom engines</li>
+        <li>Premium design system (tokens + components)</li>
+        <li>AI tooling & automations</li>
+        <li>Member dashboard with auth</li>
+        <li>Static-first hosting</li>
+    </ul>
   </section>
 
   <section class="band">
-    <p class="kicker">Before / After</p>
-    <h2>The difference, side by side</h2>
+    <p class="kicker">Outcome</p>
+    <h2>What it earned</h2>
+    <p class="sub">The site you are on — a living demonstration of the JSVita standard, and the reference our client builds are measured against.</p>
     <div class="ba-grid">
       <div class="ba-card ba-before">
         <h3>Before JSVita</h3>
@@ -226,6 +265,25 @@ footer a:hover{color:#F7D774}
         <li>Automated client journeys</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <p class="kicker">Lessons Learned</p>
+    <h2>What it taught us</h2>
+    <ul class="cs-lessons">
+        <li>Building for yourself is the honest test — every compromise shows up in your own product.</li>
+        <li>One design system eliminates an entire class of inconsistency bugs.</li>
+        <li>AI tooling pays where it removes real work, not where it decorates a feature list.</li>
+    </ul>
+  </section>
+
+  <section class="band">
+    <p class="kicker">Project Gallery</p>
+    <h2>Desktop and mobile previews</h2>
+    <div class="cs-gallery">
+      <div class="cs-g-desktop pt-mock"><svg viewBox="0 0 320 196" role="img" aria-label="Project preview on a laptop"><rect x="22" y="6" width="276" height="156" rx="10" fill="rgba(20,14,8,.85)" stroke="rgba(212,175,55,.32)"/><rect x="22" y="6" width="276" height="24" rx="10" fill="rgba(212,175,55,.08)"/><circle cx="36" cy="18" r="3.2" fill="#D4AF37" opacity=".8"/><circle cx="47" cy="18" r="3.2" fill="#D4AF37" opacity=".5"/><circle cx="58" cy="18" r="3.2" fill="#D4AF37" opacity=".3"/><rect x="96" y="14" width="128" height="8" rx="4" fill="#B9AC9E" opacity=".28"/><rect x="40" y="46" width="110" height="11" rx="5" fill="#F7D774" opacity=".85"/><rect x="40" y="66" width="82" height="6" rx="3" fill="#B9AC9E" opacity=".5"/><rect x="40" y="80" width="96" height="6" rx="3" fill="#B9AC9E" opacity=".35"/><rect x="40" y="98" width="70" height="18" rx="9" fill="rgba(212,175,55,.55)"/><rect x="186" y="46" width="94" height="70" rx="8" fill="none" stroke="rgba(212,175,55,.4)"/><path d="M196 104 L214 92 L232 100 L250 84 L268 92" fill="none" stroke="#F7D774" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="186" y="122" width="94" height="26" rx="6" fill="none" stroke="rgba(212,175,55,.3)"/><rect x="196" y="132" width="52" height="6" rx="3" fill="#B9AC9E" opacity=".4"/><rect x="6" y="166" width="308" height="12" rx="6" fill="rgba(212,175,55,.16)"/><rect x="136" y="166" width="48" height="5" rx="2.5" fill="rgba(20,14,8,.9)"/></svg></div>
+      <div class="cs-g-mobile pt-mock phone"><svg viewBox="0 0 140 240" role="img" aria-label="Project preview on a phone"><rect x="12" y="4" width="116" height="232" rx="24" fill="rgba(20,14,8,.85)" stroke="rgba(212,175,55,.32)"/><rect x="52" y="10" width="36" height="8" rx="4" fill="rgba(212,175,55,.35)"/><rect x="22" y="28" width="96" height="188" rx="14" fill="rgba(212,175,55,.05)"/><rect x="32" y="42" width="64" height="9" rx="4.5" fill="#F7D774" opacity=".85"/><rect x="32" y="58" width="44" height="5" rx="2.5" fill="#B9AC9E" opacity=".5"/><rect x="32" y="72" width="76" height="52" rx="8" fill="none" stroke="rgba(212,175,55,.4)"/><path d="M40 112 L54 100 L68 106 L82 92 L96 98" fill="none" stroke="#F7D774" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><rect x="32" y="132" width="36" height="30" rx="6" fill="none" stroke="rgba(212,175,55,.35)"/><rect x="74" y="132" width="36" height="30" rx="6" fill="none" stroke="rgba(212,175,55,.35)"/><rect x="32" y="170" width="76" height="20" rx="10" fill="rgba(212,175,55,.55)"/></svg></div>
     </div>
   </section>
 
@@ -280,7 +338,7 @@ footer a:hover{color:#F7D774}
     </div>
     <div class="frow flegal">
       <span>&copy; 2026 JSVita Technologies</span><span class="dot"></span>
-      <a href="mailto:support@jsvita.in">support@jsvita.in</a><span class="dot"></span>
+      <a href="mailto:hello@jsvita.in">hello@jsvita.in</a><span class="dot"></span> <a href="mailto:support@jsvita.in">support@jsvita.in</a><span class="dot"></span>
       <span class="ffounder">Founded by Shridhar John</span><span class="dot"></span>
       <a href="/privacy">Privacy</a><span class="dot"></span>
       <a href="/terms">Terms</a>
@@ -302,5 +360,6 @@ footer a:hover{color:#F7D774}
   } catch(e){}
 })();
 </script>
+<script src="/jsv-common.js" defer></script>
 </body>
 </html>

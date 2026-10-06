@@ -218,7 +218,13 @@
         data._subject = form.getAttribute("data-jv-lead-subject") || ("New lead — " + (data.Name || data.name || "jsvita.in"));
         data._template = "table";
         data._captcha = "false";
+        /* admin.jsvita.in lead fields — Submission Date + Lead Status + source form + Phase 1.2 (Timestamp + Source Page) */
         var formId = form.getAttribute("data-jv-lead-form") || "lead";
+        data["Submission Date"] = new Date().toISOString();
+        data["Lead Status"] = "new";
+        data["Source"] = formId;
+        data["Timestamp"] = new Date().toISOString();
+        data["Source Page"] = location.href;
         function lock(txt) { if (btn) { btn.disabled = true; if (txt) btn.innerHTML = txt; } }
         function unlock() { if (btn) { btn.disabled = false; btn.innerHTML = btnTxt; } }
         function finishOk() {

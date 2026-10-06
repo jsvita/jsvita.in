@@ -137,6 +137,20 @@ footer a:hover{color:#F7D774}
 @media(min-width:700px){.act{grid-template-columns:repeat(3,1fr)}}
 .act .card{text-align:center}
 .act .card .big{font:800 17px "Playfair Display",Georgia,serif;color:#F7D774;margin-top:8px}
+.demo-badge{display:inline-block;margin:0 0 12px;padding:5px 13px;border-radius:999px;border:1px solid rgba(212,175,55,.5);background:rgba(212,175,55,.1);color:#F7D774;font:700 10px/1 "JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase}
+.pcard-demo{border-style:dashed}
+.pc-status{color:#B9AC9E;font-size:13.5px}
+.pc-status strong{color:#F7D774}
+.cs-tech,.cs-lessons{display:grid;gap:10px;margin-top:22px;padding:0;list-style:none}
+@media(min-width:700px){.cs-tech{grid-template-columns:repeat(2,1fr)}}
+.cs-tech li,.cs-lessons li{list-style:none;position:relative;padding:12px 16px 12px 42px;border:1px solid rgba(212,175,55,.22);border-radius:12px;background:rgba(212,175,55,.06);color:#D8CCBE;font-size:14.5px}
+.cs-tech li::before{content:"\2713";position:absolute;left:14px;top:12px;color:#F7D774;font-weight:700}
+.cs-lessons li::before{content:"\2192";position:absolute;left:14px;top:12px;color:#F7D774;font-weight:700}
+.cs-gallery{display:flex;gap:28px;justify-content:center;align-items:flex-start;flex-wrap:wrap;margin-top:24px}
+.cs-gallery .pt-mock{margin-bottom:0}
+.cs-g-desktop{flex:1 1 340px;max-width:560px}
+.cs-g-desktop svg{max-width:100%;width:100%}
+.cs-g-mobile{flex:0 0 auto;max-width:150px}
 
 </style>
 </head>
@@ -166,8 +180,9 @@ footer a:hover{color:#F7D774}
     <div class="ctas">
       <a class="cta" href="https://wa.me/916361792699?text=Hi%20JSVita%20%E2%80%94%20I%27d%20like%20to%20start%20a%20project." target="_blank" rel="noopener" data-jv-track="finance_whatsapp_click" data-jv-info="contact-page">WhatsApp Consultation</a>
       <a class="ghost" href="#" data-jv-calendly data-jv-track="consultation_request" data-jv-info="contact-page">Book a Call</a>
-      <a class="ghost" href="mailto:support@jsvita.in" data-jv-track="email_click" data-jv-info="contact-page">Email JSVita</a>
+      <a class="ghost" href="mailto:hello@jsvita.in" data-jv-track="email_click" data-jv-info="contact-page">Email JSVita</a>
     </div>
+    <p class="demo-note">Email — general enquiries: <a href="mailto:hello@jsvita.in" style="color:#F7D774">hello@jsvita.in</a> &middot; project support: <a href="mailto:support@jsvita.in" style="color:#F7D774">support@jsvita.in</a></p>
   </div>
 
   <section class="band">
@@ -208,7 +223,7 @@ footer a:hover{color:#F7D774}
           <option>Not sure yet</option>
         </select>
       </div>
-      <div style="margin-top:14px"><label for="ct-budget">Project budget</label>
+      <div style="margin-top:14px"><label for="ct-budget">Expected Budget</label>
         <select id="ct-budget" name="Budget">
           <option value="" disabled selected>Select a budget range</option>
           <option>₹1,299 – ₹2,999</option>
@@ -216,6 +231,24 @@ footer a:hover{color:#F7D774}
           <option>₹4,999 – ₹7,999</option>
           <option>₹7,999 – ₹12,999</option>
           <option>₹12,999+</option>
+        </select>
+      </div>
+      <div style="margin-top:14px"><label for="ct-timeline">Project Timeline</label>
+        <select id="ct-timeline" name="Project Timeline">
+          <option value="" disabled selected>When do you need this?</option>
+          <option>Immediately / ASAP</option>
+          <option>Within 1–2 weeks</option>
+          <option>Within 1 month</option>
+          <option>1–3 months</option>
+          <option>Flexible / planning ahead</option>
+        </select>
+      </div>
+      <div style="margin-top:14px"><label for="ct-method">Preferred Contact Method</label>
+        <select id="ct-method" name="Preferred Contact Method">
+          <option value="" disabled selected>How should we reach you?</option>
+          <option>WhatsApp</option>
+          <option>Phone Call</option>
+          <option>Email</option>
         </select>
       </div>
       <div style="margin-top:14px"><label for="ct-msg">Details</label><textarea id="ct-msg" name="Details" placeholder="Tell us about your business and what success looks like&#8230;" required></textarea></div>
@@ -274,7 +307,7 @@ footer a:hover{color:#F7D774}
     </div>
     <div class="frow flegal">
       <span>&copy; 2026 JSVita Technologies</span><span class="dot"></span>
-      <a href="mailto:support@jsvita.in">support@jsvita.in</a><span class="dot"></span>
+      <a href="mailto:hello@jsvita.in">hello@jsvita.in</a><span class="dot"></span> <a href="mailto:support@jsvita.in">support@jsvita.in</a><span class="dot"></span>
       <span class="ffounder">Founded by Shridhar John</span><span class="dot"></span>
       <a href="/privacy">Privacy</a><span class="dot"></span>
       <a href="/terms">Terms</a>
@@ -296,5 +329,6 @@ footer a:hover{color:#F7D774}
   } catch(e){}
 })();
 </script>
+<script src="/jsv-common.js" defer></script>
 </body>
 </html>
