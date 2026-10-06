@@ -3571,10 +3571,11 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
         '<p class="jsv-pt-industry">' + o.industry + '</p>' + kind +
         '<div class="jsv-pt-rows">' +
           '<div class="jsv-pt-row"><span>Industry</span><p>' + o.industry + '</p></div>' +
-          '<div class="jsv-pt-row"><span>Service</span><p>' + o.cat + '</p></div>' +
+          '<div class="jsv-pt-row"><span>Services Provided</span><p>' + o.cat + '</p></div>' +
+          '<div class="jsv-pt-row"><span>Timeline</span><p>' + o.timeline + '</p></div>' +
           '<div class="jsv-pt-row"><span>Challenge</span><p>' + o.objective + '</p></div>' +
           '<div class="jsv-pt-row"><span>Solution</span><p>' + o.solution + '</p></div>' +
-          '<div class="jsv-pt-row"><span>Technology</span><p>' + o.tech + '</p></div>' +
+          '<div class="jsv-pt-row"><span>Technology Used</span><p>' + o.tech + '</p></div>' +
           '<div class="jsv-pt-row jsv-pt-status"><span>Project Status</span><p>' + o.status + '</p></div>' +
           '<div class="jsv-pt-row jsv-pt-result"><span>Outcome</span><p>' + o.result + '</p></div>' +
         '</div>' +
@@ -3585,32 +3586,32 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
     var CATS = ["All", "Business Websites", "Landing Pages", "Meta Ads Campaigns", "Creative Designs"];
     var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><polyline points="12 5 19 12 12 19"/></svg>';
     var projects = [
-      proj({ n: "01", cat: "Business Websites", slug: "case-arka-retail", name: "Arka Retail — Digital Flagship", industry: "Retail \u00b7 Bengaluru", kind: "Demo Project", status: "Delivered \u00b7 Demo Build",
+      proj({ n: "01", cat: "Business Websites", slug: "case-arka-retail", name: "Arka Retail — Digital Flagship", industry: "Retail \u00b7 Bengaluru", kind: "Demo Project", status: "Delivered \u00b7 Demo Build", timeline: "48h demo \u00b7 3-week build",
         objective: "A flagship that turns browsers into buyers.",
         solution: "Bespoke storefront with conversion architecture, headless content and edge hosting.",
         tech: "Bespoke React storefront · Headless content · Edge hosting",
         result: "Reads like a global brand, converts like a sales team — first demo in 48h.", href: "/case-arka-retail" }),
-      proj({ n: "02", cat: "Business Websites", slug: "case-krishnan-interiors", name: "Krishnan Interiors — SEO Growth Engine", industry: "Interiors \u00b7 Chennai", kind: "Demo Project", status: "Delivered \u00b7 Demo Build",
+      proj({ n: "02", cat: "Business Websites", slug: "case-krishnan-interiors", name: "Krishnan Interiors — SEO Growth Engine", industry: "Interiors \u00b7 Chennai", kind: "Demo Project", status: "Delivered \u00b7 Demo Build", timeline: "4-week rebuild",
         objective: "Own the high-intent searches competitors were winning.",
         solution: "Technical SEO, schema systems and content architecture engineered to rank.",
         tech: "Technical SEO · Schema systems · Core Web Vitals engineering",
         result: "Page-1 rankings on target terms — 3\u00d7 qualified enquiries.", href: "/case-krishnan-interiors" }),
-      proj({ n: "03", cat: "Landing Pages", slug: "case-patel-co", name: "Patel & Co. — Consultation Funnel", industry: "Professional Services", kind: "Demo Project", status: "Delivered \u00b7 Demo Build",
+      proj({ n: "03", cat: "Landing Pages", slug: "case-patel-co", name: "Patel & Co. — Consultation Funnel", industry: "Professional Services", kind: "Demo Project", status: "Delivered \u00b7 Demo Build", timeline: "2-week delivery",
         objective: "Turn scattered enquiries into a structured pipeline.",
         solution: "A conversion landing page feeding an AI operations suite — routing, scheduling, reporting.",
         tech: "Conversion landing page · AI enquiry assistant · Workflow automation",
         result: "10+ hours saved weekly; zero missed enquiries.", href: "/case-patel-co", phone: true }),
-      proj({ n: "04", cat: "Meta Ads Campaigns", slug: "case-arka-ads", name: "Arka Retail — Festive Ads Sprint", industry: "Retail \u00b7 Festive Season", kind: "Demo Project", status: "Delivered \u00b7 Demo Build",
+      proj({ n: "04", cat: "Meta Ads Campaigns", slug: "case-arka-ads", name: "Arka Retail — Festive Ads Sprint", industry: "Retail \u00b7 Festive Season", kind: "Demo Project", status: "Delivered \u00b7 Demo Build", timeline: "6-week festive sprint",
         objective: "Capture festive demand without burning budget.",
         solution: "Full-funnel Meta campaigns — creatives, pixel and conversion tracking, retargeting.",
         tech: "Meta campaign architecture · Pixel & conversion tracking · Retargeting",
         result: "3.8\u00d7 average ROAS across the sprint; cost per lead down 42%.", href: "/case-arka-ads", phone: true }),
-      proj({ n: "05", cat: "Creative Designs", slug: "case-krishnan-creative", name: "Krishnan Interiors — Festive Creative Suite", industry: "Interiors \u00b7 Campaign", kind: "Demo Project", status: "Delivered \u00b7 Demo Build",
+      proj({ n: "05", cat: "Creative Designs", slug: "case-krishnan-creative", name: "Krishnan Interiors — Festive Creative Suite", industry: "Interiors \u00b7 Campaign", kind: "Demo Project", status: "Delivered \u00b7 Demo Build", timeline: "5-day turnaround",
         objective: "Ads that stop the scroll during the loudest season.",
         solution: "Ad posters and campaign creatives — one visual system across every format.",
         tech: "Ad poster system · Story & reel formats · Branded template kit",
         result: "27 creatives shipped in 5 days — 2.4\u00d7 CTR vs the previous season.", href: "/case-krishnan-creative", phone: true }),
-      proj({ n: "06", cat: "Business Websites", slug: "case-jsvita-platform", name: "The JSVita Platform", industry: "In-House \u00b7 Platform", kind: "Internal Project", status: "Live \u00b7 Internal Build",
+      proj({ n: "06", cat: "Business Websites", slug: "case-jsvita-platform", name: "The JSVita Platform", industry: "In-House \u00b7 Platform", kind: "Internal Project", status: "Live \u00b7 Internal Build", timeline: "Ongoing \u00b7 internal",
         objective: "One ecosystem — brand site, client tooling and member dashboard.",
         solution: "Designed and engineered end-to-end: React, custom engines, premium design system.",
         tech: "React · Custom engines · Premium design system · AI tooling",
@@ -3751,11 +3752,12 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
     if (!contact) return false;
     window.__jsvProc = true;
     var steps = [
-      ["Discover", "A free, focused call to understand your business, goals and constraints."],
-      ["Plan", "A fixed, itemised scope — deliverables, timeline and transparent pricing."],
-      ["Build", "Bespoke design and development, reviewed with you at every milestone."],
+      ["Discovery Call", "A free, focused call to understand your business, goals and constraints."],
+      ["Proposal & Planning", "A fixed, itemised scope — deliverables, timeline and transparent pricing."],
+      ["Design & Development", "Bespoke design and development, reviewed with you at every milestone."],
+      ["Review & Revisions", "You walk every page and flow; revisions are handled inside the agreed scope."],
       ["Launch", "Cross-device QA, then domain, hosting, email and analytics go live."],
-      ["Grow", "Ads, optimization and ongoing care — the site starts paying for itself."]
+      ["Ongoing Support", "A 24-hour response window after launch — maintenance plans or on-demand care."]
     ];
     var rows = steps.map(function (s, i) {
       return '<div class="jsv-proc-step"><span class="jsv-proc-num">0' + (i + 1) + '</span><div><h3>' + s[0] + '</h3><p>' + s[1] + '</p></div></div>';
@@ -3766,7 +3768,7 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
     sec.setAttribute("data-testid", "client-process");
     sec.setAttribute("aria-label", "Working with JSVita");
     sec.innerHTML = '<div class="jv-band">' +
-      bandHead("WORKING WITH JSVITA", "How your project runs", "Five deliberate steps. Zero ambiguity.") +
+      bandHead("WORKING WITH JSVITA", "How We Work", "Six deliberate steps. Zero ambiguity.") +
       '<div class="jsv-proc-grid">' + rows + '</div></div>';
     contact.parentNode.insertBefore(sec, contact);
     revealIO(sec);
@@ -3883,12 +3885,13 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
       ["How long does a website take?", "Most websites launch within days of kickoff, not months — you see a first working demo within 48 hours. Landing pages ship fastest of all; complex builds get a clear timeline in the proposal."],
       ["Do you provide hosting?", "Yes — JSVita sets up fast, secure hosting with SSL on your own domain, configured as part of the build. Managed hosting options are included in maintenance plans."],
       ["Can you redesign existing websites?", "Yes — redesigns are a core JSVita service. Your dated site is rebuilt premium, fast and mobile-first, with redirects and SEO work so your rankings follow."],
-      ["Do you manage Meta Ads?", "Yes — full-funnel Meta campaigns: audience targeting, creative design, lead forms, landing pages, conversion tracking and ongoing optimisation."],
-      ["Do you provide maintenance?", "Yes — monthly care plans cover updates, security, backups, performance monitoring and small improvements, with a 24-hour response window."],
+      ["Do you provide Meta Ads management?", "Yes — full-funnel Meta campaigns: audience targeting, creative design, lead forms, landing pages, conversion tracking and ongoing optimisation."],
+      ["Do you offer maintenance?", "Yes — monthly care plans cover updates, security, backups, performance monitoring and small improvements, with a 24-hour response window."],
       ["What is the payment process?", "Simple and fixed: an itemised proposal first, then a part payment to begin and the balance at launch. No hourly meters, no surprise invoices — CA services are invoiced separately."],
       ["Can I request custom functionality?", "Yes — booking systems, dashboards, portals, automations and integrations are all buildable. Describe the outcome you need and the proposal will scope it, itemised."],
       ["How does lead generation work?", "JSVita builds the full pipeline: dedicated landing pages, Meta lead forms, conversion tracking and follow-up automation — so attention becomes qualified enquiries you can work, not just traffic."],
       ["Do you provide CA services?", "Yes — JSVita CA Services is a dedicated division led by CA Mahalakshmi: GST registration and filing, income tax returns, business registration, accounting and compliance."],
+      ["Do you support startups?", "Yes — startup websites, launch landing pages, brand starter kits and lead capture are built for young ventures; the Startup and Business Pro packages are designed exactly for that stage."],
       ["What support do I get after launch?", "Every build includes a post-launch care window for fixes and tweaks, and Website Maintenance plans keep your site fast, secure and current month after month."]
     ];
     var items = qa.map(function (q, i) {
@@ -4639,12 +4642,12 @@ html:not(.dark) .jsv-cta-line{color:#5A5147}
     var ICO_SHIELD = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3.5v5.2c0 5-3.4 9.3-8 11.3-4.6-2-8-6.3-8-11.3V5.5z"/><polyline points="8.8 12 11 14.2 15.4 9.8"/></svg>';
     var ICO_GEM = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20"/><path d="M12 21L8 9l4-6 4 6z"/></svg>';
     var cards = [
-      [ICO_GEM, "Premium Design", "Bespoke, luxury-grade design on every engagement \u2014 no templates, no recycled layouts, no compromise."],
-      [ICO_MOBILE, "Mobile First", "Every layout is engineered for the phone first, then scaled up \u2014 because that is where your customers are."],
-      [ICO_CLOCK, "Fast Loading", "Sub-second load targets and green Core Web Vitals are treated as features, not hopes."],
-      [ICO_TREND, "SEO Optimized", "Clean structure, schema, metadata and search-ready pages on every build \u2014 found from day one."],
-      [ICO_TARGET, "Lead Focused", "Every page is engineered around one job: turning your visitors into enquiries and revenue."],
-      [ICO_SHIELD, "Long-Term Support", "A 24-hour response window that continues long after launch \u2014 maintenance plans or on-demand care."]
+      [ICO_CLOCK, "Fast Delivery", "First working demo within 48 hours of kickoff \u2014 most sites launch in days, not months."],
+      [ICO_MOBILE, "Mobile Optimized", "Every layout is engineered for the phone first, then scaled up \u2014 because that is where your customers are."],
+      [ICO_TREND, "SEO Friendly", "Clean structure, schema, metadata and search-ready pages on every build \u2014 found from day one."],
+      [ICO_SHIELD, "Secure Hosting", "Fast, secure hosting with SSL on your own domain, configured as part of the build."],
+      [ICO_GEM, "Modern Design", "Bespoke, luxury-grade design on every engagement \u2014 no templates, no recycled layouts, no compromise."],
+      [ICO_TARGET, "Business Focused", "Every page is engineered around one job: turning your visitors into enquiries and revenue."]
     ];
     var sec = document.createElement("section");
     sec.id = "trust-cards";
