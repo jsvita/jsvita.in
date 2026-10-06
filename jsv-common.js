@@ -218,13 +218,28 @@
         data._subject = form.getAttribute("data-jv-lead-subject") || ("New lead — " + (data.Name || data.name || "jsvita.in"));
         data._template = "table";
         data._captcha = "false";
-        /* admin.jsvita.in lead fields — Submission Date + Lead Status + source form + Phase 1.2 (Timestamp + Source Page) */
+        /* admin.jsvita.in lead record — canonical CRM schema:
+           Name · Phone · Email · Company · Service Interested · Source · Status · Created Date · Notes
+           (+ Timestamp, Source Page, Budget, Details, Project Timeline, Preferred Contact Method) */
         var formId = form.getAttribute("data-jv-lead-form") || "lead";
         data["Submission Date"] = new Date().toISOString();
-        data["Lead Status"] = "new";
+        data["Created Date"] = new Date().toISOString();
+        data["Lead Status"] = "New Lead";
         data["Source"] = formId;
         data["Timestamp"] = new Date().toISOString();
         data["Source Page"] = location.href;
+        data["Service Interested"] = data["Service"] || data["service"] || "";
+        data["Company"] = data["Business Name"] || data["business"] || data["Company"] || "";
+        data["Phone"] = data["Phone"] || data["phone"] || "";
+        data["Notes"] = ""; /* filled by JSVita during follow-up */
+        /* Phase 2 ops — optional direct CRM hook: set window.JSVITA_CRM_ENDPOINT (e.g. a
+           Firebase Function / Apps Script webhook) and every lead is mirrored there in the
+           same schema. Fire-and-forget: never blocks or breaks the email delivery path. */
+        if (window.JSVITA_CRM_ENDPOINT) {
+          try {
+            fetch(window.JSVITA_CRM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }).catch(function () {});
+          } catch (cr) {}
+        }
         function lock(txt) { if (btn) { btn.disabled = true; if (txt) btn.innerHTML = txt; } }
         function unlock() { if (btn) { btn.disabled = false; btn.innerHTML = btnTxt; } }
         function finishOk() {

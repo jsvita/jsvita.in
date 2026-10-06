@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/jsvita-logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="description" content="JSVita CRM — private business operations." />
+  <title>CRM — JSVita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <style>
+    :root{--bg:#050505;--bg2:#0B0B0B;--gold:#D4AF37;--prem:#F7D774;--deep:#b8860b;--cream:#fff;--muted:#B8B8B8;--border:rgba(212,175,55,.25);--ease:cubic-bezier(.4,0,.2,1)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{min-height:100%}
+    body{background:radial-gradient(800px 520px at 80% -5%,rgba(212,175,55,.10),transparent 60%),radial-gradient(620px 460px at 0% 100%,rgba(184,134,11,.08),transparent 55%),linear-gradient(180deg,#050505,#0B0B0B 55%,#050505);color:var(--cream);font-family:'DM Sans',system-ui,sans-serif}
+    ::selection{background:rgba(212,175,55,.35)}
+    ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#050505}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(212,175,55,.5),rgba(184,134,11,.3));border-radius:8px}
+    a{color:var(--prem)}
+    header{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:14px;padding:12px 22px;background:rgba(5,5,5,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    header .jv-logo{width:38px;height:38px;filter:drop-shadow(0 2px 10px rgba(212,175,55,.4))}
+    header .bsub{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.34em;color:var(--gold)}
+    header .bname{font-family:'Playfair Display',serif;font-weight:700;font-size:16px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px}
+    header .spacer{flex:1}
+    header .who{font-size:12px;color:var(--muted)}
+    .pill{font-size:12.5px;color:#e8d9ae;text-decoration:none;border:1px solid rgba(212,175,55,.3);padding:8px 16px;border-radius:999px;transition:.25s;background:none;cursor:pointer;font-family:inherit}
+    .pill:hover{border-color:rgba(212,175,55,.7);color:var(--prem)}
+    .shell{display:grid;grid-template-columns:216px 1fr;min-height:calc(100vh - 63px)}
+    nav.side{border-right:1px solid var(--border);padding:18px 12px;display:flex;flex-direction:column;gap:4px;position:sticky;top:63px;height:calc(100vh - 63px);overflow:auto}
+    nav.side .navk{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.3em;color:var(--deep);text-transform:uppercase;padding:10px 12px 6px}
+    nav.side button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:none;border:0;color:var(--muted);font:500 13.5px 'DM Sans',sans-serif;padding:10px 12px;border-radius:10px;cursor:pointer;transition:.2s}
+    nav.side button:hover{color:var(--cream);background:rgba(212,175,55,.07)}
+    nav.side button.on{color:var(--prem);background:rgba(212,175,55,.12);box-shadow:inset 2px 0 0 var(--gold)}
+    nav.side button .ic{width:18px;text-align:center;opacity:.9}
+    nav.side button .cnt{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold);background:rgba(212,175,55,.12);border:1px solid var(--border);padding:1px 7px;border-radius:999px}
+    main{padding:26px 30px 60px;min-width:0}
+    .h{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;margin-bottom:4px}
+    .sub{color:var(--muted);font-size:13.5px;margin-bottom:22px}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:26px}
+    .kpi{border:1px solid var(--border);border-radius:14px;padding:16px;background:linear-gradient(160deg,rgba(212,175,55,.07),rgba(11,11,11,.6))}
+    .kpi .n{font:800 26px/1.1 'Playfair Display',serif;color:var(--prem)}
+    .kpi .l{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+    .panel{border:1px solid var(--border);border-radius:16px;background:rgba(11,11,11,.55);padding:20px;margin-bottom:22px}
+    .panel h3{font-size:15px;margin-bottom:12px;color:var(--prem)}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--deep);text-align:left;padding:8px 10px;border-bottom:1px solid var(--border)}
+    td{padding:10px;border-bottom:1px solid rgba(212,175,55,.1);color:#D8CCBE;vertical-align:top}
+    tr:hover td{background:rgba(212,175,55,.04)}
+    .st{display:inline-block;padding:3px 10px;border-radius:999px;border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+    .st-new{color:#F7D774;background:rgba(212,175,55,.12)}
+    .st-contacted,.st-proposal,.st-negotiation{color:#e8d9ae}
+    .st-won,.st-project-active,.st-completed{color:#7ee2a8;border-color:rgba(126,226,168,.35)}
+    .st-lost{color:#f08c8c;border-color:rgba(240,140,140,.35)}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(120deg,#F3E5AB,#D4AF37);color:#17110C;font:700 12.5px 'DM Sans',sans-serif;border:0;border-radius:999px;padding:10px 18px;cursor:pointer;transition:.2s}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.ghost{background:none;border:1px solid rgba(212,175,55,.45);color:var(--prem)}
+    .btn.sm{padding:7px 13px;font-size:11.5px}
+    .inp,select,textarea{width:100%;background:rgba(0,0,0,.5);border:1px solid var(--border);border-radius:10px;color:var(--cream);font:400 13.5px 'DM Sans',sans-serif;padding:10px 12px;outline:none;transition:border-color .2s}
+    .inp:focus,select:focus,textarea:focus{border-color:var(--gold)}
+    textarea{min-height:74px;resize:vertical}
+    label.f{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:12px 0 5px}
+    .frow{display:grid;gap:12px}
+    @media(min-width:720px){.frow.c2{grid-template-columns:1fr 1fr}.frow.c3{grid-template-columns:1fr 1fr 1fr}}
+    .empty{padding:38px 20px;text-align:center;color:var(--muted);font-size:13.5px}
+    .empty b{color:var(--prem)}
+    .pipe{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+    .pipe .col{border:1px solid var(--border);border-radius:12px;padding:10px;background:rgba(0,0,0,.35);min-height:80px}
+    .pipe .col h4{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+    .pipe .lead{border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:7px 9px;margin-bottom:6px;font-size:12px;color:#D8CCBE;cursor:pointer}
+    .pipe .lead:hover{border-color:var(--gold)}
+    .pipe .lead b{display:block;color:var(--cream);font-weight:600;font-size:12.5px}
+    .modal{position:fixed;inset:0;z-index:60;display:none;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);overflow:auto;padding:40px 16px}
+    .modal.open{display:flex}
+    .mbox{width:min(680px,100%);background:linear-gradient(170deg,#0d0c09,#070605);border:1px solid var(--border);border-radius:18px;padding:24px}
+    .mbox h3{font-family:'Playfair Display',serif;font-size:19px;color:var(--prem);margin-bottom:4px}
+    .mhead{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:6px}
+    .notes{margin-top:10px}
+    .notes .note{border-left:2px solid var(--gold);padding:6px 10px;margin-bottom:8px;font-size:12.5px;color:#D8CCBE;background:rgba(212,175,55,.05);border-radius:0 8px 8px 0}
+    .notes .note span{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;color:var(--deep);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px}
+    .gate{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+    .gate .jv-logo{width:84px;height:84px;filter:drop-shadow(0 8px 24px rgba(212,175,55,.5))}
+    .gate h1{font-family:'Playfair Display',serif;font-size:24px}
+    .gate p{color:var(--muted);font-size:13.5px}
+    .msg{min-height:20px;color:var(--gold);font-size:13px}
+    .drawer-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .toolrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+    .toolrow .inp{width:auto;min-width:220px;flex:1 1 220px}
+    .mono{font-family:'JetBrains Mono',monospace}
+    .dim{color:var(--muted)}
+    footer.pagefoot{padding:18px 30px;border-top:1px solid var(--border);color:#776a55;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+    @media(max-width:860px){.shell{grid-template-columns:1fr}nav.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--border)}nav.side .navk{display:none}nav.side button{width:auto}}
+  </style>
+  <link rel="canonical" href="https://jsvita.in/admin-crm" />
+  <script>if(/\.html$/.test(location.pathname))location.replace(location.pathname.replace(/\.html$/,"")+location.search+location.hash);</script>
+</head>
+<body>
+  <header>
+    <a class="bname" href="/"><svg class="jv-logo" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g transform="translate(120,120)"><polygon points="0,-105 91,-52 91,52 0,105 -91,52 -91,-52" fill="#0A0A0C" stroke="url(#jvCrmG)" stroke-width="4"/><polygon points="0,-95 83,-46 83,46 0,95 -83,46 -83,-46" fill="none" stroke="url(#jvCrmG)" stroke-width="1.4" opacity="0.55"/><path d="M -15,-45 L -15,25 C -15,45 0,55 25,45 C 40,38 48,22 48,22" fill="none" stroke="url(#jvCrmG)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M 28,-38 C 15,-48 -15,-42 -22,-25 C -28,-10 18,-2 12,20 C 6,38 -22,42 -35,30" fill="none" stroke="url(#jvCrmG)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M -50,-20 L 0,65 L 50,-20" fill="none" stroke="url(#jvCrmL)" stroke-width="3" opacity="0.4"/></g></svg><span><span class="bname" style="font-size:15px">JSVita</span><span class="bsub">CRM · OPERATIONS</span></span></a>
+    <span class="spacer"></span>
+    <span class="who" id="who"></span>
+    <button class="pill" id="signout" style="display:none">Sign out</button>
+    <a class="pill" href="/admin">Console</a>
+  </header>
+
+  <div class="gate" id="gate">
+    <svg class="jv-logo" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g transform="translate(120,120)"><polygon points="0,-105 91,-52 91,52 0,105 -91,52 -91,-52" fill="#0A0A0C" stroke="url(#jvCrmG)" stroke-width="4"/><path d="M -15,-45 L -15,25 C -15,45 0,55 25,45 C 40,38 48,22 48,22" fill="none" stroke="url(#jvCrmG)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M 28,-38 C 15,-48 -15,-42 -22,-25 C -28,-10 18,-2 12,20 C 6,38 -22,42 -35,30" fill="none" stroke="url(#jvCrmG)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+    <h1>JSVita CRM</h1>
+    <p>Verifying your access…</p>
+    <div class="msg" id="gateMsg" role="status" aria-live="polite"></div>
+  </div>
+
+  <div class="shell" id="shell" style="display:none">
+    <nav class="side" aria-label="CRM modules">
+      <span class="navk">Operations</span>
+      <button data-mod="dashboard" class="on"><span class="ic">◈</span>Dashboard</button>
+      <button data-mod="leads"><span class="ic">✉</span>Leads<span class="cnt" id="cntLeads">0</span></button>
+      <button data-mod="projects"><span class="ic">▤</span>Projects<span class="cnt" id="cntProjects">0</span></button>
+      <button data-mod="clients"><span class="ic">◍</span>Clients<span class="cnt" id="cntClients">0</span></button>
+      <button data-mod="payments"><span class="ic">₹</span>Payments<span class="cnt" id="cntPayments">0</span></button>
+      <button data-mod="bookings"><span class="ic">◷</span>Bookings<span class="cnt" id="cntBookings">0</span></button>
+      <span class="navk">Insight</span>
+      <button data-mod="analytics"><span class="ic">◱</span>Analytics</button>
+      <button data-mod="settings"><span class="ic">⚙</span>Settings</button>
+      <span class="navk">Tools</span>
+      <button data-mod="proposals"><span class="ic">✎</span>Proposals</button>
+      <button data-mod="onboarding"><span class="ic">→</span>Onboarding</button>
+    </nav>
+    <main id="main"></main>
+  </div>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="mbox" id="mBox"></div>
+  </div>
+
+  <footer class="pagefoot">JSVITA CRM · PRIVATE · NOINDEX</footer>
+
+  <script>
+    /* ================= JSVITA CRM — local-first operations core =================
+       Storage: localStorage (jsvita_crm_v1) with JSON export/import for backup.
+       Upgrade path (documented in OPERATIONS.md): set window.JSVITA_CRM_ENDPOINT
+       or wire Firebase Firestore — the record schema is already canonical. */
+    firebase.initializeApp({ apiKey:"AIzaSyAoEGzAL-WkAGttLArl_PpffJYbOYwc5yE", authDomain:"auth.jsvita.in",
+      projectId:"jsvita-login", storageBucket:"jsvita-login.firebasestorage.app",
+      messagingSenderId:"433927112110", appId:"1:433927112110:web:ad6186be9800780e8d343f" });
+    const OWNER = "admin@jsvita.in";
+    const LSKEY = "jsvita_crm_v1";
+    const STATUSES = ["New Lead","Contacted","Proposal Sent","Negotiation","Won","Lost","Project Active","Completed"];
+    const STCL = {"New Lead":"st-new","Contacted":"st-contacted","Proposal Sent":"st-proposal","Negotiation":"st-negotiation","Won":"st-won","Lost":"st-lost","Project Active":"st-project-active","Completed":"st-completed"};
+    const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+    const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+    const inr = n => "₹" + Number(n || 0).toLocaleString("en-IN");
+    const fdate = iso => iso ? new Date(iso).toLocaleDateString("en-IN", { day:"2-digit", month:"short", year:"numeric" }) : "—";
+
+    function blankDB(){ return { leads:[], projects:[], clients:[], payments:[], bookings:[] }; }
+    function load(){ try { const r = localStorage.getItem(LSKEY); if (r) { const d = JSON.parse(r); return Object.assign(blankDB(), d); } } catch(e){} return blankDB(); }
+    function save(){ try { localStorage.setItem(LSKEY, JSON.stringify(DB)); } catch(e){} refreshCounts(); }
+    let DB = load();
+
+    /* ---------- sample data (Settings → clearly labelled, never auto-loaded) ---------- */
+    function sampleData(){
+      const d = blankDB(); const t = new Date(); const day = n => new Date(t.getTime() - n*864e5).toISOString();
+      d.leads = [
+        { id:uid(), name:"Ravi Kumar", phone:"+91 98765 43210", email:"ravi@example.com", company:"Kumar Textiles", service:"Business Website", source:"contact", status:"New Lead", created:day(0), notes:[{at:day(0), txt:"Sample lead — from contact form."}] },
+        { id:uid(), name:"Priya Nair", phone:"+91 90123 45678", email:"priya@example.com", company:"Nair Interiors", service:"Website Redesign", source:"meta-ads", status:"Proposal Sent", created:day(3), notes:[{at:day(2), txt:"Sample — proposal ₹7,999 sent."}] },
+        { id:uid(), name:"Arun Patel", phone:"+91 91234 56789", email:"arun@patelco.example", company:"Patel & Co.", service:"Landing Page", source:"contact", status:"Project Active", created:day(12), notes:[{at:day(10), txt:"Sample — advance received, project started."}] }
+      ];
+      d.clients = [{ id:uid(), name:"Arun Patel", company:"Patel & Co.", email:"arun@patelco.example", phone:"+91 91234 56789" }];
+      d.projects = [{ id:uid(), name:"Patel & Co. — Consultation Funnel", client:"Arun Patel", company:"Patel & Co.", service:"Landing Page", value:4998, status:"In Progress", created:day(10), timeline:"2-week delivery", checklist:{ welcome:true, requirements:true, brand:false, domain:false, hosting:false } }];
+      d.payments = [
+        { id:uid(), project:"Patel & Co. — Consultation Funnel", client:"Arun Patel", milestone:"50% Advance", amount:2499, status:"Paid", due:day(10), paid:day(10) },
+        { id:uid(), project:"Patel & Co. — Consultation Funnel", client:"Arun Patel", milestone:"50% Before Launch", amount:2499, status:"Pending", due:"", paid:"" }
+      ];
+      d.bookings = [{ id:uid(), date:new Date(t.getTime()+2*864e5).toISOString(), name:"Priya Nair", type:"Consultation", source:"Calendly", status:"Confirmed" }];
+      return d;
+    }
+
+    /* ---------- modal ---------- */
+    const modal = document.getElementById("modal"), mBox = document.getElementById("mBox");
+    function openModal(html){ mBox.innerHTML = html; modal.classList.add("open"); }
+    function closeModal(){ modal.classList.remove("open"); }
+    modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+
+    /* ---------- helpers ---------- */
+    function leadById(id){ return DB.leads.find(l => l.id === id); }
+    function statusChip(s){ return '<span class="st ' + (STCL[s]||"") + '">' + esc(s) + '</span>'; }
+    function statusSelect(id, cur){
+      return '<select data-leadst="' + id + '">' + STATUSES.map(s => '<option' + (s===cur?' selected':'') + '>' + s + '</option>').join("") + '</select>';
+    }
+    function refreshCounts(){
+      const set = (id, n) => { const el = document.getElementById(id); if (el) el.textContent = n; };
+      set("cntLeads", DB.leads.length); set("cntProjects", DB.projects.length);
+      set("cntClients", DB.clients.length); set("cntPayments", DB.payments.length); set("cntBookings", DB.bookings.length);
+    }
+    function waLink(phone, name){
+      const digits = String(phone||"").replace(/[^0-9]/g,"");
+      const txt = encodeURIComponent("Hi " + (name||"") + " — JSVita here regarding your project enquiry.");
+      return digits ? "https://wa.me/" + digits + "?text=" + txt : "";
+    }
+
+    /* ================= modules ================= */
+    const R = {};
+
+    R.dashboard = function(){
+      const total = DB.leads.length;
+      const byStatus = {}; STATUSES.forEach(s => byStatus[s] = DB.leads.filter(l => l.status === s).length);
+      const won = byStatus["Won"] + byStatus["Project Active"] + byStatus["Completed"];
+      const lost = byStatus["Lost"];
+      const conv = (won + lost) ? Math.round(won * 100 / (won + lost)) : 0;
+      const collected = DB.payments.filter(p => p.status === "Paid").reduce((a, p) => a + Number(p.amount||0), 0);
+      const outstanding = DB.payments.filter(p => p.status !== "Paid").reduce((a, p) => a + Number(p.amount||0), 0);
+      const pipeline = STATUSES.map(s =>
+        '<div class="col"><h4>' + esc(s) + ' · ' + byStatus[s] + '</h4>' +
+        DB.leads.filter(l => l.status === s).map(l => '<div class="lead" data-open-lead="' + l.id + '"><b>' + esc(l.name) + '</b>' + esc(l.company || l.service || "") + '</div>').join("") + '</div>').join("");
+      return '<h1 class="h">Dashboard</h1><p class="sub">Business pulse — leads, pipeline and money.</p>' +
+        '<div class="kpis">' +
+          kpi(total, "Total Leads") + kpi(byStatus["New Lead"], "New Leads") + kpi(DB.projects.filter(p=>p.status!=="Completed").length, "Active Projects") +
+          kpi(inr(collected), "Collected") + kpi(inr(outstanding), "Outstanding") + kpi(conv + "%", "Lead → Win Rate") +
+        '</div>' +
+        '<div class="panel"><h3>Pipeline — ' + total + ' leads</h3><div class="pipe">' + pipeline + '</div></div>' +
+        activityPanel();
+    };
+    function kpi(n, l){ return '<div class="kpi"><div class="n">' + n + '</div><div class="l">' + l + '</div></div>'; }
+    function activityPanel(){
+      const items = [];
+      DB.leads.forEach(l => (l.notes||[]).forEach(n => items.push({ at:n.at, txt:'<b>' + esc(l.name) + '</b> — ' + esc(n.txt) })));
+      items.sort((a,b) => new Date(b.at) - new Date(a.at));
+      return '<div class="panel"><h3>Recent activity</h3>' + (items.length ? '<div class="notes">' + items.slice(0,8).map(i => '<div class="note"><span>' + fdate(i.at) + '</span>' + i.txt + '</div>').join("") + '</div>' : '<div class="empty">No activity yet — notes you add on leads appear here.</div>') + '</div>';
+    }
+
+    R.leads = function(){
+      return '<h1 class="h">Leads</h1><p class="sub">Every enquiry — track status, keep notes, move the pipeline.</p>' +
+        '<div class="toolrow"><input class="inp" id="leadQ" placeholder="Search name, company, email…">' +
+        '<select id="leadF" style="width:auto"><option value="">All statuses</option>' + STATUSES.map(s => '<option>' + s + '</option>').join("") + '</select>' +
+        '<button class="btn" id="leadAdd">+ New Lead</button></div>' +
+        '<div class="panel" style="overflow:auto"><table><thead><tr><th>Name</th><th>Company</th><th>Service</th><th>Source</th><th>Status</th><th>Created</th><th></th></tr></thead><tbody id="leadRows"></tbody></table></div>';
+    };
+    function renderLeadRows(){
+      const q = (document.getElementById("leadQ")||{}).value ? document.getElementById("leadQ").value.toLowerCase() : "";
+      const f = (document.getElementById("leadF")||{}).value || "";
+      const rows = DB.leads
+        .filter(l => (!f || l.status === f) && (!q || (l.name+" "+l.company+" "+l.email+" "+l.service).toLowerCase().includes(q)))
+        .sort((a,b) => new Date(b.created) - new Date(a.created));
+      document.getElementById("leadRows").innerHTML = rows.length ? rows.map(l =>
+        '<tr><td><a href="#" data-open-lead="' + l.id + '"><b>' + esc(l.name) + '</b></a><div class="dim" style="font-size:11.5px">' + esc(l.email) + '</div></td>' +
+        '<td>' + esc(l.company||"—") + '</td><td>' + esc(l.service||"—") + '</td><td class="mono" style="font-size:11px">' + esc(l.source||"—") + '</td>' +
+        '<td>' + statusSelect(l.id, l.status) + '</td><td class="mono" style="font-size:11px">' + fdate(l.created) + '</td>' +
+        '<td><button class="btn ghost sm" data-open-lead="' + l.id + '">Open</button></td></tr>').join("")
+        : '<tr><td colspan="7"><div class="empty">No leads yet. New form submissions land here when the CRM endpoint is connected — or <b>add one manually</b>.</div></td></tr>';
+    }
+
+    function leadDrawer(id){
+      const l = leadById(id); if (!l) return;
+      const notes = (l.notes||[]).map(n => '<div class="note"><span>' + fdate(n.at) + '</span>' + esc(n.txt) + '</div>').join("");
+      openModal('<div class="mhead"><div><h3 id="mTitle">' + esc(l.name) + '</h3><span class="dim mono" style="font-size:11px">' + esc(l.source||"") + ' · ' + fdate(l.created) + ' · ' + esc(l.id) + '</span></div>' + statusChip(l.status) + '</div>' +
+        '<div class="frow c2"><div><label class="f">Phone</label><input class="inp" id="e_phone" value="' + esc(l.phone) + '"></div>' +
+        '<div><label class="f">Email</label><input class="inp" id="e_email" value="' + esc(l.email) + '"></div>' +
+        '<div><label class="f">Company</label><input class="inp" id="e_company" value="' + esc(l.company) + '"></div>' +
+        '<div><label class="f">Service Interested</label><input class="inp" id="e_service" value="' + esc(l.service) + '"></div>' +
+        '<div><label class="f">Status</label><select id="e_status">' + STATUSES.map(s => '<option' + (s===l.status?' selected':'') + '>' + s + '</option>').join("") + '</select></div>' +
+        '<div><label class="f">Created Date</label><input class="inp" id="e_created" type="date" value="' + (l.created ? l.created.slice(0,10) : '') + '"></div></div>' +
+        '<label class="f">Notes — timestamped log</label><div class="notes" id="e_notes">' + (notes || '<div class="dim" style="font-size:12px">No notes yet.</div>') + '</div>' +
+        '<div style="display:flex;gap:8px;margin-top:8px"><input class="inp" id="e_newnote" placeholder="Add a note — call outcome, proposal amount, next step…"><button class="btn sm" id="e_addnote">Add</button></div>' +
+        '<div class="drawer-actions">' +
+          (waLink(l.phone, l.name) ? '<a class="btn sm" target="_blank" rel="noopener" href="' + waLink(l.phone, l.name) + '">WhatsApp ' + esc(l.name.split(" ")[0]) + '</a>' : '') +
+          (l.email ? '<a class="btn ghost sm" href="mailto:' + esc(l.email) + '">Email</a>' : '') +
+          '<button class="btn sm" id="e_save">Save</button>' +
+          '<button class="btn sm" id="e_convert">→ Create Client + Project</button>' +
+          '<button class="btn ghost sm" id="e_del" style="margin-left:auto;color:#f08c8c;border-color:rgba(240,140,140,.4)">Delete</button>' +
+        '</div>');
+      document.getElementById("e_addnote").onclick = function(){
+        const v = document.getElementById("e_newnote").value.trim(); if (!v) return;
+        l.notes = l.notes || []; l.notes.push({ at:new Date().toISOString(), txt:v }); save(); leadDrawer(id); renderLeadRows();
+      };
+      document.getElementById("e_save").onclick = function(){
+        l.phone = document.getElementById("e_phone").value.trim(); l.email = document.getElementById("e_email").value.trim();
+        l.company = document.getElementById("e_company").value.trim(); l.service = document.getElementById("e_service").value.trim();
+        l.status = document.getElementById("e_status").value; const cd = document.getElementById("e_created").value; if (cd) l.created = new Date(cd).toISOString();
+        save(); renderLeadRows(); closeModal();
+      };
+      const cv = document.getElementById("e_convert");
+      if (cv) cv.onclick = function(){ l.status = document.getElementById("e_status").value; convertLead(l); };
+      document.getElementById("e_del").onclick = function(){
+        if (confirm("Delete lead " + l.name + "? This cannot be undone.")) { DB.leads = DB.leads.filter(x => x.id !== id); save(); renderLeadRows(); closeModal(); }
+      };
+    }
+
+    function leadForm(){
+      openModal('<h3 id="mTitle">New Lead</h3>' +
+        '<div class="frow c2"><div><label class="f">Name</label><input class="inp" id="n_name"></div><div><label class="f">Phone</label><input class="inp" id="n_phone"></div>' +
+        '<div><label class="f">Email</label><input class="inp" id="n_email"></div><div><label class="f">Company</label><input class="inp" id="n_company"></div>' +
+        '<div><label class="f">Service Interested</label><input class="inp" id="n_service"></div><div><label class="f">Source</label><select class="inp" id="n_source"><option>WhatsApp</option><option>contact</option><option>meta-ads</option><option>Referral</option><option>Walk-in</option><option>Other</option></select></div></div>' +
+        '<label class="f">First note</label><input class="inp" id="n_note" placeholder="Context…">' +
+        '<div class="drawer-actions"><button class="btn" id="n_save">Create Lead</button><button class="btn ghost" id="n_cancel">Cancel</button></div>');
+      document.getElementById("n_cancel").onclick = closeModal;
+      document.getElementById("n_save").onclick = function(){
+        const name = document.getElementById("n_name").value.trim(); if (!name) { alert("Name is required."); return; }
+        const l = { id:uid(), name:name, phone:document.getElementById("n_phone").value.trim(), email:document.getElementById("n_email").value.trim(),
+          company:document.getElementById("n_company").value.trim(), service:document.getElementById("n_service").value.trim(),
+          source:document.getElementById("n_source").value, status:"New Lead", created:new Date().toISOString(), notes:[] };
+        const nt = document.getElementById("n_note").value.trim(); if (nt) l.notes.push({ at:new Date().toISOString(), txt:nt });
+        DB.leads.push(l); save(); renderLeadRows(); closeModal();
+      };
+    }
+
+    /* Lead → Client → Project + 50/50 payments (onboarding automation, step 1) */
+    function convertLead(l){
+      const company = l.company || l.name;
+      if (!DB.clients.some(c => c.email && c.email === l.email && l.email)) DB.clients.push({ id:uid(), name:l.name, company:company, email:l.email, phone:l.phone });
+      const value = Number(prompt("Project value (₹) — from the signed proposal:", "4999")) || 0;
+      const p = { id:uid(), name:company + " — " + (l.service || "Project"), client:l.name, company:company, service:l.service || "", value:value,
+        status:"Planning", created:new Date().toISOString(), timeline:"", checklist:{ welcome:false, requirements:false, brand:false, domain:false, hosting:false } };
+      DB.projects.push(p);
+      if (value > 0) {
+        DB.payments.push({ id:uid(), project:p.name, client:l.name, milestone:"50% Advance", amount:Math.round(value/2), status:"Pending", due:"", paid:"" });
+        DB.payments.push({ id:uid(), project:p.name, client:l.name, milestone:"50% Before Launch", amount:Math.round(value/2), status:"Pending", due:"", paid:"" });
+      }
+      l.status = "Project Active"; l.notes = l.notes || []; l.notes.push({ at:new Date().toISOString(), txt:"Converted to client — project created, 50/50 payments scheduled." });
+      save(); renderLeadRows(); closeModal(); go("projects");
+    }
+
+    R.projects = function(){
+      return '<h1 class="h">Projects</h1><p class="sub">Active work — status, onboarding checklist, money milestones.</p>' +
+        '<div class="panel" style="overflow:auto"><table><thead><tr><th>Project</th><th>Client</th><th>Service</th><th>Value</th><th>Status</th><th>Onboarding</th><th></th></tr></thead><tbody id="projRows"></tbody></table></div>';
+    };
+    function renderProjRows(){
+      const el = document.getElementById("projRows"); if (!el) return;
+      el.innerHTML = DB.projects.length ? DB.projects.map(p => {
+        const c = p.checklist || {}; const done = Object.keys(c).filter(k => c[k]).length;
+        return '<tr><td><b>' + esc(p.name) + '</b><div class="dim" style="font-size:11.5px">' + esc(p.timeline||"") + '</div></td><td>' + esc(p.client) + '</td><td>' + esc(p.service||"—") + '</td><td>' + inr(p.value) + '</td>' +
+          '<td>' + statusSelect(p.id, p.status).replace('data-leadst','data-projst') + '</td>' +
+          '<td class="mono" style="font-size:11px">' + done + '/5</td><td><button class="btn ghost sm" data-open-proj="' + p.id + '">Open</button></td></tr>';
+      }).join("") : '<tr><td colspan="7"><div class="empty">No projects yet — win a lead, then use <b>→ Create Client + Project</b>.</div></td></tr>';
+    }
+    function projDrawer(id){
+      const p = DB.projects.find(x => x.id === id); if (!p) return;
+      const c = p.checklist || {};
+      const ck = k => '<label style="display:flex;gap:8px;align-items:center;margin:7px 0;font-size:13px;color:#D8CCBE"><input type="checkbox" data-ck="' + k + '"' + (c[k]?' checked':'') + '> ' + ({welcome:"Welcome email sent",requirements:"Requirements collected",brand:"Brand assets received",domain:"Domain information collected",hosting:"Hosting information collected"}[k]) + '</label>';
+      openModal('<div class="mhead"><h3 id="mTitle">' + esc(p.name) + '</h3><span class="dim">' + inr(p.value) + '</span></div>' +
+        '<div class="frow c2"><div><label class="f">Client</label><input class="inp" id="p_client" value="' + esc(p.client) + '"></div>' +
+        '<div><label class="f">Status</label><select id="p_status">' + ["Planning","In Progress","Review","Launched","Completed"].map(s => '<option' + (s===p.status?' selected':'') + '>' + s + '</option>').join("") + '</select></div>' +
+        '<div><label class="f">Timeline</label><input class="inp" id="p_timeline" value="' + esc(p.timeline) + '"></div>' +
+        '<div><label class="f">Value (₹)</label><input class="inp" id="p_value" type="number" value="' + (p.value||0) + '"></div></div>' +
+        '<label class="f">Client onboarding — ' + (p.status === "Planning" ? "start here" : "checklist") + '</label><div>' + ck("welcome") + ck("requirements") + ck("brand") + ck("domain") + ck("hosting") + '</div>' +
+        '<div class="drawer-actions"><button class="btn sm" id="p_save">Save</button><a class="btn ghost sm" href="/portal" target="_blank" rel="noopener">Client portal ↗</a></div>');
+      mBox.querySelectorAll("[data-ck]").forEach(cb => cb.onchange = function(){ p.checklist = p.checklist || {}; p.checklist[cb.getAttribute("data-ck")] = cb.checked; save(); renderProjRows(); });
+      document.getElementById("p_save").onclick = function(){
+        p.client = document.getElementById("p_client").value.trim(); p.status = document.getElementById("p_status").value;
+        p.timeline = document.getElementById("p_timeline").value.trim(); p.value = Number(document.getElementById("p_value").value) || 0;
+        save(); renderProjRows(); closeModal();
+      };
+    }
+
+    R.clients = function(){
+      return '<h1 class="h">Clients</h1><p class="sub">People who pay the bills.</p>' +
+        '<div class="panel" style="overflow:auto"><table><thead><tr><th>Client</th><th>Company</th><th>Email</th><th>Phone</th><th>Projects</th><th>Total Value</th></tr></thead><tbody>' +
+        (DB.clients.length ? DB.clients.map(c => {
+          const projs = DB.projects.filter(p => p.client === c.name || p.company === c.company);
+          const val = projs.reduce((a,p) => a + Number(p.value||0), 0);
+          return '<tr><td><b>' + esc(c.name) + '</b></td><td>' + esc(c.company||"—") + '</td><td>' + esc(c.email||"—") + '</td><td>' + esc(c.phone||"—") + '</td><td>' + projs.length + '</td><td>' + inr(val) + '</td></tr>';
+        }).join("") : '<tr><td colspan="6"><div class="empty">No clients yet — convert a <b>Won</b> lead.</div></td></tr>') + '</tbody></table></div>' +
+        '<div class="panel"><h3>Client portal</h3><p class="dim" style="font-size:13px">Give clients view-only access at <a href="/portal" target="_blank" rel="noopener">/portal</a> — project status, deliverables, invoices and support requests. Create their account in <a href="https://console.firebase.google.com/project/jsvita-login/authentication/users" target="_blank" rel="noopener">Firebase Auth</a>.</p></div>';
+    };
+
+    R.payments = function(){
+      const collected = DB.payments.filter(p => p.status === "Paid").reduce((a,p) => a + Number(p.amount||0), 0);
+      const out = DB.payments.filter(p => p.status !== "Paid").reduce((a,p) => a + Number(p.amount||0), 0);
+      return '<h1 class="h">Payments</h1><p class="sub">50% advance · 50% before launch — no work begins before the advance clears.</p>' +
+        '<div class="kpis">' + kpi(inr(collected), "Collected") + kpi(inr(out), "Outstanding") + kpi(DB.payments.filter(p=>p.status==="Paid").length + "/" + DB.payments.length, "Invoices cleared") + '</div>' +
+        '<div class="panel" style="overflow:auto"><table><thead><tr><th>Project</th><th>Client</th><th>Milestone</th><th>Amount</th><th>Due</th><th>Status</th></tr></thead><tbody>' +
+        (DB.payments.length ? DB.payments.map(p =>
+          '<tr><td>' + esc(p.project) + '</td><td>' + esc(p.client) + '</td><td>' + esc(p.milestone) + '</td><td><b>' + inr(p.amount) + '</b></td><td class="mono" style="font-size:11px">' + (p.paid ? fdate(p.paid) : fdate(p.due)) + '</td>' +
+          '<td><select data-payst="' + p.id + '">' + ["Pending","Paid"].map(s => '<option' + (s===p.status?' selected':'') + '>' + s + '</option>').join("") + '</select></td></tr>').join("")
+        : '<tr><td colspan="6"><div class="empty">No payments tracked yet — created automatically when a project starts.</div></td></tr>') + '</tbody></table></div>';
+    };
+
+    R.bookings = function(){
+      return '<h1 class="h">Bookings</h1><p class="sub">Consultations and CA bookings — Calendly events land by email; log them here.</p>' +
+        '<div class="toolrow"><button class="btn" id="bkAdd">+ Log Booking</button></div>' +
+        '<div class="panel" style="overflow:auto"><table><thead><tr><th>Date</th><th>Name</th><th>Type</th><th>Source</th><th>Status</th></tr></thead><tbody id="bkRows"></tbody></table></div>';
+    };
+    function renderBkRows(){
+      const el = document.getElementById("bkRows"); if (!el) return;
+      el.innerHTML = DB.bookings.length ? DB.bookings.sort((a,b) => new Date(b.date) - new Date(a.date)).map(b =>
+        '<tr><td class="mono" style="font-size:11px">' + fdate(b.date) + '</td><td><b>' + esc(b.name) + '</b></td><td>' + esc(b.type) + '</td><td class="mono" style="font-size:11px">' + esc(b.source||"—") + '</td>' +
+        '<td><select data-bkst="' + b.id + '">' + ["Requested","Confirmed","Done","No-show"].map(s => '<option' + (s===b.status?' selected':'') + '>' + s + '</option>').join("") + '</select></td></tr>').join("")
+        : '<tr><td colspan="5"><div class="empty">No bookings logged yet.</div></td></tr>';
+    }
+    function bkForm(){
+      openModal('<h3 id="mTitle">Log Booking</h3><div class="frow c2"><div><label class="f">Date</label><input class="inp" id="b_date" type="date"></div><div><label class="f">Name</label><input class="inp" id="b_name"></div>' +
+        '<div><label class="f">Type</label><select class="inp" id="b_type"><option>Consultation</option><option>CA Booking</option><option>Discovery Call</option></select></div><div><label class="f">Status</label><select class="inp" id="b_status"><option>Requested</option><option>Confirmed</option><option>Done</option></select></div></div>' +
+        '<div class="drawer-actions"><button class="btn" id="b_save">Save</button><button class="btn ghost" id="b_cancel">Cancel</button></div>');
+      document.getElementById("b_cancel").onclick = closeModal;
+      document.getElementById("b_save").onclick = function(){
+        const name = document.getElementById("b_name").value.trim(); if (!name) { alert("Name is required."); return; }
+        DB.bookings.push({ id:uid(), date:document.getElementById("b_date").value ? new Date(document.getElementById("b_date").value).toISOString() : new Date().toISOString(),
+          name:name, type:document.getElementById("b_type").value, source:"Manual", status:document.getElementById("b_status").value });
+        save(); renderBkRows(); closeModal();
+      };
+    }
+
+    R.analytics = function(){
+      const leads = DB.leads.length;
+      const won = DB.leads.filter(l => ["Won","Project Active","Completed"].includes(l.status)).length;
+      const revenue = DB.payments.filter(p => p.status === "Paid").reduce((a,p) => a + Number(p.amount||0), 0);
+      return '<h1 class="h">Analytics</h1><p class="sub">What the business did — CRM truth first, site analytics second.</p>' +
+        '<div class="kpis">' + kpi(leads, "Website Leads (CRM)") + kpi(won, "Project Conversions") + kpi(revenue ? Math.round(won*100/Math.max(leads,1)) + "%" : "—", "Lead → Project %") + kpi(inr(revenue), "Revenue Collected") + '</div>' +
+        '<div class="panel"><h3>Site analytics — wired, awaiting IDs</h3>' +
+        '<table><tbody>' +
+        '<tr><td>Website Leads</td><td class="mono">dataLayer event <b>lead_delivered</b> — every form submission</td></tr>' +
+        '<tr><td>WhatsApp Clicks</td><td class="mono">whatsapp_click — FAB + page CTAs</td></tr>' +
+        '<tr><td>Consultation Requests</td><td class="mono">consultation_request — Calendly opens</td></tr>' +
+        '<tr><td>CTA Engagement</td><td class="mono">cta_band_click — bands + sticky CTA</td></tr>' +
+        '<tr><td>Service Page Views</td><td class="mono">service_page_click / page_view</td></tr>' +
+        '<tr><td>CA Bookings</td><td class="mono">consultation_request on /ca-services</td></tr>' +
+        '</tbody></table><p class="dim" style="font-size:12.5px;margin-top:10px">All events already fire into <span class="mono">window.dataLayer</span>. Add the GA4 / GTM / Clarity IDs in <span class="mono">jsv-common.js</span> and these become live dashboards — no further site work needed.</p></div>' +
+        '<div class="panel"><h3>Revenue</h3><p class="dim" style="font-size:13px">Revenue tracking lives in the <b>Payments</b> module — collected vs outstanding updates as milestones clear. GA4 purchase events can be added once real transactions flow.</p></div>';
+    };
+
+    R.proposals = function(){
+      const T = [["proposal-business-website","Business Website"],["proposal-landing-page","Landing Page"],["proposal-website-redesign","Website Redesign"],["proposal-meta-ads","Meta Ads"],["proposal-website-maintenance","Website Maintenance"],["proposal-ca-services","CA Services"]];
+      return '<h1 class="h">Proposals</h1><p class="sub">Six base templates — open, itemise per client, print to PDF, send.</p>' +
+        '<div class="panel" style="overflow:auto"><table><thead><tr><th>Template</th><th>Structure</th><th></th></tr></thead><tbody>' +
+        T.map(t => '<tr><td><b>' + t[1] + '</b></td><td class="dim" style="font-size:12px">Scope · Timeline · Price · Terms · Payment Schedule (50/50)</td><td><a class="btn ghost sm" href="/' + t[0] + '" target="_blank" rel="noopener">Open ↗</a></td></tr>').join("") +
+        '</tbody></table></div>' +
+        '<div class="panel"><h3>Payment structure — every proposal</h3><p class="dim" style="font-size:13px"><b>50% advance</b> on acceptance — no work begins before it clears. <b>50% balance</b> before launch. Retainers (Meta Ads, Maintenance) bill at cycle start. Refunds per the published <a href="/refund-policy" target="_blank" rel="noopener">Refund Policy</a>.</p></div>';
+    };
+
+    R.onboarding = function(){
+      return '<h1 class="h">Onboarding</h1><p class="sub">Lead → Client → Project — the playbook, tracked per project in the Projects module.</p>' +
+        '<div class="panel"><h3>The five collects</h3><table><tbody>' +
+        '<tr><td>1 · Welcome email</td><td>Send within 24h of advance: scope recap, timeline, single point of contact, portal link.</td></tr>' +
+        '<tr><td>2 · Requirements</td><td>Pages, features, references, success metric. One documented brief.</td></tr>' +
+        '<tr><td>3 · Brand assets</td><td>Logo files, colours, fonts, photography, copy.</td></tr>' +
+        '<tr><td>4 · Domain information</td><td>Registrar, DNS access or nameserver handover.</td></tr>' +
+        '<tr><td>5 · Hosting information</td><td>Existing host or JSVita-managed setup; SSL on the client domain.</td></tr>' +
+        '</tbody></table><p class="dim" style="font-size:12.5px;margin-top:10px">Create the project record with <b>→ Create Client + Project</b> on a Won lead — the 50/50 payment milestones are generated automatically and the checklist appears in the project drawer.</p></div>' +
+        '<div class="panel"><h3>Automation pipeline</h3><p class="dim mono" style="font-size:12px;line-height:2">Lead Form → CRM → Email Notification → WhatsApp Notification → Admin Dashboard → Proposal → Payment → Project</p><p class="dim" style="font-size:12.5px">Today: form → email (FormSubmit) → this CRM. Next: set <span class="mono">window.JSVITA_CRM_ENDPOINT</span> in jsv-common.js to a Firebase Function / Apps Script webhook and every submission mirrors into a shared store; email/WhatsApp notifications fire from that same hook.</p></div>';
+    };
+
+    R.settings = function(){
+      return '<h1 class="h">Settings</h1><p class="sub">Data, backup and the upgrade path to a shared CRM store.</p>' +
+        '<div class="panel"><h3>Data — stored in this browser (localStorage)</h3><p class="dim" style="font-size:13px">Export before clearing browser data or switching machines. Import restores a full backup.</p>' +
+        '<div class="drawer-actions"><button class="btn sm" id="s_export">Export JSON</button><label class="btn ghost sm" style="cursor:pointer">Import JSON<input type="file" id="s_import" accept="application/json" style="display:none"></label>' +
+        '<button class="btn ghost sm" id="s_sample">Load sample data</button><button class="btn ghost sm" id="s_clear" style="color:#f08c8c;border-color:rgba(240,140,140,.4)">Clear all data</button></div></div>' +
+        '<div class="panel"><h3>CRM sync endpoint (optional)</h3><p class="dim" style="font-size:13px">When a backend webhook exists (Firebase Function / Apps Script), set <span class="mono">window.JSVITA_CRM_ENDPOINT</span> in <span class="mono">jsv-common.js</span> — every site lead is then POSTed there in the exact CRM schema, ready for Firestore/Sheets. Until then this dashboard runs local-first.</p></div>' +
+        '<div class="panel"><h3>Lead status enum — canonical</h3><p class="mono dim" style="font-size:12px;line-height:1.9">' + STATUSES.join(" → ").replace("Lost → Project Active","Lost · Project Active") + '</p></div>' +
+        '<div class="panel"><h3>Related surfaces</h3><p class="dim" style="font-size:13px"><a href="/admin" target="_blank" rel="noopener">Admin Console</a> · <a href="/portal" target="_blank" rel="noopener">Client Portal</a> · <a href="/" target="_blank" rel="noopener">jsvita.in</a></p></div>';
+    };
+
+    /* ================= router + events ================= */
+    let CUR = "dashboard";
+    function go(mod){
+      CUR = mod;
+      document.querySelectorAll("nav.side button").forEach(b => b.classList.toggle("on", b.getAttribute("data-mod") === mod));
+      const m = document.getElementById("main"); m.innerHTML = (R[mod] || R.dashboard)();
+      if (mod === "leads") { renderLeadRows();
+        document.getElementById("leadAdd").onclick = leadForm;
+        document.getElementById("leadQ").oninput = renderLeadRows;
+        document.getElementById("leadF").onchange = renderLeadRows; }
+      if (mod === "projects") renderProjRows();
+      if (mod === "bookings") { renderBkRows(); document.getElementById("bkAdd").onclick = bkForm; }
+      m.scrollTop = 0; window.scrollTo({ top:0 });
+    }
+    document.addEventListener("click", function(e){
+      const t = e.target;
+      const nav = t.closest ? t.closest("[data-mod]") : null; if (nav) { go(nav.getAttribute("data-mod")); return; }
+      const ol = t.closest ? t.closest("[data-open-lead]") : null; if (ol) { e.preventDefault(); leadDrawer(ol.getAttribute("data-open-lead")); return; }
+      const op = t.closest ? t.closest("[data-open-proj]") : null; if (op) { e.preventDefault(); projDrawer(op.getAttribute("data-open-proj")); return; }
+    });
+    document.addEventListener("change", function(e){
+      const t = e.target;
+      if (t.matches("[data-leadst]")) { const l = leadById(t.getAttribute("data-leadst")); if (l) { l.status = t.value; save(); if (CUR === "dashboard") go("dashboard"); } }
+      if (t.matches("[data-projst]")) { const p = DB.projects.find(x => x.id === t.getAttribute("data-projst")); if (p) { p.status = t.value; save(); } }
+      if (t.matches("[data-payst]")) { const p = DB.payments.find(x => x.id === t.getAttribute("data-payst")); if (p) { p.status = t.value; if (t.value === "Paid") p.paid = new Date().toISOString(); save(); go("payments"); } }
+      if (t.matches("[data-bkst]")) { const b = DB.bookings.find(x => x.id === t.getAttribute("data-bkst")); if (b) { b.status = t.value; save(); } }
+    });
+    document.addEventListener("click", function(e){
+      if (e.target.id === "s_export") {
+        const blob = new Blob([JSON.stringify(DB, null, 2)], { type:"application/json" });
+        const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "jsvita-crm-backup-" + new Date().toISOString().slice(0,10) + ".json"; a.click();
+      }
+      if (e.target.id === "s_sample") { if (confirm("Load sample data? It replaces current CRM content — export first if needed.")) { DB = sampleData(); save(); go("dashboard"); } }
+      if (e.target.id === "s_clear") { if (confirm("Clear ALL CRM data? Export first — this cannot be undone.")) { DB = blankDB(); save(); go("dashboard"); } }
+    });
+    document.addEventListener("change", function(e){
+      if (e.target.id === "s_import") {
+        const f = e.target.files[0]; if (!f) return;
+        const r = new FileReader();
+        r.onload = function(){ try { DB = Object.assign(blankDB(), JSON.parse(r.result)); save(); go("dashboard"); } catch(err) { alert("Invalid backup file."); } };
+        r.readAsText(f);
+      }
+    });
+
+    /* auth gate */
+    firebase.auth().onAuthStateChanged(function(u){
+      if (u && (u.email || "").toLowerCase() === OWNER) {
+        document.getElementById("gate").style.display = "none";
+        document.getElementById("shell").style.display = "grid";
+        document.getElementById("who").textContent = u.email;
+        document.getElementById("signout").style.display = "inline-flex";
+        document.getElementById("signout").onclick = function(){ firebase.auth().signOut().then(function(){ location.href = "/login.html"; }); };
+        refreshCounts(); go("dashboard");
+      } else {
+        document.getElementById("gateMsg").textContent = u ? "This account does not have admin access." : "Not signed in.";
+        setTimeout(function(){ location.href = "/login.html"; }, 1200);
+      }
+    });
+  </script>
+</body>
+</html>

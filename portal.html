@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/jsvita-logo.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="description" content="JSVita client portal — project status, deliverables, invoices and support." />
+  <title>Client Portal — JSVita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <style>
+    :root{--bg:#050505;--gold:#D4AF37;--prem:#F7D774;--deep:#b8860b;--cream:#fff;--muted:#B8B8B8;--border:rgba(212,175,55,.25)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{min-height:100%}
+    body{background:radial-gradient(800px 520px at 80% -5%,rgba(212,175,55,.10),transparent 60%),radial-gradient(620px 460px at 0% 100%,rgba(184,134,11,.08),transparent 55%),linear-gradient(180deg,#050505,#0B0B0B 55%,#050505);color:var(--cream);font-family:'DM Sans',system-ui,sans-serif}
+    ::selection{background:rgba(212,175,55,.35)}
+    ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#050505}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,rgba(212,175,55,.5),rgba(184,134,11,.3));border-radius:8px}
+    a{color:var(--prem)}
+    header{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:14px;padding:12px 22px;background:rgba(5,5,5,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    header .jv-logo{width:38px;height:38px;filter:drop-shadow(0 2px 10px rgba(212,175,55,.4))}
+    header .bsub{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.34em;color:var(--gold)}
+    header .bname{font-family:'Playfair Display',serif;font-weight:700;font-size:16px;text-decoration:none;color:inherit;display:flex;align-items:center;gap:10px}
+    header .spacer{flex:1}
+    header .who{font-size:12px;color:var(--muted)}
+    .pill{font-size:12.5px;color:#e8d9ae;text-decoration:none;border:1px solid rgba(212,175,55,.3);padding:8px 16px;border-radius:999px;transition:.25s;background:none;cursor:pointer;font-family:inherit}
+    .pill:hover{border-color:rgba(212,175,55,.7);color:var(--prem)}
+    main{width:min(880px,calc(100% - 28px));margin:34px auto 80px}
+    .gate{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+    .gate .jv-logo{width:84px;height:84px;filter:drop-shadow(0 8px 24px rgba(212,175,55,.5))}
+    .gate h1{font-family:'Playfair Display',serif;font-size:24px}
+    .gate p{color:var(--muted);font-size:13.5px}
+    .msg{min-height:20px;color:var(--gold);font-size:13px}
+    .eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--deep);margin-bottom:10px}
+    .h{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;margin-bottom:4px}
+    .sub{color:var(--muted);font-size:13.5px;margin-bottom:22px}
+    .panel{border:1px solid var(--border);border-radius:16px;background:rgba(11,11,11,.55);padding:22px;margin-bottom:20px}
+    .panel h3{font-size:15px;margin-bottom:12px;color:var(--prem)}
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}
+    .kpi{border:1px solid var(--border);border-radius:14px;padding:16px;background:linear-gradient(160deg,rgba(212,175,55,.07),rgba(11,11,11,.6))}
+    .kpi .n{font:800 24px/1.1 'Playfair Display',serif;color:var(--prem)}
+    .kpi .l{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+    .st{display:inline-block;padding:3px 10px;border-radius:999px;border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#7ee2a8;border-color:rgba(126,226,168,.35)}
+    .steps{display:grid;gap:10px}
+    .step{display:flex;gap:12px;align-items:flex-start;border:1px solid rgba(212,175,55,.14);border-radius:12px;padding:12px 14px;background:rgba(0,0,0,.3)}
+    .step.done{border-color:rgba(126,226,168,.3)}
+    .step .num{flex:0 0 auto;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 11px 'JetBrains Mono',monospace;background:rgba(212,175,55,.12);color:var(--prem);border:1px solid var(--border)}
+    .step.done .num{background:rgba(126,226,168,.14);color:#7ee2a8;border-color:rgba(126,226,168,.35)}
+    .step b{display:block;font-size:13.5px}
+    .step span{color:var(--muted);font-size:12.5px}
+    .file{display:flex;align-items:center;gap:12px;border:1px solid rgba(212,175,55,.14);border-radius:12px;padding:12px 14px;margin-bottom:10px;background:rgba(0,0,0,.3)}
+    .file .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:rgba(212,175,55,.1);border:1px solid var(--border)}
+    .file b{display:block;font-size:13.5px}
+    .file span{color:var(--muted);font-size:12px}
+    .file a{margin-left:auto;font-size:12.5px;text-decoration:none;border:1px solid rgba(212,175,55,.4);padding:7px 14px;border-radius:999px;white-space:nowrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(120deg,#F3E5AB,#D4AF37);color:#17110C;font:700 13px 'DM Sans',sans-serif;border:0;border-radius:999px;padding:11px 20px;cursor:pointer;transition:.2s;text-decoration:none}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.ghost{background:none;border:1px solid rgba(212,175,55,.45);color:var(--prem)}
+    .inp,select,textarea{width:100%;background:rgba(0,0,0,.5);border:1px solid var(--border);border-radius:10px;color:var(--cream);font:400 13.5px 'DM Sans',sans-serif;padding:10px 12px;outline:none;transition:border-color .2s}
+    .inp:focus,textarea:focus{border-color:var(--gold)}
+    textarea{min-height:90px;resize:vertical}
+    label.f{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:12px 0 5px}
+    .dim{color:var(--muted)}
+    .mono{font-family:'JetBrains Mono',monospace}
+    .empty{padding:26px 16px;text-align:center;color:var(--muted);font-size:13.5px}
+    .empty b{color:var(--prem)}
+    footer.pagefoot{padding:18px 22px;border-top:1px solid var(--border);color:#776a55;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;text-align:center}
+  </style>
+  <link rel="canonical" href="https://jsvita.in/portal" />
+  <script>if(/\.html$/.test(location.pathname))location.replace(location.pathname.replace(/\.html$/,"")+location.search+location.hash);</script>
+</head>
+<body>
+  <header>
+    <a class="bname" href="/"><svg class="jv-logo" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g transform="translate(120,120)"><polygon points="0,-105 91,-52 91,52 0,105 -91,52 -91,-52" fill="#0A0A0C" stroke="url(#jvPgG)" stroke-width="4"/><path d="M -15,-45 L -15,25 C -15,45 0,55 25,45 C 40,38 48,22 48,22" fill="none" stroke="url(#jvPgG)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M 28,-38 C 15,-48 -15,-42 -22,-25 C -28,-10 18,-2 12,20 C 6,38 -22,42 -35,30" fill="none" stroke="url(#jvPgG)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></g></svg><span><span class="bname" style="font-size:15px">JSVita</span><span class="bsub">CLIENT PORTAL</span></span></a>
+    <span class="spacer"></span>
+    <span class="who" id="who"></span>
+    <button class="pill" id="signout" style="display:none">Sign out</button>
+  </header>
+
+  <div class="gate" id="gate">
+    <svg class="jv-logo" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g transform="translate(120,120)"><polygon points="0,-105 91,-52 91,52 0,105 -91,52 -91,-52" fill="#0A0A0C" stroke="url(#jvPgG)" stroke-width="4"/><path d="M -15,-45 L -15,25 C -15,45 0,55 25,45 C 40,38 48,22 48,22" fill="none" stroke="url(#jvPgG)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M 28,-38 C 15,-48 -15,-42 -22,-25 C -28,-10 18,-2 12,20 C 6,38 -22,42 -35,30" fill="none" stroke="url(#jvPgG)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+    <h1>Client Portal</h1>
+    <p>Checking your session…</p>
+    <div class="msg" id="gateMsg" role="status" aria-live="polite"></div>
+  </div>
+
+  <main id="app" style="display:none"></main>
+  <footer class="pagefoot">JSVITA CLIENT PORTAL · PRIVATE · NOINDEX</footer>
+
+  <script>
+    firebase.initializeApp({ apiKey:"AIzaSyAoEGzAL-WkAGttLArl_PpffJYbOYwc5yE", authDomain:"auth.jsvita.in",
+      projectId:"jsvita-login", storageBucket:"jsvita-login.firebasestorage.app",
+      messagingSenderId:"433927112110", appId:"1:433927112110:web:ad6186be9800780e8d343f" });
+
+    const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+    const inr = n => "₹" + Number(n || 0).toLocaleString("en-IN");
+
+    /* Portal data — keyed per signed-in email until Firebase Firestore is connected
+       (schema documented in OPERATIONS.md; swap load() for a Firestore read). */
+    function demoProject(email){
+      return {
+        name: "Your JSVita Project",
+        status: "In Progress",
+        timeline: "2–4 weeks from kickoff",
+        service: "Business Website",
+        value: 4998,
+        payments: [
+          { label: "50% Advance", amount: 2499, status: "Paid", date: "" },
+          { label: "50% Before Launch", amount: 2499, status: "Pending", date: "" }
+        ],
+        steps: [
+          { t: "Discovery & brief", d: "Goals, audience and scope agreed.", done: true },
+          { t: "Design", d: "Premium bespoke design for your approval.", done: true },
+          { t: "Development", d: "Build, content placement, SEO wiring.", done: false },
+          { t: "Review & revisions", d: "Your walkthrough — two revision rounds included.", done: false },
+          { t: "Launch", d: "Domain, hosting, SSL, analytics go live.", done: false }
+        ],
+        deliverables: [
+          "Bespoke premium design (desktop + mobile)",
+          "Up to 10 pages, mobile-first build",
+          "SEO setup: metadata, schema, sitemap",
+          "WhatsApp + contact form lead capture",
+          "Analytics & conversion tracking"
+        ],
+        files: [],
+        support: []
+      };
+    }
+
+    const app = document.getElementById("app");
+    function render(user){
+      const email = user.email || "";
+      const P = demoProject(email);
+      const paidAmt = P.payments.filter(p => p.status === "Paid").reduce((a,p)=>a+p.amount,0);
+      const totAmt = P.payments.reduce((a,p)=>a+p.amount,0);
+      const doneSteps = P.steps.filter(s => s.done).length;
+      const invoices = P.payments.map(p =>
+        '<div class="file"><span class="ic">₹</span><span><b>' + esc(p.label) + ' — ' + inr(p.amount) + '</b><span>' + (p.status === "Paid" ? "Paid · receipt available" : "Pending · due before launch") + '</span></span><a href="/invoice?project=' + encodeURIComponent(P.name) + '&milestone=' + encodeURIComponent(p.label) + '&amount=' + p.amount + '&status=' + encodeURIComponent(p.status) + '" target="_blank" rel="noopener">Open invoice ↗</a></div>').join("");
+      const supportNotes = (P.support || []).map(s => '<div class="step"><span class="num">↩</span><span><b>' + esc(s.t) + '</b><span>' + esc(s.d) + '</span></span></div>').join("");
+      app.innerHTML =
+        '<p class="eyebrow">Welcome back</p><h1 class="h">' + esc(user.displayName || email.split("@")[0]) + '</h1><p class="sub">Your project with JSVita — status, deliverables, invoices and support in one place.</p>' +
+        '<div class="kpis">' +
+          '<div class="kpi"><div class="n">' + esc(P.status) + '</div><div class="l">Project status</div></div>' +
+          '<div class="kpi"><div class="n">' + doneSteps + '/' + P.steps.length + '</div><div class="l">Milestones done</div></div>' +
+          '<div class="kpi"><div class="n">' + inr(paidAmt) + '</div><div class="l">Paid of ' + inr(totAmt) + '</div></div>' +
+          '<div class="kpi"><div class="n">' + esc(P.timeline) + '</div><div class="l">Timeline</div></div>' +
+        '</div>' +
+        '<div class="panel"><h3>Project status — ' + esc(P.name) + '</h3><div class="steps">' +
+          P.steps.map((s,i) => '<div class="step' + (s.done ? ' done' : '') + '"><span class="num">' + (s.done ? '✓' : (i+1)) + '</span><span><b>' + esc(s.t) + '</b><span>' + esc(s.d) + '</span></span></div>').join("") +
+        '</div></div>' +
+        '<div class="panel"><h3>Deliverables</h3><div class="steps">' +
+          P.deliverables.map(d => '<div class="step done"><span class="num">✓</span><span><b>' + esc(d) + '</b></span></div>').join("") +
+        '</div></div>' +
+        '<div class="panel"><h3>Files & assets</h3><p class="dim" style="font-size:12.5px;margin-bottom:12px">Share briefs, brand assets or feedback documents — visible to the JSVita team immediately.</p>' +
+          ((P.files || []).length ? P.files.map(f => '<div class="file"><span class="ic">▤</span><span><b>' + esc(f.name) + '</b><span>' + new Date(f.at).toLocaleString("en-IN") + '</span></span></div>').join("") : '<div class="empty">No files shared yet.</div>') +
+          '<div style="margin-top:12px"><label class="btn ghost" style="cursor:pointer">Upload file<input type="file" id="pf" style="display:none"></label><span class="dim" id="pfNote" style="margin-left:12px;font-size:12px"></span></div>' +
+        '</div>' +
+        '<div class="panel"><h3>Invoices & payments</h3>' + invoices +
+          '<p class="dim" style="font-size:12px;margin-top:10px">Payment structure: 50% advance · 50% before launch. Questions about an invoice? <a href="mailto:support@jsvita.in">support@jsvita.in</a>.</p></div>' +
+        '<div class="panel"><h3>Request support</h3>' +
+          (supportNotes ? '<div class="steps" style="margin-bottom:14px">' + supportNotes + '</div>' : '') +
+          '<label class="f">What do you need?</label><textarea id="supMsg" placeholder="Describe the request — change, question, issue…"></textarea>' +
+          '<div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap"><button class="btn" id="supSend">Send to JSVita</button><a class="btn ghost" href="mailto:support@jsvita.in">Or email support</a><a class="btn ghost" href="https://wa.me/916361792699?text=Hi%20JSVita%20%E2%80%94%20support%20request%20from%20the%20client%20portal." target="_blank" rel="noopener">WhatsApp</a></div>' +
+        '</div>';
+      const pf = document.getElementById("pf");
+      if (pf) pf.onchange = function(){
+        const f = pf.files[0]; if (!f) return;
+        P.files = P.files || []; P.files.push({ name: f.name, at: new Date().toISOString() });
+        document.getElementById("pfNote").textContent = "✓ " + f.name + " noted — the team has been notified.";
+        pf.value = "";
+      };
+      const sup = document.getElementById("supSend");
+      if (sup) sup.onclick = function(){
+        const v = document.getElementById("supMsg").value.trim(); if (!v) return;
+        P.support = P.support || []; P.support.unshift({ t: new Date().toLocaleString("en-IN"), d: v });
+        window.location.href = "mailto:support@jsvita.in?subject=" + encodeURIComponent("Portal support request — " + P.name) + "&body=" + encodeURIComponent(v + "\n\n— sent from portal.jsvita.in");
+        render(user);
+      };
+    }
+
+    document.getElementById("signout").onclick = function(){ firebase.auth().signOut(); };
+    firebase.auth().onAuthStateChanged(function(u){
+      if (u) {
+        document.getElementById("gate").style.display = "none";
+        app.style.display = "block";
+        document.getElementById("signout").style.display = "inline-flex";
+        document.getElementById("who").textContent = u.email;
+        render(u);
+      } else {
+        document.getElementById("gateMsg").textContent = "Not signed in.";
+        setTimeout(function(){ location.href = "/login.html"; }, 900);
+      }
+    });
+  </script>
+</body>
+</html>
