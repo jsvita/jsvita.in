@@ -152,6 +152,7 @@ const HEADER = `<header class="top">
       <a href="/#solutions">Solutions</a>
       <a href="/portfolio">Projects</a>
       <a href="/#technology">Technology</a>
+      <a href="/ca-services">CA SERVICES</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
       <a class="pill" href="/contact">Book Strategy Call</a>
@@ -170,16 +171,17 @@ const FOOTER = `<footer>
       <div class="fcol">
         <span class="fcol-k">Systems</span>
         <a href="/business-websites">Premium Websites</a>
-        <a href="/landing-pages">Client Portals</a>
+        <a href="/web-solutions">Web Solutions</a>
         <a href="/lead-generation">Lead CRM Systems</a>
         <a href="/consultation">AI Automation</a>
       </div>
       <div class="fcol">
         <span class="fcol-k">Company</span>
         <a href="/about">About</a>
-        <a href="/portfolio">Projects</a>
+        <a href="/#process">Process</a>
+        <a href="/#faq">FAQ</a>
         <a href="/contact">Contact</a>
-        <a href="/founder">Founder</a>
+        <a href="/ca-services">CA SERVICES</a>
       </div>
       <div class="fcol">
         <span class="fcol-k">Resources</span>

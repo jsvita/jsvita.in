@@ -417,6 +417,43 @@ section.jv.tight{padding:96px 0}
 /* legacy consult pill retired (JSVITA 2.1: no duplicate CTAs) */
 .jv-consult-fab{display:none!important}
 
+/* ---------- 30z · process + faq (2.1 refinement — brand lockdown) ---------- */
+.step-card{
+  position:relative;border:1px solid var(--line-soft);border-radius:var(--r-lg);
+  background:linear-gradient(180deg,var(--glass),rgba(255,255,255,.012));
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  padding:30px 26px;
+  transition:transform .4s cubic-bezier(.2,.6,.1,1),border-color .4s,box-shadow .4s;
+}
+.step-card:hover{transform:translateY(-5px);border-color:rgba(212,175,55,.3);box-shadow:var(--glow)}
+.step-card .num{font:700 12px/1 var(--mono);letter-spacing:.24em;color:var(--gold);display:block;margin-bottom:16px}
+.step-card h3{font:700 19px/1.3 var(--sans);margin:0 0 8px;color:var(--ink)}
+.step-card p{margin:0;color:var(--ink-dim);font-size:14.5px;line-height:1.65}
+.faq details{
+  border:1px solid var(--line-soft);border-radius:var(--r-md);
+  background:linear-gradient(180deg,var(--glass),rgba(255,255,255,.012));
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  margin-bottom:12px;transition:border-color .3s;
+}
+.faq details[open]{border-color:rgba(212,175,55,.3)}
+.faq summary{
+  cursor:pointer;padding:20px 24px;font:700 15.5px/1.4 var(--sans);color:var(--ink);
+  list-style:none;position:relative;padding-right:52px;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";position:absolute;right:24px;top:50%;width:9px;height:9px;
+  border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);
+  transform:translateY(-70%) rotate(45deg);transition:transform .3s;
+}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
+.faq details p{margin:0;padding:0 24px 22px;color:var(--ink-dim);font-size:14.5px;line-height:1.7}
+
+/* 30za · brand-lockdown mobile refinements (CA band, spacing guarantee) */
+@media(max-width:880px){
+  .ca-band{grid-template-columns:1fr!important;gap:20px!important}
+  .ca-band .btn-ghost{justify-self:start}
+}
     </style>
     <script data-pg="hero-premium">/* ============================================================
    JSVITA 2.1 — homepage runtime (premium technology rebuild)
@@ -737,6 +774,7 @@ section.jv.tight{padding:96px 0}
       <a href="/#solutions">Solutions</a>
       <a href="/#projects">Projects</a>
       <a href="/#technology">Technology</a>
+      <a href="/ca-services">CA Services</a>
       <a href="/#about">About</a>
       <a href="/#contact">Contact</a>
       <a class="pillnav" href="/contact">Book Strategy Call</a>
@@ -803,6 +841,23 @@ section.jv.tight{padding:96px 0}
   </div>
 </section>
 
+  <section class="jv tight" id="process">
+    <div class="wrap">
+      <div class="shead center">
+      <p class="kick">Process</p>
+      <h2 class="h2" data-reveal>How every engagement runs</h2>
+      </div>
+      <div class="grid3">
+        <div class="step-card data-reveal" data-reveal><span class="num">01</span><h3>Discovery Call</h3><p>Goals, audience and scope agreed.</p></div>
+        <div class="step-card" data-reveal><span class="num">02</span><h3>Fixed Proposal</h3><p>Itemised scope, milestones and pricing.</p></div>
+        <div class="step-card" data-reveal><span class="num">03</span><h3>First Working Demo</h3><p>Within 48 hours of kickoff.</p></div>
+        <div class="step-card" data-reveal><span class="num">04</span><h3>Build &amp; Milestones</h3><p>Demo at every milestone — no surprises.</p></div>
+        <div class="step-card" data-reveal><span class="num">05</span><h3>Launch &amp; SEO</h3><p>Domain, hosting, SSL, analytics go live.</p></div>
+        <div class="step-card" data-reveal><span class="num">06</span><h3>Ongoing Support</h3><p>Long-term partner, not one-off delivery.</p></div>
+      </div>
+    </div>
+  </section>
+
 <!-- ============ TECHNOLOGY STACK ============ -->
 <section class="jv tight" id="technology">
   <div class="wrap">
@@ -837,6 +892,15 @@ section.jv.tight{padding:96px 0}
         <div><div class="trust-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span><div><b>Secure Infrastructure</b><span>Encrypted sessions and hardened delivery.</span></div></div></div>
         <div><div class="trust-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg></span><div><b>Long-Term Support</b><span>Systems that keep improving after launch.</span></div></div></div>
     </div>
+    <!-- CA Services — permanent JSVita division (brand lockdown: never hidden) -->
+            <div class="ca-band" style="margin-top:96px;border:1px solid var(--line-soft);border-radius:var(--r-lg);background:linear-gradient(120deg,rgba(212,175,55,.07),rgba(212,175,55,.015));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:44px 32px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center" data-reveal>
+              <div>
+                <p class="kick">JSVita CA Services</p>
+                <h2 class="h2" style="font-size:clamp(26px,3.4vw,38px)">CA-led tax, compliance &amp; business advisory</h2>
+                <p style="margin:12px 0 0;color:var(--ink-dim);max-width:56ch">GST registration and filing, income tax, business registration, accounting and compliance — led by CA Mahalakshmi within the same standard of delivery.</p>
+              </div>
+              <a class="btn-ghost" href="/ca-services">Explore CA Services</a>
+            </div>
     <!-- founder -->
     <div class="founder" id="founder" style="margin-top:96px">
       <div class="founder-photo">
@@ -855,6 +919,21 @@ section.jv.tight{padding:96px 0}
     </div>
   </div>
 </section>
+
+  <section class="jv tight" id="faq">
+    <div class="wrap">
+      <div class="shead center">
+      <p class="kick">FAQ</p>
+      <h2 class="h2" data-reveal>Before you ask</h2>
+      </div>
+      <div class="faq" style="max-width:760px;margin:0 auto">
+        <details open><summary>How fast can a project start?</summary><p>Discovery calls happen within days; builds start weekly. First working demo lands within 48 hours of kickoff.</p></details>
+        <details><summary>What does a typical engagement cost?</summary><p>Every proposal is fixed and itemised — scope, milestones, price. No hourly billing, no surprise invoices.</p></details>
+        <details><summary>Do you handle hosting, domain and SSL?</summary><p>Yes — launch includes domain configuration, secure hosting, SSL and analytics, fully managed.</p></details>
+        <details><summary>Who do we work with day to day?</summary><p>The founder team directly. No account-manager relays — the people who design and build your system are the people you talk to.</p></details>
+      </div>
+    </div>
+  </section>
 
 <!-- ============ CONTACT ============ -->
 <section class="jv" id="contact" style="background:linear-gradient(180deg,transparent,rgba(212,175,55,.035))">

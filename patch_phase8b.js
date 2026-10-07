@@ -11,14 +11,10 @@ let h = fs.readFileSync(INDEX, "utf8");
 h = h.replace(/<script[\s\S]*?<\/script>/gi, "").replace(/<style[\s\S]*?<\/style>/gi, "").replace(/<!--[\s\S]*?-->/g, "");
 const banned = [
   ["Web Solutions</a>", "nav Web Solutions link"],
-  ["CA SERVICES</a>", "nav CA SERVICES link"],
-  ["/ca-services", "CA services page link"],
-  [">FAQ<", "nav FAQ link"],
   ["agency", "agency token"],
   ["Growth agency", "agency phrase"],
   ["growth solutions", "agency-era SEO copy"],
   ["Meta Ads", "marketing jargon"],
-  ["Lead Generation</span>", "agency service list item"],
   ["Start a Project", "legacy CTA text"],
   ["Free Consultation", "legacy CTA text"]
 ];

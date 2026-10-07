@@ -130,6 +130,7 @@ ${CSS}
       <a href="/#solutions">Solutions</a>
       <a href="/#projects">Projects</a>
       <a href="/#technology">Technology</a>
+      <a href="/ca-services">CA Services</a>
       <a href="/#about">About</a>
       <a href="/#contact">Contact</a>
       <a class="pillnav" href="/contact">Book Strategy Call</a>
@@ -189,6 +190,23 @@ ${CSS}
   </div>
 </section>
 
+  <section class="jv tight" id="process">
+    <div class="wrap">
+      <div class="shead center">
+      <p class="kick">Process</p>
+      <h2 class="h2" data-reveal>How every engagement runs</h2>
+      </div>
+      <div class="grid3">
+        <div class="step-card data-reveal" data-reveal><span class="num">01</span><h3>Discovery Call</h3><p>Goals, audience and scope agreed.</p></div>
+        <div class="step-card" data-reveal><span class="num">02</span><h3>Fixed Proposal</h3><p>Itemised scope, milestones and pricing.</p></div>
+        <div class="step-card" data-reveal><span class="num">03</span><h3>First Working Demo</h3><p>Within 48 hours of kickoff.</p></div>
+        <div class="step-card" data-reveal><span class="num">04</span><h3>Build &amp; Milestones</h3><p>Demo at every milestone — no surprises.</p></div>
+        <div class="step-card" data-reveal><span class="num">05</span><h3>Launch &amp; SEO</h3><p>Domain, hosting, SSL, analytics go live.</p></div>
+        <div class="step-card" data-reveal><span class="num">06</span><h3>Ongoing Support</h3><p>Long-term partner, not one-off delivery.</p></div>
+      </div>
+    </div>
+  </section>
+
 <!-- ============ TECHNOLOGY STACK ============ -->
 <section class="jv tight" id="technology">
   <div class="wrap">
@@ -213,6 +231,15 @@ ${CSS}
     <div class="grid2" id="trustGrid">
       ${trust}
     </div>
+    <!-- CA Services — permanent JSVita division (brand lockdown: never hidden) -->
+            <div class="ca-band" style="margin-top:96px;border:1px solid var(--line-soft);border-radius:var(--r-lg);background:linear-gradient(120deg,rgba(212,175,55,.07),rgba(212,175,55,.015));-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:44px 32px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center" data-reveal>
+              <div>
+                <p class="kick">JSVita CA Services</p>
+                <h2 class="h2" style="font-size:clamp(26px,3.4vw,38px)">CA-led tax, compliance &amp; business advisory</h2>
+                <p style="margin:12px 0 0;color:var(--ink-dim);max-width:56ch">GST registration and filing, income tax, business registration, accounting and compliance — led by CA Mahalakshmi within the same standard of delivery.</p>
+              </div>
+              <a class="btn-ghost" href="/ca-services">Explore CA Services</a>
+            </div>
     <!-- founder -->
     <div class="founder" id="founder" style="margin-top:96px">
       <div class="founder-photo">
@@ -231,6 +258,21 @@ ${CSS}
     </div>
   </div>
 </section>
+
+  <section class="jv tight" id="faq">
+    <div class="wrap">
+      <div class="shead center">
+      <p class="kick">FAQ</p>
+      <h2 class="h2" data-reveal>Before you ask</h2>
+      </div>
+      <div class="faq" style="max-width:760px;margin:0 auto">
+        <details open><summary>How fast can a project start?</summary><p>Discovery calls happen within days; builds start weekly. First working demo lands within 48 hours of kickoff.</p></details>
+        <details><summary>What does a typical engagement cost?</summary><p>Every proposal is fixed and itemised — scope, milestones, price. No hourly billing, no surprise invoices.</p></details>
+        <details><summary>Do you handle hosting, domain and SSL?</summary><p>Yes — launch includes domain configuration, secure hosting, SSL and analytics, fully managed.</p></details>
+        <details><summary>Who do we work with day to day?</summary><p>The founder team directly. No account-manager relays — the people who design and build your system are the people you talk to.</p></details>
+      </div>
+    </div>
+  </section>
 
 <!-- ============ CONTACT ============ -->
 <section class="jv" id="contact" style="background:linear-gradient(180deg,transparent,rgba(212,175,55,.035))">
