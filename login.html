@@ -10,7 +10,7 @@
   <title>Member Login — JSVita</title>
   <link rel="canonical" href="https://jsvita.in/login" />
   <script>if(/\.html$/.test(location.pathname))location.replace(location.pathname.replace(/\.html$/,"")+location.search+location.hash);</script>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://securetoken.googleapis.com; frame-src https://*.firebaseapp.com https://*.firebaseio.com" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://securetoken.googleapis.com; frame-src https://auth.jsvita.in https://*.firebaseapp.com https://*.firebaseio.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -278,9 +278,16 @@
       setTimeout(function () { rip.remove(); }, 650);
     }, { passive: true });
     /* ---------- Firebase auth ---------- */
-    var CFG = { apiKey: "AIzaSyAoEGzAL-WkAGttLArl_PpffJYbOYwc5yE", authDomain: "auth.jsvita.in", projectId: "jsvita-login", storageBucket: "jsvita-login.firebasestorage.app", messagingSenderId: "433927112110", appId: "1:433927112110:web:ad6186be9800780e8d343f" };
+    var CFG = { apiKey: "AIzaSyAoEGzAL-WkAGttLArl_PpffJYbOYwc5yE", authDomain: "jsvita-login.firebaseapp.com", projectId: "jsvita-login", storageBucket: "jsvita-login.firebasestorage.app", messagingSenderId: "433927112110", appId: "1:433927112110:web:ad6186be9800780e8d343f" };
     try { if (!firebase.apps.length) firebase.initializeApp(CFG); } catch (e) {}
     var auth = firebase.auth();
+    var JVAL = function () {
+      var a = ["[jv-auth]"].concat([].slice.call(arguments).map(function (x) { return (x && x.code) ? x.code : ((x instanceof Error) ? x.message : x); }));
+      try { console.log.apply(console, a); } catch (e) {}
+    };
+    window.JV_AUTH_DEBUG = JVAL; /* callable from devtools for live diagnostics */
+    JVAL("init", "authDomain=" + CFG.authDomain, "sdk=" + (typeof firebase !== "undefined" ? firebase.SDK_VERSION : "?"));
+    auth.onAuthStateChanged(function (u) { JVAL("auth state:", u ? ("signed-in " + (u.email || u.uid)) : "signed-out"); });
     var went = false;
     function enter(path) {
       if (went) return; went = true;
@@ -325,14 +332,21 @@
     var gBusy = false;
     function gFlow(btn) {
       if (gBusy) return; gBusy = true; clear();
+      JVAL("google sign-in started", "authDomain=" + CFG.authDomain, "popup-path");
       var lbl = btn.querySelector(".lbl"), orig = lbl.innerHTML;
       btn.disabled = true; btn.classList.add("busy");
       lbl.textContent = "Connecting…";
       var provider = new firebase.auth.GoogleAuthProvider();
       provider.setCustomParameters({ prompt: "select_account" });
       function done() { btn.disabled = false; btn.classList.remove("busy"); lbl.innerHTML = orig; gBusy = false; }
+      function goRedirect() {
+        JVAL("falling back to full-page redirect");
+        say("Opening Google in this window… hold the Google button for the account chooser if it stalls.", false);
+        auth.signInWithRedirect(provider).then(function () { JVAL("signInWithRedirect accepted"); }).catch(function (e2) { JVAL("signInWithRedirect failed", e2); say(friendly(e2), false); done(); });
+      }
       auth.signInWithPopup(provider)
         .then(function (cred) {
+          JVAL("popup sign-in success", cred && cred.user ? (cred.user.email || "user") : "no-user");
           if (cred && cred.user) {
             say("Signed in with Google.", true);
             $("card").classList.add("success");
@@ -340,10 +354,11 @@
           } else done();
         })
         .catch(function (err) {
+          JVAL("popup sign-in error", err);
           var c = String((err && err.code) || "");
           if (c.indexOf("popup-blocked") !== -1 || c.indexOf("operation-not-supported") !== -1 || c.indexOf("popup-failed") !== -1) {
             /* popup blocked — fall back to the full-page OAuth redirect */
-            auth.signInWithRedirect(provider).catch(function (e2) { say(friendly(e2), false); done(); });
+            goRedirect();
             return;
           }
           if (c.indexOf("popup-closed-by-user") === -1 && c.indexOf("cancelled-popup-request") === -1) say(friendly(err), false);
@@ -352,10 +367,25 @@
     }
     $("gLogin").addEventListener("click", function () { gFlow($("gLogin")); });
     $("gSignup").addEventListener("click", function () { gFlow($("gSignup")); });
+    /* press-and-hold either Google button for the account-chooser redirect path */
+    function redirectNow() {
+      if (gBusy) return;
+      gBusy = true;
+      JVAL("full-page Google redirect requested via long-press");
+      say("Opening Google sign-in…", true);
+      auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()).catch(function (e2) { JVAL("redirect failed", e2); say(friendly(e2), false); gBusy = false; });
+    }
+    var holdT = null;
+    ["gLogin", "gSignup"].forEach(function (id) {
+      var b = $(id);
+      b.addEventListener("pointerdown", function () { holdT = setTimeout(redirectNow, 700); });
+      ["pointerup", "pointerleave", "pointercancel"].forEach(function (ev) { b.addEventListener(ev, function () { clearTimeout(holdT); }); });
+    });
     /* return trip from a redirect flow */
     auth.getRedirectResult().then(function (r) {
+      JVAL("getRedirectResult", r && r.user ? (r.user.email || "signed-in") : "no user");
       if (r && r.user) { $("card").classList.add("success"); enter("/dashboard"); }
-    }).catch(function (err) { if (err && err.code) say(friendly(err), false); });
+    }).catch(function (err) { JVAL("getRedirectResult error", err); if (err && err.code) say(friendly(err), false); });
     if (auth.currentUser) enter("/dashboard");
   })();
   </script>
