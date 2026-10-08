@@ -75,7 +75,7 @@ section#top > .mx-auto { position: relative; }
 .jsv-hero-card {
   position: relative;
   border-radius: 28px;
-  padding: clamp(28px, 5vw, 56px);
+  padding: clamp(20px, 3.4vw, 36px);
   background: linear-gradient(150deg, rgba(24,18,12,.72) 0%, rgba(13,10,7,.82) 55%, rgba(20,14,9,.78) 100%);
   -webkit-backdrop-filter: blur(18px) saturate(135%);
   backdrop-filter: blur(18px) saturate(135%);
@@ -110,19 +110,19 @@ section#top > .mx-auto { position: relative; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 44px;
+  margin-top: 8px; /* hero refinement: kill the dead void above the brand */
   isolation: isolate;
 }
 /* soft spotlight cone behind everything */
 .jsv-brand-block::before {
   content: "";
   position: absolute;
-  top: -140px;
+  top: -70px;
   left: 50%;
-  width: 640px;
-  height: 640px;
+  width: 460px;
+  height: 460px;
   transform: translateX(-50%);
-  background: radial-gradient(closest-side, rgba(212, 175, 55, 0.14), rgba(212, 175, 55, 0.05) 45%, transparent 72%);
+  background: radial-gradient(closest-side, rgba(212, 175, 55, 0.10), rgba(212, 175, 55, 0.04) 45%, transparent 72%);
   pointer-events: none;
   z-index: -2;
 }
@@ -130,9 +130,9 @@ section#top > .mx-auto { position: relative; }
 /* ---- logo: large, floating, breathing, wrapped in a dynamic gold aura ---- */
 .jsv-brand-logo {
   position: relative;
-  width: 128px;
-  height: 128px;
-  margin-bottom: 26px;
+  width: 112px;
+  height: 112px;
+  margin-bottom: 16px;
   transform-style: preserve-3d;
   transition: transform 0.5s cubic-bezier(0.22, 1.2, 0.36, 1);
   will-change: transform;
@@ -141,18 +141,20 @@ section#top > .mx-auto { position: relative; }
     jsvBrandFloat 6s ease-in-out 0.95s infinite;
 }
 .jsv-brand-logo .jv-logo {
-  width: 128px;
-  height: 128px;
+  width: 100%;
+  height: 100%;
   display: block;
-  filter: drop-shadow(0 14px 34px rgba(212, 175, 55, 0.4)) drop-shadow(0 0 22px rgba(247, 215, 116, 0.25));
+  filter: drop-shadow(0 10px 24px rgba(212, 175, 55, 0.35)) drop-shadow(0 0 16px rgba(247, 215, 116, 0.2));
 }
+/* hero refinement: the unified mark ships without the .jv-logo class — fill the box */
+.jsv-brand-logo svg { width: 100%; height: 100%; display: block; }
 /* dynamic aura: breathes with the logo */
 .jsv-brand-logo::before {
   content: "";
   position: absolute;
-  inset: -46%;
+  inset: -20%;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(212, 175, 55, 0.32), rgba(212, 175, 55, 0.1) 52%, transparent 74%);
+  background: radial-gradient(closest-side, rgba(212, 175, 55, 0.22), rgba(212, 175, 55, 0.08) 52%, transparent 74%);
   z-index: -1;
   animation: jsvAuraPulse 4.2s ease-in-out 1s infinite;
   will-change: opacity, transform;
@@ -180,6 +182,7 @@ section#top > .mx-auto { position: relative; }
 /* ---- JSVita wordmark: gold gradient letters, glass sheen, executive spacing ---- */
 .jsv-brand-word {
   position: relative;
+  overflow: hidden; /* clip the sheen sweep to the wordmark — no resting-state artifact */
   font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(3.4rem, 9vw, 5.6rem);
   font-weight: 800;
@@ -210,7 +213,7 @@ section#top > .mx-auto { position: relative; }
   bottom: -6%;
   left: -30%;
   width: 34%;
-  background: linear-gradient(105deg, transparent, rgba(255, 251, 235, 0.35) 50%, transparent);
+  background: linear-gradient(105deg, transparent, rgba(255, 251, 235, 0.22) 50%, transparent);
   transform: skewX(-18deg) translateX(-140%);
   animation: jsvGlassSheen 5.5s ease-in-out 2.2s infinite;
   pointer-events: none;
@@ -311,9 +314,9 @@ section#top > .mx-auto { position: relative; }
 
 /* ---- responsive + reduced motion ---- */
 @media (max-width: 640px) {
-  .jsv-brand-block { margin-top: 30px; }
-  .jsv-brand-logo, .jsv-brand-logo .jv-logo { width: 96px; height: 96px; }
-  .jsv-brand-logo { margin-bottom: 18px; }
+  .jsv-brand-block { margin-top: 4px; }
+  .jsv-brand-logo, .jsv-brand-logo .jv-logo { width: 88px; height: 88px; }
+  .jsv-brand-logo { margin-bottom: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .jsv-brand-logo, .jsv-brand-logo::before, .jsv-brand-ch, .jsv-brand-tag, .jsv-brand-word::after, .jsv-brand-name {
@@ -483,13 +486,19 @@ footer.jsv-footer-aura.jv-in .jsv-infinity { opacity: 1; transform: none; }
   footer.jsv-footer-aura .jsv-infinity { opacity: 1; transform: none; transition: none; }
 }
 
-/* ---- 30c. Brand-first hero: bigger logo, founder secondary ---- */
-.jsv-brand-logo { width: 168px; height: 168px; margin-bottom: 28px; }
-.jsv-brand-logo .jv-logo { width: 168px; height: 168px; }
+/* ---- 30c. Brand-first hero: proportional logo, founder secondary ----
+   hero refinement: 136px desktop (was 168 with a 64px render inside —
+   oversized glow + dead space). Now the mark fills its box. */
+.jsv-brand-logo { width: 136px; height: 136px; margin-bottom: 16px; }
+.jsv-brand-logo .jv-logo { width: 100%; height: 100%; }
 @media (max-width: 720px) {
-  .jsv-brand-logo { width: 128px; height: 128px; }
-  .jsv-brand-logo .jv-logo { width: 128px; height: 128px; }
+  .jsv-brand-logo { width: 104px; height: 104px; }
+  .jsv-brand-logo .jv-logo { width: 100%; height: 100%; }
 }
+/* hero refinement: tighten headline + CTA rhythm under the brand block */
+#top .jsv-hero-card h1 { margin-top: 12px; }
+.jsv-hero-subline { margin-top: 12px; }
+.jsv-hero-ctas { margin-top: 20px; }
 /* founder line: quiet, supporting, clearly secondary to JSVita */
 .jsv-brand-name { margin-top: 14px; font-size: clamp(0.78rem, 1.6vw, 0.92rem); letter-spacing: 0.3em; text-indent: 0.3em; font-weight: 600; }
 .jsv-brand-name::after { width: min(260px, 50%); margin-top: 10px; opacity: 0.75; }
@@ -1618,7 +1627,7 @@ html:not(.dark) header.jsv-scrolled { box-shadow: 0 22px 55px -20px rgba(84,60,1
 
 /* ---------- 9. Mobile polish ---------- */
 @media (max-width: 640px) {
-  .jsv-hero-card { border-radius: 22px; padding: 26px 20px 30px; }
+  .jsv-hero-card { border-radius: 22px; padding: 18px 16px 22px; }
   .jsv-hero-role { letter-spacing: .1em; gap: 8px; }
   .jsv-btn-gold, .jsv-btn-ghost { width: 100%; justify-content: center; }
   /* NOW card: show on mobile too, compact, still flush on the portrait corner */
