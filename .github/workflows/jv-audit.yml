@@ -1,0 +1,35 @@
+name: Site audit
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "23 3 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: jv-audit
+  cancel-in-progress: true
+jobs:
+  static-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run static site audit
+        run: node scripts/jv-audit.mjs .
+  live-probe:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe public endpoints (read-only, no secrets)
+        run: |
+          set -e
+          for u in https://jsvita.in/ https://jsvita.in/favicon.ico https://jsvita.in/jsvita-logo.svg https://auth.jsvita.in/; do
+            code=$(curl -s -o /dev/null -m 20 -w "%{http_code}" "$u")
+            echo "$u -> $code"
+            [ "$code" = "200" ] || { echo "FAIL: $u returned $code"; exit 1; }
+          done
