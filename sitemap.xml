@@ -30,7 +30,7 @@
   <url><loc>https://jsvita.in/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://jsvita.in/login</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
   <url><loc>https://jsvita.in/jsvita/login</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://jsvita.in/reel.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jsvita.in/reel</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jsvita.in/finance</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://jsvita.in/finance-taxation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://jsvita.in/finance-gst</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
