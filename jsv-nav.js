@@ -119,7 +119,19 @@
        index.html (React capture) ships its own verified mobile menu
        (window.__jsvMnav). Building a second one here would duplicate the
        toggle + panel, so we defer entirely to that implementation. */
-    var hasOwnMenu = window.__jsvMnav === true || !!document.querySelector(".jv-mnav-btn");
+    /* index.html (React capture) ships its own accessible mobile menu
+       (window.__jsvMnav). Its inline script initializes after deferred
+       scripts, so detection must not rely on runtime state alone: also
+       scan inline <script> sources for the marker, and remove any
+       late-built duplicate via a MutationObserver below. */
+    var inlineHasMenu = Array.prototype.some.call(
+      document.scripts,
+      function (s) { return !s.src && s.textContent && s.textContent.indexOf("__jsvMnav") !== -1; }
+    );
+    var hasOwnMenu =
+      window.__jsvMnav === true ||
+      !!document.querySelector(".jv-mnav-btn") ||
+      inlineHasMenu;
     if (!hasOwnMenu) {
     var mqLate = window.matchMedia("(max-width: 860px)");
     var btn = document.createElement("button");
@@ -219,6 +231,32 @@
     (mqLate.addEventListener ? mqLate.addEventListener("change", onMqChange) : mqLate.addListener(onMqChange));
     onMqChange({ matches: mqLate.matches });
     } /* end if (!hasOwnMenu) */
+
+    /* ---------- safety net: if a page's own mobile menu initializes late
+       (after this script), remove our duplicate toggle/panel ---------- */
+    var ours = {
+      btn: header.querySelector(".jv-btn"),
+      panel: document.getElementById("jv-mnav"),
+      back: document.querySelector(".jv-mback")
+    };
+    function theirsVisible() {
+      var t = document.querySelector(".jv-mnav-btn");
+      return !!t && t !== ours.btn;
+    }
+    if (ours.panel && "MutationObserver" in window) {
+      var deDupe = function () {
+        if (theirsVisible() && ours.panel.isConnected) {
+          if (ours.btn) ours.btn.remove();
+          ours.panel.remove();
+          if (ours.back) ours.back.remove();
+          document.documentElement.classList.remove("jv-menu-open");
+          document.body.style.overflow = "";
+        }
+      };
+      var mo = new MutationObserver(deDupe);
+      mo.observe(document.body, { childList: true, subtree: true });
+      setTimeout(deDupe, 400);
+    }
   }
 
   function ready(fn) {
