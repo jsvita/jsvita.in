@@ -115,8 +115,13 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
-    /* ---------- mobile menu: animated toggle + accessible slide-in ---------- */
-    var mq = window.matchMedia("(max-width: 860px)");
+    /* ---------- mobile menu: animated toggle + accessible slide-in ----------
+       index.html (React capture) ships its own verified mobile menu
+       (window.__jsvMnav). Building a second one here would duplicate the
+       toggle + panel, so we defer entirely to that implementation. */
+    var hasOwnMenu = window.__jsvMnav === true || !!document.querySelector(".jv-mnav-btn");
+    if (!hasOwnMenu) {
+    var mqLate = window.matchMedia("(max-width: 860px)");
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "jv-btn";
@@ -207,13 +212,13 @@
       if (panel.classList.contains("jv-open")) close();
       else open();
     });
-    var mqLate = window.matchMedia("(max-width: 860px)");
     function onMqChange(ev) {
       if (!ev.matches) close();
       ind.classList.remove("jv-on");
     }
     (mqLate.addEventListener ? mqLate.addEventListener("change", onMqChange) : mqLate.addListener(onMqChange));
     onMqChange({ matches: mqLate.matches });
+    } /* end if (!hasOwnMenu) */
   }
 
   function ready(fn) {
