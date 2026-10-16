@@ -1,0 +1,410 @@
+/* ============================================================================
+   jsv-nav.css — premium floating glass navbar for jsvita.in
+   Scope: header.top/.bar/.topnav (33 marketing pages) + header.sticky (index).
+   Loaded AFTER per-page inline styles → later cascade wins ties.
+   Palette follows the existing brand: near-black #17110C, gold #D4AF37 /
+   #F3E5AB / #F7D774. Transform/opacity animations only (60fps budget);
+   prefers-reduced-motion fully honored. No-JS fallback keeps the original
+   layout (mobile panel only appears under .jv-nav-enhanced).
+   ========================================================================== */
+
+/* ---- floating glass surface (desktop + all widths) ------------------------ */
+header.top {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: none;
+  border-bottom: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+header.top .bar {
+  max-width: 1060px;
+  margin: 14px auto 12px;
+  padding: 12px 20px 12px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-direction: row;
+  background:
+    linear-gradient(180deg, rgba(26, 19, 13, 0.78), rgba(23, 17, 12, 0.62));
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  backdrop-filter: blur(18px) saturate(145%);
+  border: 1px solid rgba(212, 175, 55, 0.20);
+  border-radius: 18px;
+  box-shadow:
+    0 12px 34px -20px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(247, 215, 116, 0.05);
+  transition:
+    box-shadow 0.4s ease,
+    background 0.4s ease,
+    border-color 0.4s ease;
+  will-change: box-shadow;
+}
+/* compact glass state on scroll — transform/visual only, zero layout shift */
+.jv-nav-stuck header.top .bar {
+  background:
+    linear-gradient(180deg, rgba(23, 17, 12, 0.94), rgba(20, 14, 10, 0.86));
+  border-color: rgba(212, 175, 55, 0.38);
+  box-shadow:
+    0 18px 44px -18px rgba(0, 0, 0, 0.92),
+    0 2px 10px -6px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(247, 215, 116, 0.08);
+}
+.jv-nav-stuck header.top .bar .brand svg:first-child { transform: scale(0.94); }
+header.top .bar .brand svg:first-child { transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1); }
+
+/* ---- brand --------------------------------------------------------------- */
+header.top .bar .brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+header.top .bar .brand .name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- link row ------------------------------------------------------------- */
+.jv-nav-enhanced header.top .topnav {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 4px 18px;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+}
+.jv-nav-enhanced header.top .topnav a:not(.pill) {
+  position: relative;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 22ch;
+  padding: 9px 2px 11px;
+  color: #b9ac9e;
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+/* hover illumination + short gold underline sweep */
+.jv-nav-enhanced header.top .topnav a:not(.pill)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0.65), #f7d774 60%, rgba(247, 215, 116, 0.35));
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0.85;
+  transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1);
+  pointer-events: none;
+}
+.jv-nav-enhanced header.top .topnav a:not(.pill):hover,
+.jv-nav-enhanced header.top .topnav a:not(.pill):focus-visible,
+.jv-nav-enhanced header.top .topnav a:not(.pill).jv-active {
+  color: #f7d774;
+  text-shadow: 0 0 14px rgba(247, 215, 116, 0.30);
+}
+.jv-nav-enhanced header.top .topnav a:not(.pill):hover::after,
+.jv-nav-enhanced header.top .topnav a:not(.pill).jv-active::after {
+  transform: scaleX(1);
+}
+
+/* ---- sliding gold active indicator (JS moves it; compositor-only) ---------- */
+.jv-nav-enhanced header.top .topnav .jv-ind {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #d4af37, #f7d774 55%, #f3e5ab);
+  box-shadow: 0 0 12px rgba(247, 215, 116, 0.45);
+  opacity: 0;
+  transform: translateX(0) scaleX(0.2);
+  transform-origin: left center;
+  transition: transform 0.42s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.25s ease;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.jv-nav-enhanced header.top .topnav .jv-ind.jv-on { opacity: 1; }
+
+/* ---- metallic-gold CTA pill ------------------------------------------------ */
+.jv-nav-enhanced header.top .topnav a.pill {
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 9px 18px;
+  border-radius: 999px;
+  color: #17110c;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  background: linear-gradient(115deg, #f7e9b5 0%, #e6c968 30%, #d4af37 52%, #c99a2e 68%, #f3e5ab 100%);
+  box-shadow:
+    0 6px 18px -8px rgba(212, 175, 55, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 0 rgba(126, 84, 8, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  will-change: transform;
+}
+/* slow specular shine sweep — compositor-friendly transform loop */
+.jv-nav-enhanced header.top .topnav a.pill::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 55%;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.5) 50%, transparent 70%);
+  transform: translateX(-160%) skewX(-18deg);
+  animation: jvShine 5.6s cubic-bezier(0.4, 0, 0.6, 1) 2.2s infinite;
+  pointer-events: none;
+}
+@keyframes jvShine {
+  0%   { transform: translateX(-160%) skewX(-18deg); }
+  22%  { transform: translateX(280%)  skewX(-18deg); }
+  100% { transform: translateX(280%)  skewX(-18deg); }
+}
+.jv-nav-enhanced header.top .topnav a.pill:hover,
+.jv-nav-enhanced header.top .topnav a.pill:focus-visible {
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 26px -8px rgba(212, 175, 55, 0.7),
+    0 0 18px -4px rgba(247, 215, 116, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(126, 84, 8, 0.35);
+  filter: brightness(1.06);
+}
+.jv-nav-enhanced header.top .topnav a.pill:active { transform: translateY(0); }
+
+/* ---- accessible focus ------------------------------------------------------ */
+header.top .topnav a:focus-visible,
+header.top .bar .jv-btn:focus-visible {
+  outline: 2px solid #f7d774;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---- index.html (React capture) scoped overrides --------------------------- */
+header.sticky {
+  background: linear-gradient(180deg, rgba(26, 19, 13, 0.82), rgba(23, 17, 12, 0.68)) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  backdrop-filter: blur(18px) saturate(145%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.22) !important;
+  transition: box-shadow 0.4s ease, background 0.4s ease;
+}
+.jv-nav-stuck header.sticky {
+  background: linear-gradient(180deg, rgba(23, 17, 12, 0.95), rgba(20, 14, 10, 0.88)) !important;
+  box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.9);
+  border-bottom-color: rgba(212, 175, 55, 0.38) !important;
+}
+header.sticky nav a {
+  position: relative;
+  color: #c8bbae !important;
+  padding: 8px 2px 10px;
+  white-space: nowrap;
+}
+header.sticky nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(212,175,55,0.65), #f7d774 60%, rgba(247,215,116,0.35));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.25s ease;
+  pointer-events: none;
+}
+header.sticky nav a:hover,
+header.sticky nav a:focus-visible,
+header.sticky nav a.jv-active {
+  color: #f7d774 !important;
+  text-shadow: 0 0 14px rgba(247, 215, 116, 0.3);
+}
+header.sticky nav a:hover::after,
+header.sticky nav a.jv-active::after { transform: scaleX(1); }
+header.sticky nav { position: relative; }
+header.sticky nav .jv-ind {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #d4af37, #f7d774 55%, #f3e5ab);
+  box-shadow: 0 0 12px rgba(247, 215, 116, 0.45);
+  opacity: 0;
+  transform: translateX(0) scaleX(0.2);
+  transform-origin: left center;
+  transition: transform 0.42s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.25s ease;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+header.sticky nav .jv-ind.jv-on { opacity: 1; }
+@media (max-width: 860px) {
+  header.sticky nav .jv-ind { display: none; }
+}
+
+/* ---- mobile: polished toggle + slide-in panel (enhanced only) -------------- */
+.jv-nav-enhanced header.top .bar .jv-btn,
+.jv-nav-enhanced header.sticky .jv-btn {
+  display: none;
+  appearance: none;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  width: 44px;
+  height: 40px;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  flex: 0 0 auto;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+.jv-nav-enhanced header.top .bar .jv-btn:hover,
+.jv-nav-enhanced header.sticky .jv-btn:hover { border-color: rgba(212, 175, 55, 0.7); background: rgba(247, 215, 116, 0.08); }
+.jv-nav-enhanced header.top .bar .jv-btn span,
+.jv-nav-enhanced header.sticky .jv-btn span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 1.6px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #d4af37, #f7d774);
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.25s ease;
+}
+.jv-nav-enhanced header .jv-btn span:nth-child(1) { transform: translate(-50%, -5px); }
+.jv-nav-enhanced header .jv-btn span:nth-child(2) { transform: translate(-50%, 3px); }
+.jv-nav-enhanced html.jv-menu-open header .jv-btn span:nth-child(1) { transform: translate(-50%, -1px) rotate(45deg); }
+.jv-nav-enhanced html.jv-menu-open header .jv-btn span:nth-child(2) { transform: translate(-50%, -1px) rotate(-45deg); }
+
+.jv-mnav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(84vw, 380px);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 20px calc(20px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(180deg, rgba(23, 17, 12, 0.97), rgba(17, 12, 9, 0.99));
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: -24px 0 60px -30px rgba(0, 0, 0, 0.9);
+  transform: translateX(102%);
+  visibility: hidden;
+  transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1), visibility 0s linear 0.38s;
+  will-change: transform;
+}
+.jv-mnav.jv-open {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.38s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.jv-mnav .jv-mhead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.16);
+  color: #f3e5ab;
+  font: 800 17px "Playfair Display", Georgia, serif;
+  letter-spacing: 0.02em;
+}
+.jv-mnav .jv-mlinks {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 10px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.jv-mnav .jv-mlinks a {
+  display: block;
+  padding: 13px 10px;
+  border-radius: 12px;
+  color: #c8bbae;
+  font: 600 15px "DM Sans", sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+.jv-mnav .jv-mlinks a:hover,
+.jv-mnav .jv-mlinks a:focus-visible {
+  color: #f7d774;
+  background: rgba(247, 215, 116, 0.06);
+}
+.jv-mnav .jv-mlinks a.jv-active { color: #f7d774; background: rgba(247, 215, 116, 0.05); }
+.jv-mnav .jv-mcta {
+  margin-top: auto;
+  display: block;
+  text-align: center;
+  padding: 13px 18px;
+  border-radius: 999px;
+  color: #17110c !important;
+  font: 700 14.5px "DM Sans", sans-serif;
+  text-decoration: none;
+  background: linear-gradient(115deg, #f7e9b5, #d4af37 55%, #f3e5ab);
+  box-shadow: 0 8px 22px -10px rgba(212, 175, 55, 0.6);
+}
+.jv-mnav .jv-mfoot {
+  margin-top: 14px;
+  font: 400 11px "JetBrains Mono", monospace;
+  color: #7e7267;
+  letter-spacing: 0.04em;
+}
+.jv-mback {
+  position: fixed;
+  inset: 0;
+  z-index: 78;
+  background: rgba(8, 6, 4, 0.55);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease;
+}
+.jv-mback.jv-show { opacity: 1; visibility: visible; }
+
+@media (max-width: 860px) {
+  .jv-nav-enhanced header.top .bar { padding: 10px 16px; }
+  .jv-nav-enhanced header.top .bar .jv-btn { display: inline-flex; align-items: center; justify-content: center; }
+  .jv-nav-enhanced header.top .topnav { display: none; }
+  .jv-nav-enhanced header.sticky nav { display: none !important; }
+  .jv-nav-enhanced header.sticky .jv-btn { display: inline-flex; align-items: center; justify-content: center; }
+  .jv-nav-enhanced header.top .bar { flex-direction: row; }
+  /* safety: no horizontal scroll from any legacy rules */
+  body { overflow-x: hidden; }
+}
+
+/* ---- reduced motion: strip all movement, keep states ------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  header.top .bar,
+  .jv-nav-enhanced header.top .topnav a,
+  .jv-nav-enhanced header.top .topnav a.pill,
+  .jv-nav-enhanced header.top .topnav a.pill::before,
+  .jv-nav-enhanced header.top .topnav .jv-ind,
+  .jv-mnav,
+  .jv-mback,
+  .jv-nav-enhanced header .jv-btn span,
+  header.sticky nav a::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
